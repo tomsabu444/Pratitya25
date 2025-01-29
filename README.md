@@ -1,8 +1,29 @@
-# React + Vite
+# Pratitya'25
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for the Pratitya25 project, built with Vite and React.
 
-Currently, two official plugins are available:
+## Technology Stack
+  - React.js - A JavaScript library for building user interfaces
+  - TailwindCSS - A utility-first CSS framework
+  - Material UI - React component library implementing Material Design
+  - Firebase - Backend-as-a-Service (BaaS) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+
+Follow these steps to set up the project locally:
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/tomsabu444/Pratitya25.git
+   cd Pratitya25
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm ci
+   ```
+
+3. **To start the development server**
+   ```bash
+   npm run dev
+   ```
