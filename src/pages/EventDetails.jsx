@@ -13,7 +13,7 @@ const EventDetails = () => {
       <div className="flex flex-col items-center mt-20">
         <h2 className="text-2xl font-bold text-gray-800">Event not found</h2>
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/events')}
           className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
           Back to Events List
