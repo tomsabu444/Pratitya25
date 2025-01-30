@@ -27,3 +27,29 @@ Follow these steps to set up the project locally:
    ```bash
    npm run dev
    ```
+
+## Website Navigation
+
+The website consists of the following pages:
+
+### Home Page
+- **Route**: `/`
+- **Component**: `HomePage`
+- The main landing page of the website
+
+### Event List Page
+- **Route**: `/events`
+- **Component**: `EventList`
+- Displays a list of all available events
+
+### Event Details Page
+- **Route**: `/event/:id`
+- **Component**: `EventDetails`
+- Shows detailed information about a specific event
+- The `:id` parameter in the URL represents the unique identifier for each event
+
+### Team Page
+- **Route**: `/teams`
+- **Component**: `TeamPage`
+- Displays information about the team members
+
