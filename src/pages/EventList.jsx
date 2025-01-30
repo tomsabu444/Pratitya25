@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import events from '../data/events';
+import events from '../data/events.json';
+
 const EventList = () => {
   const navigate = useNavigate();
 
