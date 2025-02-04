@@ -27,7 +27,7 @@ function Footer() {
             <div className="text-sm text-center md:text-left">
                 Privacy Policy
             </div>
-            <div className="font-bold text-sm text-center md:text-left">
+            <div className="font-bold text-sm text-center md:text-left ">
                 Contact Us
             </div>
         </div>
