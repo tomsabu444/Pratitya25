@@ -23,18 +23,7 @@
       animation: moveGradients 25s normal infinite;
     }
     
-    /* Keyframes for the animation */
-    /* @keyframes moveGradients {
-      0% {
-        background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
-      }
-      50% {
-        background-position: 100% 100%, 30% 70%, 90% 10%, 50% 50%;
-      }
-      100% {
-        background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
-      }
-    } */
+    
     @keyframes moveGradients {
       0% {
         background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
@@ -53,7 +42,6 @@
       }
     }
     
-    /* Mobile View */
     @media (max-width: 768px) {
       .mesh-gradient {
         background: 
