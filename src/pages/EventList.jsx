@@ -13,7 +13,7 @@ const EventList = () => {
   return (
     <div className=" relative p-6 flex flex-col items-center bg-customPurple  w-full min-h-screen overflow-hidden mesh-gradient  ">
 <div className="">
-      <h1 className="text-white text-5xl md:text-9xl font-camodirt mb-10">
+      <h1 className="text-white text-center text-5xl md:text-9xl font-camodirt mb-10">
         EVENTS
       </h1>
       <div className=" grid grid-cols-1 gap-y-7 md:gap-x-56 md:gap-y-20 md:grid-cols-3">
