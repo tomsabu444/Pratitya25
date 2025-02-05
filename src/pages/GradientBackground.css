@@ -1,0 +1,72 @@
+ @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    
+    
+    .mesh-gradient {
+      background: 
+        radial-gradient(circle at 10% 85%, #D94084 2%, transparent 10%),
+        radial-gradient(circle at 20% 30%, #9D44AD 2%, transparent 10%),
+        radial-gradient(circle at 80% 20%, #0C83BD 2%, transparent 10%),
+        radial-gradient(circle at 70% 80%, #52419A 2%, transparent 10%);
+      background-color: #111827;
+      background-size: 300% 300%;
+      animation: moveGradients 25s normal infinite;
+    }
+    
+    /* Keyframes for the animation */
+    /* @keyframes moveGradients {
+      0% {
+        background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
+      }
+      50% {
+        background-position: 100% 100%, 30% 70%, 90% 10%, 50% 50%;
+      }
+      100% {
+        background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
+      }
+    } */
+    @keyframes moveGradients {
+      0% {
+        background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
+      }
+      25% {
+        background-position: 30% 50%, 60% 10%, 20% 80%, 90% 60%;
+      }
+      50% {
+        background-position: 100% 100%, 50% 70%, 10% 20%, 30% 50%;
+      }
+      75% {
+        background-position: 80% 20%, 30% 90%, 70% 10%, 10% 80%;
+      }
+      100% {
+        background-position: 0% 0%, 20% 30%, 80% 20%, 70% 80%;
+      }
+    }
+    
+    /* Mobile View */
+    @media (max-width: 768px) {
+      .mesh-gradient {
+        background: 
+          radial-gradient(circle at 30% 60%, #D94084 1%, transparent 15%),
+          radial-gradient(circle at 30% 10%, #9D44AD 1%, transparent 15%),
+          radial-gradient(circle at 70% 35%, #0C83BD 1%, transparent 15%),
+          radial-gradient(circle at 60% 85%, #52419A 1%, transparent 15%);
+        background-color: #111827;
+        background-size: 300% 300%;
+        animation: moveGradients 10s normal infinite;
+      }
+    }
+    
+    
+
+    
