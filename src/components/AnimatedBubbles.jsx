@@ -106,8 +106,6 @@ const AnimatedBubbles = () => {
           ></div>
         );
       })}
-      {/* Optionally, remove any overlay */}
-      {/* <div className="absolute inset-0 bg-black/10 backdrop-blur-md"></div> */}
     </div>
   );
 };
