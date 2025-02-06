@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "CAMODIRT-Regular";
+    src: url("/fonts/FontsFree-Net-camo-dirt.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
