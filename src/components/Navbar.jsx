@@ -34,7 +34,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 right-0 w-full z-50">
+      <header className="fixed top-0 right-0 w-full z-50 bg-transparent">
         <nav className="flex justify-end p-4 items-center max-w-7xl mx-auto">
           {/* Desktop Navigation */}
           <div className="hidden sm:flex gap-8">
@@ -42,7 +42,7 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-black hover:text-gray-700 transition-colors"
+                className="text-white hover:text-gray-300 transition-colors"
               >
                 {item.name}
               </a>
@@ -51,14 +51,14 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Button for opening and closing the menu (Fixed in the same place) */}
+      {/* Button for opening and closing the menu */}
       <div className="fixed top-4 right-4 z-[60]">
         <button
           ref={buttonRef}
           className="sm:hidden text-white p-2 bg-[#6366F1] rounded-full transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X className="h-6 w-6 text-black" /> : <Menu className="h-6 w-6 text-black" />}
+          {mobileOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
         </button>
       </div>
 
@@ -70,14 +70,9 @@ export default function Navbar() {
             animate={{ clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
             exit={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-1/2 bg-[#1A1A1A] z-50"
+            className="fixed top-0 right-0 h-full w-1/2 bg-black/50 backdrop-blur-lg z-50"
           >
             <div className="relative h-full flex flex-col px-8 py-12">
-              {/* Navigation Header */}
-              <div className="mb-12">
-                
-              </div>
-
               {/* Menu Items */}
               <nav className="flex-1">
                 <motion.ul
