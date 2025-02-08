@@ -8,7 +8,8 @@ export default {
     extend:{
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
-        camodirt: ["CAMODIRT-Regular", "sans-serif"], 
+        camodirt: ["CAMODIRT-Regular", "sans-serif"],
+        rancho: ["Rancho", "cursive"],
       },
     },
   },
