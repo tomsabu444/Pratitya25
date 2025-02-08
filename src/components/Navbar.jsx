@@ -1,20 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { X, Menu } from 'lucide-react'
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Menu } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "#" },
-  { name: "Work", href: "#work" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
-]
-
-
+  { name: "Events", href: "#work" },
+  { name: "Meet the Team", href: "#about" },
+  { name: "Contact Us", href: "#contact" },
+];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        mobileOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileOpen]);
 
   return (
     <>
@@ -32,41 +48,39 @@ export default function Navbar() {
               </a>
             ))}
           </div>
-          
-          {/* Mobile Menu Button */}
-          <button
-            className="sm:hidden text-white p-2 hover:bg-[#6366F1] rounded-full transition-colors"
-            onClick={() => setMobileOpen(true)}
-          >
-            <Menu className="h-6 w-6 text-black" />
-          </button>
         </nav>
       </header>
+
+      {/* Button for opening and closing the menu (Fixed in the same place) */}
+      <div className="fixed top-4 right-4 z-[60]">
+        <button
+          ref={buttonRef}
+          className="sm:hidden text-white p-2 bg-[#6366F1] rounded-full transition-colors"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X className="h-6 w-6 text-black" /> : <Menu className="h-6 w-6 text-black" />}
+        </button>
+      </div>
 
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ clipPath: "circle(0% at 90% 5%)" }}
-            animate={{ clipPath: "circle(150% at 50% 50%)" }}
-            exit={{ clipPath: "circle(0% at 90% 5%)" }}
+            ref={menuRef}
+            initial={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+            animate={{ clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
+            exit={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-[#1A1A1A] z-50"
+            className="fixed top-0 right-0 h-full w-1/2 bg-[#1A1A1A] z-50"
           >
             <div className="relative h-full flex flex-col px-8 py-12">
-              <button
-                className="absolute right-6 top-6 bg-[#6366F1] text-white p-2 rounded-full hover:bg-[#6366F1]/90 transition-colors"
-                onClick={() => setMobileOpen(false)}
-              >
-                <X className="h-6 w-6" />
-              </button>
-
+              {/* Navigation Header */}
               <div className="mb-12">
-                <p className="text-gray-500 text-sm tracking-wider uppercase">Navigation</p>
-                <div className="mt-2 h-[1px] w-full bg-gray-800" />
+                
               </div>
 
+              {/* Menu Items */}
               <nav className="flex-1">
-                <motion.ul 
+                <motion.ul
                   className="space-y-8"
                   initial="hidden"
                   animate="visible"
@@ -88,7 +102,7 @@ export default function Navbar() {
                     >
                       <a
                         href={item.href}
-                        className="text-white text-5xl font-light hover:text-gray-300 transition-colors block"
+                        className="text-white text-3xl font-light hover:text-gray-300 transition-colors block"
                         onClick={() => setMobileOpen(false)}
                       >
                         {item.name}
@@ -97,12 +111,10 @@ export default function Navbar() {
                   ))}
                 </motion.ul>
               </nav>
-
-              
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
