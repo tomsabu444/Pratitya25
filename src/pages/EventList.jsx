@@ -16,7 +16,7 @@ const EventList = () => {
       <h1 className="text-white text-center text-5xl md:text-9xl font-camodirt mb-10 relative z-10">
         EVENTS
       </h1>
-      <div className="grid grid-cols-1 gap-y-7 md:gap-x-24 md:gap-y-12 lg:gap-x-56 lg:gap-y-20 lg:grid-cols-3 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-y-7 md:gap-x-24 md:gap-y-12 lg:gap-x-50 lg:gap-y-20  xl:gap-x-56 xl:gap-y-20 lg:grid-cols-3 md:grid-cols-2">
         {events.map((event) => (
           <div
             key={event.id}
