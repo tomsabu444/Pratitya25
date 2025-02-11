@@ -4,6 +4,7 @@ import EventList from "./pages/EventList";
 import EventDetails from "./pages/EventDetails";
 import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         {/* Team Page */}
         <Route path="/teams" element={<TeamPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
