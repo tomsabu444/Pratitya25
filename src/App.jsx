@@ -5,19 +5,21 @@ import EventDetails from "./pages/EventDetails";
 import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
         {/* Home Page */}
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage />} />
         {/* Event List Page */}
         <Route path="/events" element={<EventList />} />
         {/* Event Details Page */}
         <Route path="/event/:id" element={<EventDetails />} />
         {/* Team Page */}
-        <Route path="/teams" element={<TeamPage/>} />
+        <Route path="/teams" element={<TeamPage />} />
       </Routes>
       <Footer />
     </Router>
