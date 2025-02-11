@@ -5,13 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend:{
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        camodirt: ["CAMODIRT-Regular", "sans-serif"],
-        rancho: ["Rancho", "cursive"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
-};
+}
