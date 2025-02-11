@@ -3,7 +3,7 @@ import React from 'react';
 
 function Footer() {
     return (
-        <div className="my-3 px-1 p-8 flex flex-row md:flex-row justify-around items-center bg-gray-500 text-white gap-4">
+        <div className="px-1 p-6 flex flex-row md:flex-row justify-around items-center bg-black/50 backdrop-blur-lg text-white">
             <a className='hover:scale-110' href="">
                 <div className="flex items-center">
                     <YouTube />
