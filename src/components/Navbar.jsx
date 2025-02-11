@@ -7,8 +7,8 @@ import { IconButton } from "@mui/material"
 
 const navigation = [
   { name: "Home", href: "#" },
-  { name: "Events", href: "#work" },
-  { name: "Team", href: "#about" },
+  { name: "Events", href: "/events" },
+  { name: "Team", href: "/teams" },
   { name: "Contact", href: "#contact" },
 ]
 
