@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventList from "./pages/EventList";
 import EventDetails from "./pages/EventDetails";
@@ -6,6 +6,14 @@ import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
 
 const App = () => {
+  useEffect(() => {
+    // Force scroll to top on page load/reload
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Router>
       <Routes>
