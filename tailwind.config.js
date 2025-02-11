@@ -8,6 +8,8 @@ export default {
     extend: {
         fontFamily: {
           camodirt: ["CAMODIRT-Regular", "sans-serif"], 
+          poppins: ["Poppins", "sans-serif"],
+          rancho: ["Rancho", "cursive"],
         },
         colors: {
           customPurple: "#2A1F56", 
