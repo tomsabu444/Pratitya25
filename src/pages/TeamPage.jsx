@@ -221,12 +221,12 @@ const TeamPage = () => {
               PR
               <br />
             </span>
-            {/* <span className="text-[43px] font-bold font-['Poppins'] leading-[38.70px] text-white">
+            <span className="text-[43px] font-bold font-['Poppins'] leading-[38.70px] text-white">
               &<br/>
             </span>
             <span className="text-[43px] font-bold font-['Poppins'] leading-[38.70px]" style={{ WebkitTextStroke: '1px white', color: 'transparent' }}>
               SEO
-            </span> */}
+            </span>
           </div>
         </div>
       </div>
