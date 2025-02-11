@@ -5,7 +5,25 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+        fontFamily: {
+          camodirt: ["CAMODIRT-Regular", "sans-serif"], 
+          poppins: ["Poppins", "sans-serif"],
+          rancho: ["Rancho", "cursive"],
+        },
+        colors: {
+          customPurple: "#2A1F56", 
+        },
+        animation: {
+          "light-move": "moveLight 6s infinite alternate ease-in-out",
+        },
+        keyframes: {
+          moveLight: {
+            "0%": { transform: "translateX(-20%) translateY(-10%)" },
+            "100%": { transform: "translateX(20%) translateY(10%)" },
+          },
+        },
+      },
+    },
   plugins: [],
-}
+};
