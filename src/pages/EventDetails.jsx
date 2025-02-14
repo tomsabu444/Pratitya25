@@ -16,7 +16,7 @@ const LampContainer = ({ children, className }) => {
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
         <motion.div
           initial={{ opacity: 0.4, width: "10rem" }}
-          whileInView={{ opacity: 1, width: "25rem" }}
+          whileInView={{ opacity: 1, width: "30rem" }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
@@ -122,17 +122,17 @@ const EventPage = () => {
       <section className="w-full">
         <LampContainer>
           <motion.h1
-            initial={{ opacity: 0.5, y: 50 }}
+            initial={{ opacity: 0.5, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-            className="bg-gradient-to-br from-slate-200 to-slate-400 py-16 bg-clip-text text-center text-3xl md:text-6xl font-bold tracking-tight text-transparent"
+            className="bg-gradient-to-br from-slate-200 to-slate-400 py-24 bg-clip-text text-center text-3xl md:text-6xl font-bold tracking-tight text-transparent"
           >
             {event.name}
           </motion.h1>
         </LampContainer>
       </section>
 
-      <main className="flex-grow max-w-6xl mx-auto p-4 md:p-6 w-full -mt-28">
+      <main className="flex-grow max-w-6xl mx-auto p-4 md:p-6 w-full -mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Column - Poster and Quick Info */}
           <div className="lg:col-span-5 space-y-6">
@@ -143,22 +143,6 @@ const EventPage = () => {
                   alt={`${event.name} Poster`}
                   className="w-full h-full object-cover"
                 />
-              </div>
-            </div>
-
-            {/* Event Details Card */}
-            <div className="bg-slate-900/80 rounded-xl p-6 backdrop-blur-sm space-y-4">
-              <div className="flex items-center gap-3 text-slate-200">
-                <Calendar className="w-5 h-5 text-cyan-400" />
-                <span>Event Date: {event.date || "TBA"}</span>
-              </div>
-              <div className="flex items-center gap-3 text-slate-200">
-                <Clock className="w-5 h-5 text-cyan-400" />
-                <span>Duration: {event.duration || "TBA"}</span>
-              </div>
-              <div className="flex items-center gap-3 text-slate-200">
-                <MapPin className="w-5 h-5 text-cyan-400" />
-                <span>Venue: {event.venue || "TBA"}</span>
               </div>
             </div>
 
