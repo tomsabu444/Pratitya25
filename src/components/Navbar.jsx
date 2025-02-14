@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Menu } from "lucide-react"
+import MenuIcon from '@mui/icons-material/Menu';
+import ClearIcon from '@mui/icons-material/Clear';
 import { Link } from "react-router-dom"
 
 import saintgits_mobile from "../assets/saintgits_mobile.png"
@@ -11,12 +12,29 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "Events", href: "/events" },
   { name: "Team", href: "/teams" },
-  // { name: "Contact", href: "#contact" },
 ]
+
+export const menuSlide = {
+  initial: { x: "calc(100% + 100px)" },
+  enter: { x: "0", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+  exit: { x: "calc(100% + 100px)", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
+}
+
+export const slide = {
+  initial: { x: 80 },
+  enter: i => ({ x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i } }),
+  exit: i => ({ x: 80, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i } })
+}
+
+export const scale = {
+  open: { scale: 1, transition: { duration: 0.3 } },
+  closed: { scale: 0, transition: { duration: 0.4 } }
+}
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
 
@@ -47,8 +65,21 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [mobileOpen])
 
-  const NavigationLinks = ({ mobile = false, onClick = () => {} }) => (
-    <div className={mobile ? "mt-24" : "hidden md:flex gap-8"}>
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const NavigationLinks = ({ mobile = false, onClick = () => { } }) => (
+    <div className={mobile ? "flex items-center justify-center h-full" : "hidden md:flex gap-8"}>
       <motion.ul
         className={mobile ? "space-y-8 text-center" : "flex gap-8"}
         initial={mobile ? "hidden" : false}
@@ -61,20 +92,18 @@ const Navbar = () => {
           },
         } : {}}
       >
-        {navigation.map((item) => (
+        {navigation.map((item, i) => (
           <motion.li
             key={item.name}
-            variants={mobile ? {
-              hidden: { opacity: 0, x: -20 },
-              visible: { opacity: 1, x: 0 },
-            } : {}}
+            variants={mobile ? slide : {}}
+            custom={i}
           >
             {item.href.startsWith('#') ? (
               <a
                 href={item.href}
                 className={`text-white hover:text-gray-300 transition-colors ${
                   mobile ? "text-3xl font-light block" : "text-xl"
-                }`}
+                  }`}
                 onClick={onClick}
               >
                 {item.name}
@@ -84,7 +113,7 @@ const Navbar = () => {
                 to={item.href}
                 className={`text-white hover:text-gray-300 transition-colors ${
                   mobile ? "text-3xl font-light block" : "text-xl"
-                }`}
+                  }`}
                 onClick={onClick}
               >
                 {item.name}
@@ -100,7 +129,7 @@ const Navbar = () => {
     <header className="fixed top-0 mt-2 w-full z-20">
       <nav className="relative">
         {/* Background */}
-        <div className="fixed top-0 w-full h-20 bg-black/50 backdrop-blur-lg" />
+        <div className={`fixed top-0 w-full h-24 ${scrolled ? "bg-black/50 backdrop-blur-lg" : ""}`} />
 
         {/* Main Navbar Content */}
         <div className="max-w-7xl mx-auto px-4">
@@ -115,7 +144,7 @@ const Navbar = () => {
             </Link>
 
             {/* Center Logo */}
-            <div className="absolute left-1/2  transform -translate-x-1/2">
+            <div className="absolute left-1/2 transform mt-3 -translate-x-1/2">
               <img
                 src={pratitya_logo}
                 alt="Pratitya Logo"
@@ -130,7 +159,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 ref={buttonRef}
-                className="p-2 rounded-full  text-white focus:outline-none z-[70]"
+                className="p-2 rounded-full text-white focus:outline-none z-[70]"
                 onClick={(e) => {
                   e.stopPropagation()
                   setMobileOpen(!mobileOpen)
@@ -144,7 +173,7 @@ const Navbar = () => {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.1 }}
                   >
-                    {!mobileOpen && <Menu className="h-6 w-6" />}
+                    {!mobileOpen && <MenuIcon  fontSize="large" />}
                   </motion.div>
                 </AnimatePresence>
               </button>
@@ -157,23 +186,21 @@ const Navbar = () => {
           {mobileOpen && (
             <motion.div
               ref={menuRef}
-              initial={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
-              animate={{ clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
-              exit={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+              initial={{ clipPath: "circle(0% at 100% 0)" }}
+              animate={{ clipPath: "circle(150% at 100% 0)" }}
+              exit={{ clipPath: "circle(0% at 100% 0)" }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="fixed top-0 right-0 h-full w-1/2 bg-black/50 backdrop-blur-lg z-50 md:hidden"
+              className="fixed top-0 right-0 h-full w-full bg-black/50 backdrop-blur-lg z-50 md:hidden"
             >
               {/* Close Button */}
               <button
                 className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-white focus:outline-none z-[70]"
                 onClick={() => setMobileOpen(false)}
               >
-                <X className="h-6 w-6" />
+                <ClearIcon fontSize="medium"/>
               </button>
               
-              <div className="relative h-full flex flex-col px-8 py-12">
-                <NavigationLinks mobile={true} onClick={() => setMobileOpen(false)} />
-              </div>
+              <NavigationLinks mobile={true} onClick={() => setMobileOpen(false)} />
             </motion.div>
           )}
         </AnimatePresence>
