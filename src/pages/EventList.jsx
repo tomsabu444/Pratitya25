@@ -11,7 +11,7 @@ const EventList = () => {
   };
 
   return (
-    <div className="relative p-6 flex flex-col items-center justify-start w-full min-h-screen overflow-hidden mesh-gradient">
+    <div className="relative p-6 pt-28 flex flex-col items-center justify-start w-full min-h-screen overflow-hidden mesh-gradient">
       <Animation />
       <h1 className="text-white text-center text-5xl md:text-9xl font-camodirt mb-10 relative z-10">
         EVENTS
