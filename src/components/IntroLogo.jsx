@@ -15,8 +15,8 @@ function IntroLogo() {
     <div className="flex items-center justify-center min-h-screen bg-black">
       <video
         ref={videoRef}
-        src={intro }
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        src={intro}
+        className="w-[1000px] md:w-[400px] object-cover"
         loop
         muted
         autoPlay
