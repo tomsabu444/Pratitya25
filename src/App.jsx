@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 6000); // Show intro for 3 seconds
+    }, 5500);
 
     // Clean up timer on unmount
     return () => clearTimeout(timer);
