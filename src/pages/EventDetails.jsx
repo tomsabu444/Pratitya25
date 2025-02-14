@@ -15,16 +15,16 @@ const LampContainer = ({ children, className }) => {
   return (
     <div className={cn("relative flex h-[35vh] sm:h-[40vh] md:h-[45vh] flex-col items-center justify-center overflow-hidden mt-5 bg-slate-950 w-full z-0", className)}>
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
-        {/* Single line animation at the top */}
-        <div className="absolute z-50 top-4 w-full flex justify-center items-center">
+        {/* Single thicker line animation at the top - Responsive positioning and width */}
+        <div className="absolute z-50 top-0 sm:top-4 w-full flex justify-center items-center">
           <motion.div
             initial={{ width: "0rem", opacity: 0 }}
-            whileInView={{ width: "30rem", opacity: 1 }}
+            whileInView={{ width: "100%", opacity: 1 }}
             transition={{ 
               duration: 1.2,
               ease: [0.4, 0, 0.2, 1]
             }}
-            className="relative h-[2px] bg-purple-500"
+            className="relative h-[5px] bg-purple-500 max-w-[20rem] sm:max-w-[45rem]"
             style={{
               boxShadow: '0 0 10px 1px rgba(168,85,247,0.7), 0 0 20px 2px rgba(168,85,247,0.5)'
             }}
@@ -37,20 +37,6 @@ const LampContainer = ({ children, className }) => {
                 duration: 0.8 
               }}
               className="absolute inset-0 bg-white opacity-50 blur-sm"
-            />
-            
-            {/* Bright center spot */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                delay: 0.2,
-                duration: 0.5 
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full blur-sm"
-              style={{
-                boxShadow: '0 0 15px 2px rgba(255,255,255,0.7)'
-              }}
             />
           </motion.div>
         </div>
