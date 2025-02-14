@@ -144,10 +144,10 @@ const EventPage = () => {
       <section className="w-full">
         <LampContainer>
           <motion.h1
-            initial={{ opacity: 0.5, y: 40 }}
+            initial={{ opacity: 0.5, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-            className="bg-gradient-to-br from-slate-200 to-slate-400 pt-64 pb-20 sm:py-20 md:py-24 bg-clip-text text-center text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-transparent px-4">
+            className="bg-gradient-to-br from-slate-200 to-slate-400 pt-16 pb-20 sm:py-20 md:py-24 bg-clip-text text-center text-4xl sm:text-4xl md:text-6xl font-bold tracking-tight text-transparent px-4">
             {event.name}
           </motion.h1>
         </LampContainer>
