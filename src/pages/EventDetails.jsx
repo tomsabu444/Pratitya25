@@ -15,33 +15,6 @@ const LampContainer = ({ children, className }) => {
   return (
     <div className={cn("relative flex h-[35vh] sm:h-[40vh] md:h-[45vh] flex-col items-center justify-center overflow-hidden mt-5 bg-slate-950 w-full z-0", className)}>
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
-        {/* Single thicker line animation at the top - Responsive positioning and width */}
-        <div className="absolute z-50 top-0 sm:top-4 w-full flex justify-center items-center">
-          <motion.div
-            initial={{ width: "0rem", opacity: 0 }}
-            whileInView={{ width: "100%", opacity: 1 }}
-            transition={{ 
-              duration: 1.2,
-              ease: [0.4, 0, 0.2, 1]
-            }}
-            className="relative h-[5px] bg-purple-500 max-w-[20rem] sm:max-w-[45rem]"
-            style={{
-              boxShadow: '0 0 10px 1px rgba(168,85,247,0.7), 0 0 20px 2px rgba(168,85,247,0.5)'
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                delay: 0.1,
-                duration: 0.8 
-              }}
-              className="absolute inset-0 bg-white opacity-50 blur-sm"
-            />
-          </motion.div>
-        </div>
-
-        {/* Enhanced left light cone */}
         <motion.div
           initial={{ opacity: 0, width: "5rem" }}
           whileInView={{ opacity: 1, width: "25rem" }}
@@ -56,7 +29,6 @@ const LampContainer = ({ children, className }) => {
           <div className="absolute w-40 h-[100%] left-0 bg-slate-950 bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
         </motion.div>
 
-        {/* Enhanced right light cone */}
         <motion.div
           initial={{ opacity: 0, width: "5rem" }}
           whileInView={{ opacity: 1, width: "25rem" }}
@@ -71,7 +43,6 @@ const LampContainer = ({ children, className }) => {
           <div className="absolute w-[100%] right-0 bg-slate-950 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
         </motion.div>
 
-        {/* Enhanced glow effects */}
         <div className="absolute top-1/2 h-48 w-full translate-y-12 scale-x-150 bg-slate-950 blur-2xl"></div>
         <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
         <motion.div
@@ -88,6 +59,18 @@ const LampContainer = ({ children, className }) => {
         ></motion.div>
       </div>
       <div className="relative z-50 flex -translate-y-20 flex-col items-center px-5">{children}</div>
+    </div>
+  );
+};
+
+const ImageContainer = ({ src, alt }) => {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center bg-slate-800 rounded-lg overflow-hidden">
+      <img
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-full w-auto h-auto object-contain"
+      />
     </div>
   );
 };
@@ -139,18 +122,25 @@ const EventPage = () => {
     );
   }
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: event.name,
-        text: event.description,
-        url: window.location.href,
-      });
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: event.name,
+          text: event.description,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
     }
   };
 
   return (
-    <div className="bg-slate-950 font-inter min-h-screen flex flex-col pt-12 sm:pt-16">
+    <div className="bg-slate-950 font-inter min-h-screen flex flex-col pt-8 sm:pt-12">
       <section className="w-full">
         <LampContainer>
           <motion.h1
@@ -166,14 +156,12 @@ const EventPage = () => {
 
       <main className="flex-grow max-w-6xl mx-auto p-4 md:p-6 w-full -mt-24 sm:-mt-28 md:-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-          {/* Left Column */}
           <div className="lg:col-span-5 space-y-4 sm:space-y-6">
             <div className="bg-slate-900/80 rounded-xl p-3 sm:p-4 backdrop-blur-sm shadow-lg">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden">
-                <img
+              <div className="h-[500px] rounded-lg">
+                <ImageContainer
                   src={event.poster_url}
                   alt={`${event.name} Poster`}
-                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -196,7 +184,6 @@ const EventPage = () => {
             </div>
           </div>
 
-          {/* Right Column */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             <div className="bg-slate-900/80 rounded-xl p-4 sm:p-6 backdrop-blur-sm">
               <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-3 sm:mb-4">About the Event</h3>
@@ -224,9 +211,14 @@ const EventPage = () => {
             </div>
 
             <div className="bg-slate-900/80 rounded-xl p-4 sm:p-6 backdrop-blur-sm">
-              <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-3 sm:mb-4">Contact</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-3 sm:mb-4 text-center">Contact</h3>
+              <div className="flex flex-col items-center mb-6 bg-slate-800/50 p-3 sm:p-4 rounded-lg hover:bg-slate-800 transition-colors">
+                <h4 className="text-xl font-bold text-slate-200 mb-2">{event.people[0].position}</h4>
+                <p className="text-cyan-300 font-medium">{event.people[0].contact_name}</p>
+                <p className="text-slate-400">{event.people[0].contact_phone}</p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {event.people.map((person, index) => (
+                {event.people.slice(1).map((person, index) => (
                   <div key={index} className="bg-slate-800/50 p-3 sm:p-4 rounded-lg hover:bg-slate-800 transition-colors">
                     <h4 className="font-semibold text-cyan-300 mb-1 text-sm sm:text-base">{person.position}</h4>
                     <p className="text-slate-200 text-xs sm:text-sm">{person.contact_name}</p>
