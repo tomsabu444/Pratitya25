@@ -90,16 +90,16 @@ const ParallaxPage = () => {
 
   // Updated lantern positions for better organization
   const lanternPositions = [
-    { desktop: { left: "15%", top: "20%" }, mobile: { left: "10%", top: "15%" } },
-    { desktop: { left: "80%", top: "25%" }, mobile: { left: "75%", top: "20%" } },
-    { desktop: { left: "35%", top: "15%" }, mobile: { left: "40%", top: "25%" } },
-    { desktop: { left: "60%", top: "30%" }, mobile: { left: "25%", top: "35%" } },
-    { desktop: { left: "45%", top: "25%" }, mobile: { left: "60%", top: "30%" } },
+    { desktop: { left: "5%", top: "15%" }, mobile: { left: "10%", top: "15%" } },
+    { desktop: { left: "15%", top: "70%" }, mobile: { left: "75%", top: "20%" } },
+    { desktop: { left: "35%", top: "40%" }, mobile: { left: "40%", top: "25%" } },
+    { desktop: { left: "65%", top: "20%" }, mobile: { left: "60%", top: "30%" } },
+    { desktop: { left: "70%", top: "60%" }, mobile: { left: "25%", top: "35%" } },
   ]
 
   return (
     <div ref={containerRef} className="relative h-[300vh] overflow-hidden bg-[#1a1a1a]">
-      {/* First Section */}
+      {/*//! First Section */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <motion.div
           style={{ y: y1, backgroundImage: `url(${holiColorsBg})` }}
@@ -112,12 +112,12 @@ const ParallaxPage = () => {
 
         <div className="relative h-screen flex flex-col items-center justify-center text-white px-4">
           <motion.h1
-            className="text-6xl md:text-8xl font-bold mb-8 text-center tracking-wider"
+            className="text-6xl font-agraham md:text-8xl z-50 font-bold mb-8 text-center tracking-wider"
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            Pratitva
+            Pratitya
           </motion.h1>
 
           {/* Updated countdown component */}
@@ -130,7 +130,7 @@ const ParallaxPage = () => {
             {lanternPositions.map((pos, i) => (
               <motion.div
                 key={i}
-                className="absolute w-24 h-24 md:w-32 md:h-32 rounded-full shadow-lg overflow-hidden"
+                className="absolute w-36 md:w-32 overflow-hidden"
                 style={{
                   left: pos.desktop.left,
                   top: pos.desktop.top,
@@ -170,7 +170,7 @@ const ParallaxPage = () => {
         </div>
       </div>
 
-      {/* House and Dragon Section */}
+      {/* //! House and Dragon Section */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <motion.div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${bgImg})` }} />
 
@@ -203,7 +203,7 @@ const ParallaxPage = () => {
         </motion.div>
       </div>
 
-      {/* Final About Section */}
+      {/* //! Final About Section */}
       <motion.div
         className="relative min-h-screen bg-cover bg-center flex items-center justify-center px-4 py-20"
         style={{ opacity: finalOpacity }}

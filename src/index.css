@@ -3,30 +3,41 @@
 @tailwind utilities;
 
 @font-face {
-      font-family: "CAMODIRT-Regular";
-      src: url("/fonts/FontsFree-Net-camo-dirt.ttf") format("truetype");
-      font-weight: normal;
-      font-style: normal;
-    }
-    
+    font-family: "CAMODIRT-Regular";
+    src: url("/fonts/FontsFree-Net-camo-dirt.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/Agraham.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
+    width: 5px;
+    /* Width of the scrollbar */
 }
 
 /* Scrollbar Track */
 ::-webkit-scrollbar-track {
-    background: #f7fff2; /* Light gray background */
+    background: #f7fff2;
+    /* Light gray background */
     border-radius: 10px;
 }
 
 /* Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
-    background: #888; /* Dark gray thumb */
+    background: #888;
+    /* Dark gray thumb */
     border-radius: 10px;
 }
 
 /* Hover effect */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Slightly darker gray on hover */
+    background: #555;
+    /* Slightly darker gray on hover */
 }
