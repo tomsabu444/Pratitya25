@@ -1,6 +1,6 @@
-// src/components/FlipCountdown.jsx
 import React, { useEffect } from 'react';
 import '@pqina/flip/dist/flip.min.css';
+import './style/FlipCountdown.css';
 
 const FlipCountdown = () => {
   useEffect(() => {
@@ -34,11 +34,13 @@ const FlipCountdown = () => {
   }, []);
 
   return (
+    
     <div className="tick">
+      
       <div data-repeat="true" data-layout="horizontal fit" data-transform="preset(d, h, m, s) -> delay">
         <div className="tick-group">
           <div data-key="value" data-repeat="true" data-transform="pad(00) -> split -> delay">
-            <span data-view="flip"></span>
+            <span data-view="flip" className="tick-flip"></span>
           </div>
           <span data-key="label" data-view="text" className="tick-label"></span>
         </div>
