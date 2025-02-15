@@ -44,55 +44,11 @@ const HomeOne = () => {
   const { scale, topPosition } = calculateCastleEffects();
 
   return (
-    <>
-      <div className="relative overflow-x-hidden">
-        {/* Background image - 2 viewport heights */}
-        <div
-          className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
-          style={{
-            backgroundImage: `url(${background})`,
-            transition: "transform 0.2s ease-out",
-          }}
-        />
-
-        {/* Main lantern image with scroll effect - positioned higher */}
-        <div
-          className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 overflow-x-hidden"
-          style={{
-            transform: `translateY(${scrollPosition * -0.8}px)`,
-          }}
-        >
-          <img
-            src={lanten}
-            alt="Lanten Group"
-            className="w-screen h-auto object-contain"
-          />
-        </div>
-
-        {/* Dynamic castle image with fixed positioning to bottom */}
-        <div
-          className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden"
-          style={{
-            top: `${topPosition}vh`,
-            transform: `scale(${scale})`,
-            transformOrigin: "bottom left",
-            transition: "transform 0.1s ease-out, top 0.1s ease-out",
-            bottom: 0, // Added to ensure the div extends to bottom
-          }}
-        >
-          <div className="w-full h-full overflow-x-hidden">
-            <img
-              src={newImage}
-              alt="Castle"
-              className="w-full h-auto object-contain absolute bottom-0" // Added absolute and bottom-0
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="relative flex flex-col items-center justify-center text-white px-4">
+    <div className="relative overflow-x-hidden">
+      {/* Text overlay - positioned with higher z-index */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center h-screen w-full z-40 pointer-events-none">
         <motion.h1
-          className="text-6xl font-agraham md:text-8xl z-50 mb-8 text-center text-white drop-shadow-2xl relative"
+          className="text-6xl font-agraham md:text-8xl mb-8 text-center text-white drop-shadow-2xl relative"
           style={{
             textShadow:
               "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
@@ -107,9 +63,54 @@ const HomeOne = () => {
           </span>
         </motion.h1>
 
-        <FlipCountdown />
+        <div className="pointer-events-auto">
+          <FlipCountdown />
+        </div>
       </div>
-    </>
+
+      {/* Background image - 2 viewport heights */}
+      <div
+        className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
+        style={{
+          backgroundImage: `url(${background})`,
+          transition: "transform 0.2s ease-out",
+        }}
+      />
+
+      {/* Main lantern image with scroll effect - positioned higher */}
+      <div
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 overflow-x-hidden"
+        style={{
+          transform: `translateY(${scrollPosition * -0.8}px)`,
+        }}
+      >
+        <img
+          src={lanten}
+          alt="Lanten Group"
+          className="w-screen h-auto object-contain"
+        />
+      </div>
+
+      {/* Dynamic castle image with fixed positioning to bottom */}
+      <div
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden"
+        style={{
+          top: `${topPosition}vh`,
+          transform: `scale(${scale})`,
+          transformOrigin: "bottom left",
+          transition: "transform 0.1s ease-out, top 0.1s ease-out",
+          bottom: 0,
+        }}
+      >
+        <div className="w-full h-full overflow-x-hidden">
+          <img
+            src={newImage}
+            alt="Castle"
+            className="w-full h-auto object-contain absolute bottom-0"
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 
