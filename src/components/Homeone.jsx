@@ -56,7 +56,7 @@ const HomeOne = () => {
 
       {/* Main lantern image with scroll effect - positioned higher */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 overflow-x-hidden"
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 overflow-x-hidden z-10"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
         }}
@@ -68,15 +68,15 @@ const HomeOne = () => {
         />
       </div>
       
-      {/* Text overlay - with same scroll effect as lantern */}
+      {/* Text overlay - with same scroll effect as lantern but higher z-index */}
       <div 
-        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-40 pointer-events-none"
+        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-20 pointer-events-none"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
         }}
       >
         <motion.h1
-          className="text-6xl font-agraham md:text-7xl mb-6 -mt-16 text-center text-white drop-shadow-2xl relative" // Reduced from text-6xl/8xl to text-4xl/6xl
+          className="text-6xl font-agraham md:text-7xl mb-6 -mt-16 text-center text-white drop-shadow-2xl relative"
           style={{
             textShadow:
               "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
@@ -87,12 +87,11 @@ const HomeOne = () => {
         >
           Pratitya
           <span className="text-white px-3 font-poppins text-2xl font-semibold absolute top-[-20px] -ml-3">
-            {/* Reduced from text-3xl to text-2xl and adjusted positioning */}
             25
           </span>
         </motion.h1>
 
-        <div className="pointer-events-auto scale-75"> {/* Added scale-75 (75% of original size) */}
+        <div className="pointer-events-auto scale-75">
           <FlipCountdown />
         </div>
       </div>
