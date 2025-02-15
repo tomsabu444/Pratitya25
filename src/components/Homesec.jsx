@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
 import FireParticles from "./FireParticles";
 
+import img01 from "../assets/featured-img/img-01.jpg";
+import img02 from "../assets/featured-img/img-02.jpg";
+import img03 from "../assets/featured-img/img-03.jpg";
+import img04 from "../assets/featured-img/img-04.jpg";
+
 const RandomEvent = ({ events }) => {
   const [randomEvent, setRandomEvent] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * events.length);
-    setRandomEvent(events[randomIndex]);
-  }, [events]);
+    const updateImage = () => {
+      const randomIndex = Math.floor(Math.random() * events.length);
+      setRandomEvent(events[randomIndex]);
+    };
 
-  const handleEventClick = (eventId) => {
-    navigate(`/event/${eventId}`);
-  };
+    updateImage();
+    const interval = setInterval(updateImage, 2000);
+    return () => clearInterval(interval);
+  }, [events]);
 
   if (!randomEvent) return null;
 
   return (
     <div className="w-full max-w-lg">
-      <div
-        onClick={() => handleEventClick(randomEvent.id)}
-        className="relative w-full cursor-pointer hover:scale-105 transition-transform duration-300 flex justify-end"
-        style={{ aspectRatio: "3 / 4" }}
-      >
+      <div className="relative w-full flex justify-end">
         <img
           src={randomEvent.poster_url}
           alt={randomEvent.name}
-          className="w-3/4 h-3/4 object-cover rounded-lg shadow-xl"
+          className="w-3/4 h-3/4 object-cover shadow-xl"
           loading="lazy"
         />
       </div>
@@ -38,8 +39,8 @@ const RandomEvent = ({ events }) => {
 
 const VerticalText = ({ text }) => {
   return (
-    <div className="flex flex-col items-start space-y-2"> {/* Changed items-center to items-start */}
-      {text.split('').map((letter, index) => (
+    <div className="flex flex-col items-start space-y-2">
+      {text.split("").map((letter, index) => (
         <span
           key={index}
           className="text-5xl mt-16 md:text-6xl font-poppins font-extrabold tracking-wider"
@@ -87,7 +88,7 @@ const Homesec = () => {
       name: "Market Festival Event 5",
       poster_url:
         "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
-    },
+    }
   ];
 
   return (
@@ -114,12 +115,12 @@ const Homesec = () => {
         {/* Content Overlay with new positioning */}
         <div className="absolute inset-0 p-8">
           {/* Top section with text */}
-          <div className="pt-8 "> {/* Added pl-8 for additional left padding */}
+          <div className="pt-8">
             <VerticalText text="FEATURED" />
           </div>
-          
+
           {/* Poster section with adjusted position */}
-          <div className="absolute right-8 -bottom-24">
+          <div className="absolute right-8 bottom-10">
             <RandomEvent events={events} />
           </div>
         </div>
