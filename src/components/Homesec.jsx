@@ -92,7 +92,7 @@ const Homesec = () => {
 
   return (
     <div>
-      <div className="relative h-screen">
+      <div className="relative ">
         {/* Mobile Image */}
         <img
           src={mobileTheyyam}
