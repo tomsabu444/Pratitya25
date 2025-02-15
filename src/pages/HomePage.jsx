@@ -122,7 +122,7 @@ const ParallaxPage = () => {
 
           {/* Updated countdown component */}
           <div className="w-full max-w-7xl mx-auto px-4 mb-12">
-            <Countdown />
+            {/* <Countdown /> */}
           </div>
 
           {/* Updated lantern section */}
