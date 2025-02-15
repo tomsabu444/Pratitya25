@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import background from "../assets/home-section-one/home-bg.png";
 import lanten from "../assets/home-section-one/lantengroup.png";
 import newImage from "../assets/home-section-one/castle-only.png";
+import oppositeImage from "../assets/home-section-one/sun.png"; // You'll need to add this asset
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -41,12 +42,27 @@ const HomeOne = () => {
     return { scale, topPosition };
   };
 
+  // Calculate opposite image position
+  const calculateOppositeImagePosition = () => {
+    const viewportHeight = window.innerHeight;
+    const startPosition = 70; // Starting higher than the castle
+    const maxMovement = 15; // How far it can move down
+
+    const topPosition = Math.min(
+      startPosition + maxMovement,
+      startPosition + (scrollPosition / viewportHeight) * maxMovement
+    );
+
+    return topPosition;
+  };
+
   const { scale, topPosition } = calculateCastleEffects();
+  const oppositeTopPosition = calculateOppositeImagePosition();
 
   // Calculate visibility for about section
   const calculateAboutVisibility = () => {
     const viewportHeight = window.innerHeight;
-    const triggerPoint = viewportHeight * 1; // Start animation halfway through second viewport
+    const triggerPoint = viewportHeight * 1;
     
     const translateX = Math.max(
       0,
@@ -83,7 +99,7 @@ const HomeOne = () => {
         />
       </div>
 
-      {/* Text overlay - with same scroll effect as lantern but higher z-index */}
+      {/* Text overlay */}
       <div
         className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-10 pointer-events-none"
         style={{
@@ -111,7 +127,7 @@ const HomeOne = () => {
         </div>
       </div>
 
-      {/* About Section - positioned in second viewport */}
+      {/* About Section */}
       <div
         className="absolute w-full flex flex-col items-center justify-center z-10"
         style={{
@@ -120,14 +136,16 @@ const HomeOne = () => {
           transition: "transform 0.2s ease-out",
         }}
       >
-        <h2 className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
+        <h2 
+          className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
           }}
         >
           About
         </h2>
-        <p className="text-white text-center max-w-lg px-4 font-poppins"
+        <p 
+          className="text-white text-center max-w-lg px-4 font-poppins"
           style={{
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
@@ -136,7 +154,7 @@ const HomeOne = () => {
         </p>
       </div>
 
-      {/* Dynamic castle image with fixed positioning to bottom */}
+      {/* Dynamic castle image */}
       <div
         className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden"
         style={{
@@ -152,6 +170,24 @@ const HomeOne = () => {
             src={newImage}
             alt="Castle"
             className="w-full h-auto object-contain absolute bottom-0"
+          />
+        </div>
+      </div>
+
+      {/* New opposite image */}
+      <div
+        className="absolute right-0 w-1/2 flex items-end justify-end overflow-x-hidden"
+        style={{
+          top: `${oppositeTopPosition}vh`,
+          transition: "top 0.1s ease-out",
+          zIndex: 5,
+        }}
+      >
+        <div className="w-full h-full overflow-x-hidden">
+          <img
+            src={oppositeImage}
+            alt="Opposite Structure"
+            className="w-full h-auto object-contain absolute bottom-0 right-0"
           />
         </div>
       </div>
