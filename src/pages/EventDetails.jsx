@@ -13,7 +13,7 @@ const cn = (...inputs) => {
 
 const LampContainer = ({ children, className }) => {
   return (
-    <div className={cn("relative flex h-[35vh] sm:h-[40vh] md:h-[45vh] flex-col items-center justify-center overflow-hidden mt-5 bg-slate-950 w-full z-0", className)}>
+    <div className={cn("relative flex h-[35vh] sm:h-[40vh] md:h-[45vh] flex-col items-center justify-center overflow-hidden bg-slate-950 w-full z-0", className)}>
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
         <motion.div
           initial={{ opacity: 0, width: "5rem" }}
@@ -65,7 +65,7 @@ const LampContainer = ({ children, className }) => {
 
 const ImageContainer = ({ src, alt }) => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-slate-800 rounded-lg overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
       <img
         src={src}
         alt={alt}
@@ -140,15 +140,14 @@ const EventPage = () => {
   };
 
   return (
-    <div className="bg-slate-950 font-inter min-h-screen flex flex-col pt-8 sm:pt-12">
+    <div className="bg-slate-950 font-inter min-h-screen flex flex-col">
       <section className="w-full">
         <LampContainer>
           <motion.h1
-            initial={{ opacity: 0.5, y: 40 }}
+            initial={{ opacity: 0.5, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-            className="bg-gradient-to-br from-slate-200 to-slate-400 py-16 sm:py-20 md:py-24 bg-clip-text text-center text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight text-transparent px-4"
-          >
+            className="bg-gradient-to-br from-slate-200 to-slate-400 pt-16 pb-20 sm:py-20 md:py-24 bg-clip-text text-center text-4xl sm:text-4xl md:text-6xl font-bold tracking-tight text-transparent px-4">
             {event.name}
           </motion.h1>
         </LampContainer>
@@ -157,7 +156,7 @@ const EventPage = () => {
       <main className="flex-grow max-w-6xl mx-auto p-4 md:p-6 w-full -mt-24 sm:-mt-28 md:-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
           <div className="lg:col-span-5 space-y-4 sm:space-y-6">
-            <div className="bg-slate-900/80 rounded-xl p-3 sm:p-4 backdrop-blur-sm shadow-lg">
+            <div className="backdrop-blur-sm shadow-lg">
               <div className="h-[500px] rounded-lg">
                 <ImageContainer
                   src={event.poster_url}
