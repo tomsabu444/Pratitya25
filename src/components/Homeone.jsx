@@ -85,7 +85,7 @@ const HomeOne = () => {
 
       {/* Text overlay - with same scroll effect as lantern but higher z-index */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-20 pointer-events-none"
+        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-10 pointer-events-none"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
         }}
