@@ -42,7 +42,7 @@ const VerticalText = ({ text }) => {
       {text.split('').map((letter, index) => (
         <span
           key={index}
-          className="text-5xl md:text-6xl font-poppins font-extrabold tracking-wider"
+          className="text-5xl mt-16 md:text-6xl font-poppins font-extrabold tracking-wider"
           style={{
             color: "transparent",
             WebkitTextStroke: "1.5px white",
@@ -119,7 +119,7 @@ const Homesec = () => {
           </div>
           
           {/* Poster section with adjusted position */}
-          <div className="absolute right-8 -bottom-8">
+          <div className="absolute right-8 -bottom-24">
             <RandomEvent events={events} />
           </div>
         </div>
