@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import FlipCountdown from '../components/FlipCountdown'
 
 // Import local images correctly
 import holiColorsBg from "../assets/holi colors bg.png";
@@ -159,7 +160,7 @@ const ParallaxPage = () => {
 
             {/* Updated countdown component */}
             <div className="w-full max-w-7xl mx-auto px-4 mb-12">
-              {/* <Countdown /> */}
+              <FlipCountdown />
             </div>
 
             {/* Updated lantern section */}
