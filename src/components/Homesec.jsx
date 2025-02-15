@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
 import FireParticles from "./FireParticles";
 
-import img01 from "../assets/featured-img/img-01.jpg";
-import img02 from "../assets/featured-img/img-02.jpg";
-import img03 from "../assets/featured-img/img-03.jpg";
-import img04 from "../assets/featured-img/img-04.jpg";
-
 const RandomEvent = ({ events }) => {
   const [randomEvent, setRandomEvent] = useState(null);
 
