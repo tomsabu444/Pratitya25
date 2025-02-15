@@ -43,6 +43,21 @@ const HomeOne = () => {
 
   const { scale, topPosition } = calculateCastleEffects();
 
+  // Calculate visibility for about section
+  const calculateAboutVisibility = () => {
+    const viewportHeight = window.innerHeight;
+    const triggerPoint = viewportHeight * 1; // Start animation halfway through second viewport
+    
+    const translateX = Math.max(
+      0,
+      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
+    );
+
+    return translateX;
+  };
+
+  const translateX = calculateAboutVisibility();
+
   return (
     <div className="relative overflow-x-hidden">
       {/* Background image - 2 viewport heights */}
@@ -67,9 +82,9 @@ const HomeOne = () => {
           className="w-screen h-auto object-contain"
         />
       </div>
-      
+
       {/* Text overlay - with same scroll effect as lantern but higher z-index */}
-      <div 
+      <div
         className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-20 pointer-events-none"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
@@ -94,6 +109,31 @@ const HomeOne = () => {
         <div className="pointer-events-auto scale-75">
           <FlipCountdown />
         </div>
+      </div>
+
+      {/* About Section - positioned in second viewport */}
+      <div
+        className="absolute w-full flex flex-col items-center justify-center z-10"
+        style={{
+          top: "150vh",
+          transform: `translateX(${translateX}%)`,
+          transition: "transform 0.2s ease-out",
+        }}
+      >
+        <h2 className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
+          style={{
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+          }}
+        >
+          About
+        </h2>
+        <p className="text-white text-center max-w-lg px-4 font-poppins"
+          style={{
+            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
+          }}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
+        </p>
       </div>
 
       {/* Dynamic castle image with fixed positioning to bottom */}
