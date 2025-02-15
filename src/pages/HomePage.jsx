@@ -1,4 +1,3 @@
-"use client";
 
 import H2 from "../components/Homesec"; // Import the Homesec component
 import H3 from "../components/HomeEnd"; // Import the Homesec component
