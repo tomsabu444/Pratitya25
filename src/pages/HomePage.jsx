@@ -138,7 +138,7 @@ const ParallaxPage = () => {
 
         <div className="relative h-screen flex flex-col items-center justify-center text-white px-4">
           <motion.h1
-            className="text-7xl font-agraham md:text-8xl z-50 mb-8 text-center text-white drop-shadow-2xl relative"
+            className="text-6xl font-agraham md:text-8xl z-50 mb-8 text-center text-white drop-shadow-2xl relative"
             style={{
               textShadow:
                 "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
