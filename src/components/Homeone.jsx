@@ -19,6 +19,30 @@ const HomeOne = () => {
     };
   }, []);
 
+  // Calculate scale and position based on scroll
+  const calculateCastleEffects = () => {
+    const maxScale = 1.15;
+    const minScale = 1;
+    const viewportHeight = window.innerHeight;
+    const startPosition = 75; // Initial position moved higher
+    
+    // Calculate scale based on scroll position
+    const scale = Math.max(
+      minScale,
+      maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
+    );
+
+    // Calculate vertical position to stop at end of first viewport
+    const topPosition = Math.min(
+      98, // Maximum position (end of first viewport)
+      startPosition + (scrollPosition / viewportHeight) * 23
+    );
+
+    return { scale, topPosition };
+  };
+
+  const { scale, topPosition } = calculateCastleEffects();
+
   return (
     <div className="relative">
       {/* Background image - 2 viewport heights */}
@@ -44,11 +68,14 @@ const HomeOne = () => {
         />
       </div>
 
-      {/* Static castle image positioned near 100vh */}
+      {/* Dynamic castle image with adjusted position range */}
       <div
         className="absolute left-0 w-full flex items-end justify-start"
         style={{
-          top: '65vh',
+          top: `${topPosition}vh`,
+          transform: `scale(${scale})`,
+          transformOrigin: 'bottom left',
+          transition: 'transform 0.3s ease-out, top 0.3s ease-out'
         }}
       >
         <img
