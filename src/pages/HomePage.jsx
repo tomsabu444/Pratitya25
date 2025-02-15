@@ -11,6 +11,7 @@ import houseImg from "../assets/Foreground castle.png";
 import dragonImg from "../assets/chinesedragon 1 (1).png";
 import bgImg from "../assets/templebackground.jpeg";
 import H2 from "../components/Homesec"; // Import the Homesec component
+import H3 from "../components/HomeEnd"; // Import the Homesec component
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -290,6 +291,7 @@ const ParallaxPage = () => {
 
       {/* Call the Homesec component here */}
       <H2 />
+      <H3/>
     </div>
   );
 };
