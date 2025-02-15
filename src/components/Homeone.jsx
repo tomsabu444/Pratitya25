@@ -45,29 +45,6 @@ const HomeOne = () => {
 
   return (
     <div className="relative overflow-x-hidden">
-      {/* Text overlay - positioned with higher z-index */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center h-screen w-full z-40 pointer-events-none">
-        <motion.h1
-          className="text-6xl font-agraham md:text-8xl mb-8 text-center text-white drop-shadow-2xl relative"
-          style={{
-            textShadow:
-              "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
-          }}
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          Pratitya
-          <span className="text-white px-4 font-poppins text-3xl font-semibold absolute top-[-25px] -ml-4">
-            25
-          </span>
-        </motion.h1>
-
-        <div className="pointer-events-auto">
-          <FlipCountdown />
-        </div>
-      </div>
-
       {/* Background image - 2 viewport heights */}
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
@@ -89,6 +66,35 @@ const HomeOne = () => {
           alt="Lanten Group"
           className="w-screen h-auto object-contain"
         />
+      </div>
+      
+      {/* Text overlay - with same scroll effect as lantern */}
+      <div 
+        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-40 pointer-events-none"
+        style={{
+          transform: `translateY(${scrollPosition * -0.8}px)`,
+        }}
+      >
+        <motion.h1
+          className="text-6xl font-agraham md:text-7xl mb-6 -mt-16 text-center text-white drop-shadow-2xl relative" // Reduced from text-6xl/8xl to text-4xl/6xl
+          style={{
+            textShadow:
+              "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
+          }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          Pratitya
+          <span className="text-white px-3 font-poppins text-2xl font-semibold absolute top-[-20px] -ml-3">
+            {/* Reduced from text-3xl to text-2xl and adjusted positioning */}
+            25
+          </span>
+        </motion.h1>
+
+        <div className="pointer-events-auto scale-75"> {/* Added scale-75 (75% of original size) */}
+          <FlipCountdown />
+        </div>
       </div>
 
       {/* Dynamic castle image with fixed positioning to bottom */}
