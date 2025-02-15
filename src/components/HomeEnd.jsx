@@ -60,13 +60,38 @@ const HomeEnd = () => {
         />
       </div>
       
-      {/* Glassmorphic overlay on top of everything else */}
+      {/* Contact information */}
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white z-10">
+        <h2 className="text-4xl font-bold mb-10">Contact</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          <div className="p-4">
+            <h3 className="text-xl font-semibold mb-2">Pratitya Chairman</h3>
+            <p className="mb-1">Name</p>
+            <p>Phone Number</p>
+          </div>
+          
+          <div className="p-4">
+            <h3 className="text-xl font-semibold mb-2">Pratitya Vice-Chairman</h3>
+            <p className="mb-1">Name</p>
+            <p>Phone Number</p>
+          </div>
+          
+          <div className="p-4">
+            <h3 className="text-xl font-semibold mb-2">Pratitya Faculty Head</h3>
+            <p className="mb-1">Name</p>
+            <p>Phone Number</p>
+          </div>
+        </div>
+      </div>
+      
+      {/* Glassmorphic overlay */}
       <div 
-        className="absolute inset-0 backdrop-blur-sm bg-white/5 pointer-events-none"
+        className="absolute inset-0 backdrop-blur-sm bg-black/30 pointer-events-none"
         style={{
           backdropFilter: 'blur(4px)',
           WebkitBackdropFilter: 'blur(4px)',
-          zIndex: 1  // Lower z-index so it doesn't block the images
+          zIndex: 5  // Between the background and the content
         }}
       />
     </div>

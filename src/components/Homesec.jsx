@@ -443,9 +443,6 @@ const Homesec = () => {
           <EventCarousel events={events} /> {/* Pass the events prop */}
         </div>
       </div>
-      <div className="relative h-screen">
-        <div className="h-screen bg-blue-500"></div>
-      </div>
     </div>
   );
 };
