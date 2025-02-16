@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import background from "../assets/home-section-one/home-bg.png";
+import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
 import lanten from "../assets/home-section-one/lantengroup.png";
+import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
 import newImage from "../assets/home-section-one/castle-only.png";
-import smallImage from "../assets/home-section-one/dragon.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -22,83 +23,72 @@ const HomeOne = () => {
     };
   }, []);
 
-  // Calculate scale and position based on scroll
   const calculateCastleEffects = () => {
-    const maxScale = 1.4;
-    const minScale = 1;
+    const isDesktop = window.innerWidth >= 768;
+    const maxScale = isDesktop ? 1.2 : 1.4;
+    const minScale = isDesktop ? 0.9 : 1;
     const viewportHeight = window.innerHeight;
-    const startPosition = 80;
+    const startPosition = isDesktop ? 55 : 80;
 
     const scale = Math.max(
       minScale,
       maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
     );
 
-    const topPosition = Math.min(
-      95,
+    // Adjusted castle position for mobile-small screens
+    let topPosition = Math.min(
+      isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
+    
+    // Small adjustment for very small screens
+    if (window.innerWidth < 360) {
+      topPosition += 5; // Slight shift up for smallest screens
+    }
 
     return { scale, topPosition };
   };
 
   const { scale, topPosition } = calculateCastleEffects();
 
-  // Calculate visibility for about section and small image
   const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
     
-    // For about section (left to right)
     const translateXLeft = Math.max(
       0,
       0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
     );
 
-    // For dragon image (right to left, faster movement)
-    const dragonPosition = Math.min(
-      100,  // Start position (off-screen right)
-      100 - ((scrollPosition - viewportHeight / 2) / (viewportHeight / 4)) * 200  // Move left faster
-    );
-
-    // Calculate downward movement for dragon
-    const scrollProgress = (scrollPosition - viewportHeight / 2) / (viewportHeight / 4);
-    const maxDownwardMove = 50; // Maximum pixels to move down
-    const dragonYPosition = Math.min(
-      maxDownwardMove,
-      scrollProgress * maxDownwardMove
-    );
-
-    return { translateXLeft, dragonPosition, dragonYPosition };
+    return { translateXLeft };
   };
 
-  const { translateXLeft, dragonPosition, dragonYPosition } = calculateSideElementsVisibility();
+  const { translateXLeft } = calculateSideElementsVisibility();
 
   return (
     <div className="relative overflow-x-hidden">
-      {/* Background image - 2 viewport heights */}
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : background})`,
           transition: "transform 0.2s ease-out",
         }}
       />
 
-      {/* Main lantern image with scroll effect - positioned higher */}
+      {/* Lantern Container */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 overflow-x-hidden z-10"
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-10 md:items-start"
         style={{
-          transform: `translateY(${scrollPosition * -0.8}px)`,
+          transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
         }}
       >
         <img
-          src={lanten}
+          src={window.innerWidth >= 768 ? desktopLanten : lanten}
           alt="Lanten Group"
-          className="w-screen h-auto object-contain"
+          className="w-screen h-auto object-contain md:w-full md:max-h-[90vh] mt-20"
         />
       </div>
 
-      {/* Text overlay - with same scroll effect as lantern but higher z-index */}
+      {/* Title and Countdown Container */}
       <div
         className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-10 pointer-events-none"
         style={{
@@ -106,7 +96,7 @@ const HomeOne = () => {
         }}
       >
         <motion.h1
-          className="text-6xl font-agraham md:text-7xl mb-6 -mt-16 text-center text-white drop-shadow-2xl relative"
+          className="text-6xl font-agraham md:text-7xl md:text-7xl xl:text-8xl mb-6 -mt-16 md:mt-8 text-center text-white drop-shadow-2xl relative max-[360px]:text-5xl max-[360px]:-mt-12"
           style={{
             textShadow:
               "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
@@ -116,17 +106,17 @@ const HomeOne = () => {
           transition={{ duration: 0.8 }}
         >
           Pratitya
-          <span className="text-white px-3 font-poppins text-2xl font-semibold absolute top-[-20px] -ml-3">
+          <span className="text-white px-3 font-poppins text-2xl font-semibold md:text-3xl absolute top-[-20px] -ml-3 max-[360px]:text-xl">
             25
           </span>
         </motion.h1>
 
-        <div className="pointer-events-auto scale-75">
+        <div className="pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125 max-[360px]:scale-[0.65]">
           <FlipCountdown />
         </div>
       </div>
 
-      {/* About Section - positioned in second viewport */}
+      {/* About Section */}
       <div
         className="absolute w-full flex flex-col items-center justify-center z-10"
         style={{
@@ -153,28 +143,9 @@ const HomeOne = () => {
         </p>
       </div>
 
-      {/* Dragon image with fast right-to-left animation and downward movement */}
+      {/* Mobile Castle Container */}
       <div
-        className="absolute right-0 w-7/12 flex items-end justify-end overflow-x-hidden z-5"
-        style={{
-          top: "90vh",
-          transform: `translateX(${dragonPosition}%) translateY(${dragonYPosition}px) rotate(10deg)`,
-          transition: "transform 0.15s ease-out",
-          opacity: 0.6,
-        }}
-      >
-        <div className="w-full h-full overflow-x-hidden">
-          <img
-            src={smallImage}
-            alt="Dragon"
-            className="w-full h-auto object-contain"
-          />
-        </div>
-      </div>
-
-      {/* Dynamic castle image with fixed positioning to bottom */}
-      <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden block md:hidden"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
@@ -188,6 +159,26 @@ const HomeOne = () => {
             src={newImage}
             alt="Castle"
             className="w-full h-auto object-contain absolute bottom-0"
+          />
+        </div>
+      </div>
+
+      {/* Desktop Castle Container */}
+      <div
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block"
+        style={{
+          top: `${topPosition}vh`,
+          transform: `scale(${scale})`,
+          transformOrigin: "bottom left",
+          transition: "transform 0.1s ease-out, top 0.1s ease-out",
+          bottom: 0,
+        }}
+      >
+        <div className="w-full h-full overflow-x-hidden relative">
+          <img
+            src={newImage}
+            alt="Castle"
+            className="w-[65%] h-auto object-contain absolute bottom-0 -left-20 max-h-[150vh] md:max-h-[160vh] lg:w-[45%] lg:-left-28 lg:max-h-[130vh]"
           />
         </div>
       </div>

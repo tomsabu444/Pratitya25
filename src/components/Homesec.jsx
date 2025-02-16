@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
+import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
 
 const RandomEvent = ({ events }) => {
@@ -88,7 +89,7 @@ const Homesec = () => {
 
   return (
     <div>
-      <div className="relative ">
+      <div className="relative">
         {/* Mobile Image */}
         <img
           src={mobileTheyyam}
@@ -99,9 +100,9 @@ const Homesec = () => {
 
         {/* Desktop Image */}
         <img
-          src={mobileTheyyam}
+          src={desktopTheyyam}
           alt="Desktop Background"
-          className="hidden md:block object-cover w-full h-full"
+          className="hidden md:block object-cover w-full h-[110vh]"
         />
 
         {/* Fire Particles */}
