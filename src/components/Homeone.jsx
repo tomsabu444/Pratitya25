@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import background from "../assets/home-section-one/home-bg.png";
+import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
 import lanten from "../assets/home-section-one/lantengroup.png";
+import desktopLanten from "../assets/home-section-one/lanten-desktop.png"; // Import desktop lantern image
 import newImage from "../assets/home-section-one/castle-only.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
@@ -60,26 +62,26 @@ const HomeOne = () => {
 
   return (
     <div className="relative overflow-x-hidden">
-      {/* Background image - 2 viewport heights */}
+      {/* Background image with responsive handling - 2 viewport heights */}
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `url(${window.innerWidth >= 1024 ? desktopBackground : background})`,
           transition: "transform 0.2s ease-out",
         }}
       />
 
-      {/* Main lantern image with scroll effect - positioned higher */}
+      {/* Main lantern image with scroll effect - positioned differently for desktop */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 overflow-x-hidden z-10"
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 lg:mt-0 overflow-x-hidden z-10 lg:items-start lg:pt-32"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
         }}
       >
         <img
-          src={lanten}
+          src={window.innerWidth >= 1024 ? desktopLanten : lanten}
           alt="Lanten Group"
-          className="w-screen h-auto object-contain"
+          className="w-screen h-auto object-contain lg:w-auto lg:max-h-[70vh]"
         />
       </div>
 
