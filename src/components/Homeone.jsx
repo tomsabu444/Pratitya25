@@ -25,10 +25,10 @@ const HomeOne = () => {
 
   const calculateCastleEffects = () => {
     const isDesktop = window.innerWidth >= 1024;
-    const maxScale = isDesktop ? 0.8 : 1.4;
-    const minScale = isDesktop ? 0.6 : 1;
+    const maxScale = isDesktop ? 1.2 : 1.4;
+    const minScale = isDesktop ? 0.9 : 1;
     const viewportHeight = window.innerHeight;
-    const startPosition = isDesktop ? 85 : 80;
+    const startPosition = isDesktop ? 55 : 80;
 
     const scale = Math.max(
       minScale,
@@ -36,7 +36,7 @@ const HomeOne = () => {
     );
 
     const topPosition = Math.min(
-      95,
+      isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
 
@@ -137,7 +137,7 @@ const HomeOne = () => {
         </p>
       </div>
 
-      {/* Castle Container */}
+      {/* Mobile Castle Container */}
       <div
         className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden block lg:hidden"
         style={{
@@ -153,6 +153,26 @@ const HomeOne = () => {
             src={newImage}
             alt="Castle"
             className="w-full h-auto object-contain absolute bottom-0"
+          />
+        </div>
+      </div>
+
+      {/* Desktop Castle Container */}
+      <div
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden lg:block"
+        style={{
+          top: `${topPosition}vh`,
+          transform: `scale(${scale})`,
+          transformOrigin: "bottom left",
+          transition: "transform 0.1s ease-out, top 0.1s ease-out",
+          bottom: 0,
+        }}
+      >
+        <div className="w-full h-full overflow-x-hidden relative">
+          <img
+            src={newImage}
+            alt="Castle"
+            className="w-[45%] h-auto object-contain absolute bottom-0 -left-28 max-h-[130vh]"
           />
         </div>
       </div>
