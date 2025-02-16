@@ -338,6 +338,7 @@
     "feedback_form": "https://docs.google.com/forms/d/1DFdKG_Q9_1XkGG_4RmERwdO2g2V75EGustKo_YaSIbE/viewform"
   },
   {
+    "id": "Rythmic_Rhapsody",
     "name": "Rythmic Rhapsody",
     "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FPratitya%20Poster%20Choreo.webp?alt=media&token=36db3f56-af89-44b3-b1b2-7ded3bae2663",
     "description": "Pratitya '25 proudly presents BEST CHOREO💥, an electrifying platform to showcase your dance prowess. We eagerly anticipate your participation*. Teams interested in joining can register using this google form.  Prelims/Screening will be conducted following the registration deadline**.",
@@ -529,10 +530,8 @@
       "second": "N/A"
     },
     "regulations": [
-      "Event Rules & Guidelines:",
-
-      "1️⃣ Team Size: Maximum 7 teams (first come, first serve basis), each team consisting of 4 members.",
-      "2️⃣ Clue-Based Challenge: Each clue will lead to a new location, but you must complete a task at every clue point before moving to the next.",
+      "Team Size: Maximum 7 teams (first come, first serve basis), each team consisting of 4 members.",
+      "2️⃣Clue-Based Challenge: Each clue will lead to a new location, but you must complete a task at every clue point before moving to the next.",
       "3️⃣ Time Limit: Teams must finish the hunt within the allotted time to be eligible for winning.",
       "4️⃣ No External Help: Use of mobile phones or outside assistance is strictly prohibited.",
       "5️⃣ Fair Play: Teams found interfering with others’ clues or sabotaging will be disqualified.",
