@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -43,6 +44,7 @@ const App = () => {
             </Routes>
           </Suspense>
           <Footer />
+          <ScrollToTop />
         </>
       )}
     </Router>
