@@ -1,99 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import right from "../assets/contact-section/right.png";
-import left from "../assets/contact-section/left.png";
+import React from "react";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import rio_bg_img from "../assets/contact-section/rio-bg-img.jpg";
 
 const HomeEnd = () => {
-  const [leftPosition, setLeftPosition] = useState(-192); // -192px is the full width of image (-48rem)
-  const [rightPosition, setRightPosition] = useState(192); // 192px is the full width of image (48rem)
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = Math.min(scrollPosition / maxScroll, 1);
-      
-      // Calculate positions
-      // Left image: starts at -192px (off-screen) and moves right to 0px (edge)
-      // Right image: starts at 192px (off-screen) and moves left to 0px (edge)
-      const leftImagePosition = -192 + (scrollPercentage * 192);
-      const rightImagePosition = 192 - (scrollPercentage * 192);
-      
-      setLeftPosition(leftImagePosition);
-      setRightPosition(rightImagePosition);
-    };
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-    
-    // Initial position calculation
-    handleScroll();
-    
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden">
-      {/* Left Image */}
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Fixed Background Image */}
       <div 
-        className="absolute left-0 top-1/2 -translate-y-1/2 opacity-100 transition-transform duration-500 ease-out"
-        style={{ transform: `translate(${leftPosition}px, -50%)` }}
-      >
-        <img 
-          src={left}
-          alt="Left Edge"
-          className="w-48 h-auto object-cover"
-        />
-      </div>
-      
-      {/* Right Image */}
-      <div 
-        className="absolute right-0 top-1/2 -translate-y-1/2 opacity-100 transition-transform duration-500 ease-out"
-        style={{ transform: `translate(${rightPosition}px, -50%)` }}
-      >
-        <img 
-          src={right}
-          alt="Right Edge"
-          className="w-48 h-auto object-cover"
-        />
-      </div>
-      
-      {/* Contact information */}
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white z-10">
-        <h2 className="text-4xl font-bold mb-10">Contact</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Pratitya Chairman</h3>
-            <p className="mb-1">Name</p>
-            <p>Phone Number</p>
-          </div>
-          
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Pratitya Vice-Chairman</h3>
-            <p className="mb-1">Name</p>
-            <p>Phone Number</p>
-          </div>
-          
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Pratitya Faculty Head</h3>
-            <p className="mb-1">Name</p>
-            <p>Phone Number</p>
-          </div>
-        </div>
-      </div>
-      
-      {/* Glassmorphic overlay */}
-      <div 
-        className="absolute inset-0 backdrop-blur-sm bg-black/30 pointer-events-none"
+        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat -z-10"
         style={{
-          backdropFilter: 'blur(4px)',
-          WebkitBackdropFilter: 'blur(4px)',
-          zIndex: 5  // Between the background and the content
+          backgroundImage: `url(${rio_bg_img})`,
         }}
       />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Content */}
+      <div className="relative h-full flex flex-col lg:flex-row lg:items-center lg:justify-between pt-20 lg:pt-0 pb-10 px-4 lg:px-20 gap-8">
+        {/* Contact Details */}
+        <div className="text-white text-center lg:text-left space-y-8 max-w-2xl w-full lg:w-1/2">
+          <h2 className="text-4xl lg:text-5xl font-agraham font-bold mb-12">Contact us</h2>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+              <LocationOnIcon sx={{ fontSize: 32 }} />
+            </div>
+            <div className="text-left">
+              <h3 className="text-xl font-bold mb-2">Address</h3>
+              <p className="text-lg">
+                Saintgits College of Engineering,<br />
+                Kottukulam Hills, Pathamuttom P.O,<br />
+                Kottayam-686 532
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+              <PhoneIcon sx={{ fontSize: 32 }} />
+            </div>
+            <div className="text-left">
+              <h3 className="text-xl font-bold mb-2">Contact Us</h3>
+              <p className="text-lg">+91-8330061229</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+              <EmailIcon sx={{ fontSize: 32 }} />
+            </div>
+            <div className="text-left">
+              <h3 className="text-xl font-bold mb-2">Email</h3>
+              <p className="text-lg">pratitya@saintgits.org</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Map with rounded corners */}
+        <div className="w-full lg:w-1/2 h-80 lg:h-[600px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7869.970510896038!2d76.551359!3d9.51001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062ed484f475a7%3A0xea66b5d0e55062ca!2sSaintgits%20College%20of%20Engineering%20(Autonomous)%2C%20Kottayam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1739686828964!5m2!1sen!2sin"
+            className="w-full h-full rounded-2xl"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </div>
     </div>
   );
 };
