@@ -201,6 +201,20 @@ const TeamPage = () => {
         {/*PR and SEO*/}
         <div className="fade-section w-[270px] sm:w-[289px] h-[550px] relative my-18 lg:mb-6">
           <div className="w-[123px] h-[500px] left-[166px] top-0 absolute flex-col justify-start items-start gap-[40px] inline-flex">
+            <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] relative -left-[20px] lg:left-0 lg:translate-y-[120px] lg:translate-x-[70px] translate-y-[200px]">
+              <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] left-0 top-0 absolute bg-white rounded-[15px]" />
+              <img
+                src={tom}
+                alt="Justin"
+                className="absolute top-0 w-[123px] lg:w-[150px] h-[123px] lg:h-[150px] object-cover rounded-tl-[15px] rounded-tr-[15px]"
+              />
+              <div className="w-full absolute bottom-[2px] lg:bottom-[3px] lg:translate-y-[0.1px] text-center text-black text-[24px] lg:text-[30px] font-['Rancho'] px-1">
+                Justin Thomas
+              </div>
+            </div>
+          </div>
+
+          <div className="w-[123px] h-[500px] left-[166px] top-0 absolute flex-col justify-start items-start gap-[40px] inline-flex">
             <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] relative -left-[20px] lg:left-0 lg:translate-y-[120px] lg:translate-x-[-130px]">
               <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] left-0 top-0 absolute bg-white rounded-[15px]" />
               <img
