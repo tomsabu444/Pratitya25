@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import background from "../assets/home-section-one/home-bg.png";
-import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
+import desktopBackground from "../assets/home-section-one/bg-desktop-h.jpg";
 import lanten from "../assets/home-section-one/lantengroup.png";
 import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
 import newImage from "../assets/home-section-one/castle-only.png";
