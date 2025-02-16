@@ -1,5 +1,5 @@
 import React from 'react';
-import pratityaLogo from "../assets/pratitya_logo.png";
+import pratityaLogo from "../assets/intro-logo.gif";
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
             <img
               src={pratityaLogo}
               alt="Pratitya Logo"
-              className="w-20 h-24 sm:w-24 sm:h-28 lg:w-28 lg:h-30 object-contain drop-shadow-lg"
+              className="w-28 h-auto object-contain drop-shadow-lg"
             />
             <p className="text-gray-200 text-sm lg:text-base text-center sm:text-left max-w-xs">
               Festa Feasta - Bringing the joy of food, festivities, and unforgettable celebrations to your doorstep.
