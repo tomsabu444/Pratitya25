@@ -195,7 +195,15 @@ const HomeOne = () => {
           <img
             src={newImagedesktop}
             alt="Castle"
-            className="w-[65%] h-auto object-contain absolute bottom-0 -left-20 max-h-[150vh] md:max-h-[160vh] lg:w-[45%] lg:-left-28 lg:max-h-[130vh]"
+            className="w-[65%] h-auto object-contain absolute bottom-0 
+              -left-28 
+              max-h-[150vh] 
+              md:max-h-[160vh] 
+              lg:w-[45%] 
+              lg:-left-24
+              xl:-left-28 
+              2xl:-left-40 
+              lg:max-h-[130vh]"
           />
         </div>
       </div>
