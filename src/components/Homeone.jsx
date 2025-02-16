@@ -35,15 +35,13 @@ const HomeOne = () => {
       maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
     );
 
-    // Adjusted castle position for mobile-small screens
     let topPosition = Math.min(
       isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
 
-    // Small adjustment for very small screens
     if (window.innerWidth < 360) {
-      topPosition += 5; // Slight shift up for smallest screens
+      topPosition += 5;
     }
 
     return { scale, topPosition };
@@ -56,7 +54,7 @@ const HomeOne = () => {
 
     const translateXLeft = Math.max(
       0,
-      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
+      0 - ((scrollPosition - viewportHeight/2) / (viewportHeight / 2)) * 100
     );
 
     return { translateXLeft };
@@ -124,43 +122,47 @@ const HomeOne = () => {
 
       {/* About Section */}
       <div
-        className="absolute w-full flex flex-col items-center justify-center z-10"
+        className="absolute w-full flex flex-col items-center justify-center"
         style={{
-          top: "150vh",
+          top: "101vh",
           transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.2s ease-out",
         }}
       >
         <h2
-          className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
+          className="text-6xl font-agraham text-white mb-6 drop-shadow-2xl"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
           }}
         >
           About
         </h2>
+      </div>
+      <div
+        className="absolute w-full flex flex-col items-center justify-center z-10"
+        style={{
+          top: "130vh",
+          transform: `translateX(${translateXLeft}%)`,
+          transition: "transform 0.2s ease-out",
+        }}
+      >
         <p
           className="text-white text-center max-w-lg px-4 font-poppins"
           style={{
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Welcome to the vibrant celebration of creativity and talent at
-          Saintgits College of Engineering! Join us for an extraordinary journey
-          into the world of art and culture as our 4th-year engineering students
-          proudly present a mesmerizing cultural fest. Immerse yourself in a
-          kaleidoscope of artistic expressions, ranging from captivating
-          performances to visually stunning exhibits. This event is a testament
-          to the diverse talents of our students, showcasing their passion for
-          the arts alongside their technical prowess. Come and be a part of this
-          dynamic fusion of engineering innovation and artistic brilliance, as
-          we unite in the spirit of creativity and cultural enrichment.
+          Celebrate the Spirit of Culture at Saintgits! Step into a vibrant
+          festival of art, music, and dance, where engineering meets creativity!
+          Experience dazzling performances, stunning exhibits, and electrifying
+          energy as our 4th-year students bring culture to life! Join the
+          festive magic and celebrate the spirit of creativity with us!
         </p>
       </div>
 
       {/* Mobile Castle Container */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden  md:hidden"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden md:hidden"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
@@ -180,7 +182,7 @@ const HomeOne = () => {
 
       {/* Desktop Castle Container */}
       <div
-        className="absolute left-0 w-full  hidden items-end justify-start overflow-x-hidden md:block"
+        className="absolute left-0 w-full hidden items-end justify-start overflow-x-hidden md:block"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
