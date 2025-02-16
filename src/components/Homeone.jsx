@@ -80,7 +80,7 @@ const HomeOne = () => {
         <img
           src={rightImage}
           alt="Right Decoration"
-          className="w-[300px] h-auto object-contain lg:w-[400px]"
+          className="w-[340px] h-auto object-contain lg:w-[440px]"
         />
       </div>
 
@@ -93,7 +93,7 @@ const HomeOne = () => {
 
       {/* Lantern Container - Lower z-index */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[15] md:items-start"
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[13] md:items-start"
         style={{
           transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
         }}
@@ -107,7 +107,7 @@ const HomeOne = () => {
 
       {/* Title and Countdown Container */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-[20] pointer-events-none"
+        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-[15] pointer-events-none"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
         }}
@@ -182,7 +182,7 @@ const HomeOne = () => {
 
       {/* Desktop Castle Container - Highest z-index */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block z-[25]"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block z-[19]"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
