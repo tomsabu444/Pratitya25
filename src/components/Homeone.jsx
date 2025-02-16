@@ -35,15 +35,13 @@ const HomeOne = () => {
       maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
     );
 
-    // Adjusted castle position for mobile-small screens
     let topPosition = Math.min(
       isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
     
-    // Small adjustment for very small screens
     if (window.innerWidth < 360) {
-      topPosition += 5; // Slight shift up for smallest screens
+      topPosition += 5;
     }
 
     return { scale, topPosition };
@@ -118,29 +116,38 @@ const HomeOne = () => {
 
       {/* About Section */}
       <div
-        className="absolute w-full flex flex-col items-center justify-center z-10"
+        className="absolute w-full flex flex-col items-center justify-center"
         style={{
-          top: "150vh",
+          top: window.innerWidth >= 768 ? "120vh" : "110vh",
           transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.2s ease-out",
         }}
       >
-        <h2 
-          className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
+        <div 
           style={{
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+            zIndex: scrollPosition > window.innerHeight ? (window.innerWidth < 768 ? 5 : 10) : 10,
+            position: 'relative'
           }}
         >
-          About
-        </h2>
-        <p 
-          className="text-white text-center max-w-lg px-4 font-poppins"
-          style={{
-            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
-          }}
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
-        </p>
+          <h2 
+            className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
+            style={{
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+            }}
+          >
+            About
+          </h2>
+        </div>
+        <div style={{ zIndex: 15, position: 'relative' }}>
+          <p 
+            className="text-white text-center max-w-lg px-4 font-poppins"
+            style={{
+              textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
+            }}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
+          </p>
+        </div>
       </div>
 
       {/* Mobile Castle Container */}
@@ -152,6 +159,7 @@ const HomeOne = () => {
           transformOrigin: "bottom left",
           transition: "transform 0.1s ease-out, top 0.1s ease-out",
           bottom: 0,
+          zIndex: 6,
         }}
       >
         <div className="w-full h-full overflow-x-hidden">
@@ -172,6 +180,7 @@ const HomeOne = () => {
           transformOrigin: "bottom left",
           transition: "transform 0.1s ease-out, top 0.1s ease-out",
           bottom: 0,
+          zIndex: 6,
         }}
       >
         <div className="w-full h-full overflow-x-hidden relative">
