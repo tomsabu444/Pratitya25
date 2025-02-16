@@ -124,7 +124,7 @@ const HomeOne = () => {
       <div
         className="absolute w-full flex flex-col items-center justify-center"
         style={{
-          top: "101vh",
+          top: "9s0vh",
           transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.2s ease-out",
         }}
