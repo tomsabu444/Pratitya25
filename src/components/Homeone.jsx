@@ -95,17 +95,17 @@ const HomeOne = () => {
 
       {/* Lantern Container - Lower z-index */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[13] md:items-start"
-        style={{
-          transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
-        }}
-      >
-        <img
-          src={window.innerWidth >= 768 ? desktopLanten : lanten}
-          alt="Lanten Group"
-          className="w-screen h-auto object-contain md:w-full md:max-h-[90vh] mt-20"
-        />
-      </div>
+  className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[13] md:items-start"
+  style={{
+    transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
+  }}
+>
+  <img
+    src={window.innerWidth >= 768 ? desktopLanten : lanten}
+    alt="Lanten Group"
+    className="w-screen h-auto object-contain md:w-[120%] md:max-h-[90vh] mt-20" // Modified this line
+  />
+</div>
 
       {/* Title and Countdown Container */}
       <div
@@ -205,7 +205,7 @@ const HomeOne = () => {
               lg:-left-24
               xl:-left-28 
               2xl:-left-40 
-              lg:max-h-[130vh]"
+              lg:max-h-[120vh]"
           />
         </div>
       </div>
