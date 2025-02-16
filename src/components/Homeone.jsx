@@ -6,6 +6,8 @@ import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
 import newImage from "../assets/home-section-one/castle-only.png";
 import newImagedesktop from "../assets/home-section-one/castle-desktop.png";
 import rightImage from "../assets/home-section-one/mountain.png";
+// Add your new image import here
+import bottomRightImage from "../assets/home-section-one/mountain-front.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -53,8 +55,8 @@ const HomeOne = () => {
 
   const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
-    const isLargeScreen = window.innerWidth >= 1024; // Check for larger screens (lg breakpoint)
-    const speedMultiplier = isLargeScreen ? 1.5 : 1; // Increase speed by 50% for larger screens
+    const isLargeScreen = window.innerWidth >= 1024;
+    const speedMultiplier = isLargeScreen ? 1.5 : 1;
     
     const translateXLeft = Math.max(
       0,
@@ -83,6 +85,9 @@ const HomeOne = () => {
           src={rightImage}
           alt="Right Decoration"
           className="w-[340px] h-auto object-contain lg:w-[440px]"
+          style={{
+            filter: "contrast(110%) saturate(110%)"
+          }}
         />
       </div>
 
@@ -95,17 +100,17 @@ const HomeOne = () => {
 
       {/* Lantern Container - Lower z-index */}
       <div
-  className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[13] md:items-start"
-  style={{
-    transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
-  }}
->
-  <img
-    src={window.innerWidth >= 768 ? desktopLanten : lanten}
-    alt="Lanten Group"
-    className="w-screen h-auto object-contain md:w-[120%] md:max-h-[90vh] mt-20" // Modified this line
-  />
-</div>
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[13] md:items-start"
+        style={{
+          transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
+        }}
+      >
+        <img
+          src={window.innerWidth >= 768 ? desktopLanten : lanten}
+          alt="Lanten Group"
+          className="w-screen h-auto object-contain md:w-[120%] md:max-h-[90vh] mt-20"
+        />
+      </div>
 
       {/* Title and Countdown Container */}
       <div
@@ -182,7 +187,7 @@ const HomeOne = () => {
         </div>
       </div>
 
-      {/* Desktop Castle Container - Highest z-index */}
+      {/* Desktop Castle Container */}
       <div
         className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block z-[19]"
         style={{
@@ -208,6 +213,15 @@ const HomeOne = () => {
               lg:max-h-[120vh]"
           />
         </div>
+      </div>
+
+      {/* New Bottom Right Image - Desktop Only */}
+      <div className="hidden md:block absolute bottom-0 right-0 z-[16]">
+        <img
+          src={bottomRightImage}
+          alt="Bottom Right Decoration"
+          className="w-[390px] h-auto object-contain lg:w-[490px]"
+        />
       </div>
     </div>
   );
