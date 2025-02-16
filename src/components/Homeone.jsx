@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import background from "../assets/home-section-one/home-bg.png";
-import desktopBackground from "../assets/home-section-one/bg-desktop-h.jpg";
+import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
 import lanten from "../assets/home-section-one/lantengroup.png";
 import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
 import newImage from "../assets/home-section-one/castle-only.png";
+import newImagedesktop from "../assets/home-section-one/castle-desktop.png";
+import rightImage from "../assets/home-section-one/mountain.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -35,15 +37,13 @@ const HomeOne = () => {
       maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
     );
 
-    // Adjusted castle position for mobile-small screens
     let topPosition = Math.min(
       isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
     
-    // Small adjustment for very small screens
     if (window.innerWidth < 360) {
-      topPosition += 5; // Slight shift up for smallest screens
+      topPosition += 5;
     }
 
     return { scale, topPosition };
@@ -66,6 +66,7 @@ const HomeOne = () => {
 
   return (
     <div className="relative overflow-x-hidden">
+      {/* Original background */}
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
@@ -74,9 +75,25 @@ const HomeOne = () => {
         }}
       />
 
-      {/* Lantern Container */}
+      {/* Mountain Image - Moved behind blur */}
+      <div className="hidden md:block absolute bottom-0 right-0 z-[1]">
+        <img
+          src={rightImage}
+          alt="Right Decoration"
+          className="w-[300px] h-auto object-contain lg:w-[400px]"
+        />
+      </div>
+
+      {/* Blur overlay for desktop */}
+      <div className="hidden md:block absolute top-0 left-0 w-full h-full min-h-[200vh] backdrop-blur-sm bg-white/5 z-[2]" />
+      
+      {/* Glassmorphic Effect for Second Viewport - Desktop Only */}
+      <div className="hidden md:block absolute w-full h-screen z-[5]" style={{ top: "100vh" }}>
+      </div>
+
+      {/* Lantern Container - Lower z-index */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-10 md:items-start"
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-[15] md:items-start"
         style={{
           transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
         }}
@@ -90,7 +107,7 @@ const HomeOne = () => {
 
       {/* Title and Countdown Container */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-10 pointer-events-none"
+        className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-[20] pointer-events-none"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
         }}
@@ -118,7 +135,7 @@ const HomeOne = () => {
 
       {/* About Section */}
       <div
-        className="absolute w-full flex flex-col items-center justify-center z-10"
+        className="absolute w-full flex flex-col items-center justify-center z-[20]"
         style={{
           top: "150vh",
           transform: `translateX(${translateXLeft}%)`,
@@ -163,9 +180,9 @@ const HomeOne = () => {
         </div>
       </div>
 
-      {/* Desktop Castle Container */}
+      {/* Desktop Castle Container - Highest z-index */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block z-[25]"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
@@ -176,7 +193,7 @@ const HomeOne = () => {
       >
         <div className="w-full h-full overflow-x-hidden relative">
           <img
-            src={newImage}
+            src={newImagedesktop}
             alt="Castle"
             className="w-[65%] h-auto object-contain absolute bottom-0 -left-20 max-h-[150vh] md:max-h-[160vh] lg:w-[45%] lg:-left-28 lg:max-h-[130vh]"
           />
