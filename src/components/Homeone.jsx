@@ -40,7 +40,7 @@ const HomeOne = () => {
       isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
-    
+
     // Small adjustment for very small screens
     if (window.innerWidth < 360) {
       topPosition += 5; // Slight shift up for smallest screens
@@ -53,7 +53,7 @@ const HomeOne = () => {
 
   const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
-    
+
     const translateXLeft = Math.max(
       0,
       0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
@@ -69,7 +69,9 @@ const HomeOne = () => {
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : background})`,
+          backgroundImage: `url(${
+            window.innerWidth >= 768 ? desktopBackground : background
+          })`,
           transition: "transform 0.2s ease-out",
         }}
       />
@@ -78,7 +80,11 @@ const HomeOne = () => {
       <div
         className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden md:items-start"
         style={{
-          transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
+          transform: `translateY(${
+            window.innerWidth >= 768
+              ? Math.min(scrollPosition * -0.7, 0)
+              : scrollPosition * -0.8
+          }px)`,
         }}
       >
         <img
@@ -125,7 +131,7 @@ const HomeOne = () => {
           transition: "transform 0.2s ease-out",
         }}
       >
-        <h2 
+        <h2
           className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
@@ -133,13 +139,22 @@ const HomeOne = () => {
         >
           About
         </h2>
-        <p 
+        <p
           className="text-white text-center max-w-lg px-4 font-poppins"
           style={{
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
+          Welcome to the vibrant celebration of creativity and talent at
+          Saintgits College of Engineering! Join us for an extraordinary journey
+          into the world of art and culture as our 4th-year engineering students
+          proudly present a mesmerizing cultural fest. Immerse yourself in a
+          kaleidoscope of artistic expressions, ranging from captivating
+          performances to visually stunning exhibits. This event is a testament
+          to the diverse talents of our students, showcasing their passion for
+          the arts alongside their technical prowess. Come and be a part of this
+          dynamic fusion of engineering innovation and artistic brilliance, as
+          we unite in the spirit of creativity and cultural enrichment.
         </p>
       </div>
 
@@ -165,7 +180,7 @@ const HomeOne = () => {
 
       {/* Desktop Castle Container */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden md:block"
+        className="absolute left-0 w-full  hidden items-end justify-start overflow-x-hidden md:block"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
