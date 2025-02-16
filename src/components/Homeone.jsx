@@ -182,7 +182,7 @@ const HomeOne = () => {
 
       {/* Desktop Castle Container */}
       <div
-        className="absolute left-0 w-full hidden items-end justify-start overflow-x-hidden md:block"
+        className="absolute -left-4 w-full hidden items-end justify-start overflow-x-hidden md:block"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
