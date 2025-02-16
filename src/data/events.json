@@ -1,15 +1,46 @@
 [
   {
-    "id": "PT-01",
+    "id": "festive_stalls",
+    "name": "Festive Stalls",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FFestive%20Stalls.webp?alt=media&token=61498f9f-79a9-4e51-8c21-23e8104a2ec3",
+    "description": "Step into a world of fun and flair at our vibrant stall! Get your hands adorned with intricate Mehandi designs, let your personality shine with stunning face paint, and enjoy exciting games that will keep the energy high. Whether you're here for artistry, adventure, or just some good times, we’ve got something for everyone! Join us and add a splash of color to your day!",
+    "award": {
+      "first": "",
+      "second": ""
+    },
+    "regulations": [
+      ""
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Manna Alma Sam",
+        "contact_phone": "9188566602"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Mervin Mathew Shibu",
+        "contact_phone": "8590832820"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Naveen Raj",
+        "contact_phone": "9562771575"
+      }
+    ],
+    "form": "https://pratitya.in/events/festive_stalls"
+  },
+  {
+    "id": "dramatique",
     "name": "Dramatique - Best Actor",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FBest%20Actor.webp?alt=media&token=0b6bee36-52e2-4af7-b2dc-11ab2e4cc49e",
     "description": "BEST ACTOR, the platform where you can be the spotlight by showcasing your passion.",
     "award": {
       "first": "1500",
       "second": "500"
     },
     "regulations": [
-      "BEST ACTOR, the platform where you can be the spotlight by showcasing your passion.","1500","500","nil","Preliminary Round :  Movie Scene Reenactment",
+      "Preliminary Round :  Movie Scene Reenactment",
       "Each participant must prepare a 5-minute-long movie scene in advance.",
 
       "The audio clip of the selected scene will be played, and the participant must act it out accordingly.",
@@ -49,12 +80,13 @@
         "contact_phone": "8921546245"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSeC-Q3GacWr98NXnItLd_qSBNtFfDmXdnrz_skYLyaEXNRWfg/viewform?usp=sharing"
+    "form": "https://forms.gle/X36iymNVJpmTAZvv5",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLScDhAwdxoXLz910k-QAI1rvB7goyAKO9OJnpvUBozMxsyVt8Q/viewform?usp=sharing"
   },
   {
-    "id": "PT-02",
+    "id": "Retro_Revival",
     "name": "Retro Revival",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FRecreation.webp?alt=media&token=bd425ac1-30bf-4cd1-8365-ef4616018303",
     "description": "Retro Revival is an exciting competition that challenges participants to recreate iconic movie scenes through acting and cinematography. Contestants must capture the essence of the original scene and this event tests participants' attention to detail and cinematic creativity.",
     "award": {
       "first": "1000",
@@ -85,12 +117,13 @@
         "contact_phone": "8921201498"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSfIMt3xzEiadz3sNZvdYcLknWQCYpf4mfG0Dcfb6zJaXFKSCQ/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSfIMt3xzEiadz3sNZvdYcLknWQCYpf4mfG0Dcfb6zJaXFKSCQ/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLScB_GnJQ3_g4G4Et9e6EpX3tJx0DtxhmbOtzzPgvvGrNRIFeA/viewform?usp=header"
   },
   {
-    "id": "PT-03",
-    "name": "Tango Doble",
-    "poster_url": "",
+    "id": "Tango_Double",
+    "name": "Tango Dobule",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FDuo%20Dance.webp?alt=media&token=a7ba41f1-84ab-45fb-85a8-b28f1a977a25",
     "description": "The Duo Dance Competition is an exciting three-level event where pairs compete to showcase their synchronization, creativity, and technique.",
     "award": {
       "first": "1000",
@@ -149,12 +182,13 @@
         "contact_phone": "8129254768"
       }
     ],
-    "form": "https://forms.gle/eFFnbkYng4eLpATt8"
+    "form": "https://forms.gle/eFFnbkYng4eLpATt8",
+    "feedback_form": "https://forms.gle/f2KgCcR1Urr1yqUV9"
   },
   {
-    "id": "PT-04",
+    "id": "Canvas_Carnival",
     "name": "Canvas Carnival",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FDrawing%20Competition.webp?alt=media&token=4e6b2121-94cd-4821-990b-8547ab52d321",
     "description": "Join us for an exciting Drawing Competition, where your artistic skills will take center stage! Whether you're a seasoned artist or just love to sketch, this is your chance to showcase your talent.",
     "award": {
       "first": "1000",
@@ -183,12 +217,13 @@
         "contact_phone": "6282432802"
       }
     ],
-    "form": "https://forms.gle/sb9sthi2rEJ31hLs8"
+    "form": "https://forms.gle/sb9sthi2rEJ31hLs8",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSdw85rfTlM9eDS8Tb-8wHqANuZ26ZiqSeOW8ZAsnS8lTlcnpg/viewform?usp=sharing"
   },
   {
-    "id": "PT-05",
+    "id": "Celista_Star",
     "name": "Celista Star",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FCelista%20Star.webp?alt=media&token=a0713f07-8862-4548-8a1e-a0c9dee3c51c",
     "description": "Get ready for an electrifying day packed with non-stop entertainment, thrilling moments, and endless excitement! Dare to dream big, reach for the stars, and make unforgettable memories along the way!",
     "award": {
       "first": "2000",
@@ -217,12 +252,13 @@
         "contact_phone": "9744530574"
       }
     ],
-    "form": "https://forms.gle/mrBSvWcaw687q1w96"
+    "form": "https://forms.gle/mrBSvWcaw687q1w96",
+    "feedback_form": "https://forms.gle/3L7y9QxSa9M7VRfT9"
   },
   {
-    "id": "PT-06",
-    "name": "Mehandi Competition",
-    "poster_url": "",
+    "id": "Arte_Henna",
+    "name": "Arte Henna",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2Fart%20henna.webp?alt=media&token=14d4141f-0ae3-4a8f-9f8d-94a48383b8c6",
     "description": "Mehandi competition is an event where participants showcase their skills in creating intricate henna designs on hands or feet. The competition focuses on factors like design complexity, creativity, symmetry, and the richness of the henna stain.",
     "award": {
       "first": "1000",
@@ -251,12 +287,13 @@
         "contact_phone": "9495166786"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSfpnIZw2_5cEgqiivyOmmndCagsUcNV1K5oMrwfJum6w-4tOg/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSfpnIZw2_5cEgqiivyOmmndCagsUcNV1K5oMrwfJum6w-4tOg/viewform",
+    "feedback_form": "https://surveyheart.com/form/67af1bcccb33bf392552ead6"
   },
   {
-    "id": "PT-07",
-    "name": "Best Singer",
-    "poster_url": "",
+    "id": "Voz_de_singing",
+    "name": "Voz de Fiesta",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FVoz%20de%20Fiesta.webp?alt=media&token=007f8c25-f760-4179-9f4c-8429a79d8cf8",
     "description": "Music is an emotion which reveals the identity of a soul💫. The mesmerizing power of it, takes one to the galaxy of feelings✨🎶. The hunt for the best singer of Pratitya 2025 starts up🎧.",
     "award": {
       "first": "1000",
@@ -297,12 +334,12 @@
         "contact_phone": "9061630877"
       }
     ],
-    "form": "https://docs.google.com/forms/d/1YMZ0V2-dNN9cvLe_pW3g-N27Bn40fhRKqvltEatC5Lc/viewform"
+    "form": "https://docs.google.com/forms/d/1YMZ0V2-dNN9cvLe_pW3g-N27Bn40fhRKqvltEatC5Lc/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/1DFdKG_Q9_1XkGG_4RmERwdO2g2V75EGustKo_YaSIbE/viewform"
   },
   {
-    "id": "PT-08",
-    "name": "Best Choreo",
-    "poster_url": "",
+    "name": "Rythmic Rhapsody",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FPratitya%20Poster%20Choreo.webp?alt=media&token=36db3f56-af89-44b3-b1b2-7ded3bae2663",
     "description": "Pratitya '25 proudly presents BEST CHOREO💥, an electrifying platform to showcase your dance prowess. We eagerly anticipate your participation*. Teams interested in joining can register using this google form.  Prelims/Screening will be conducted following the registration deadline**.",
     "award": {
       "first": "3000",
@@ -328,30 +365,31 @@
     "people": [
       {
         "position": "Head",
-        "contact_name": "Neethu E M",
-        "contact_phone": "9061721424"
+        "contact_name": "Megha Rajeev",
+        "contact_phone": "7025432373"
       },
       {
         "position": "Subhead",
-        "contact_name": "Gayathri V",
-        "contact_phone": "7907960327"
+        "contact_name": "Sivanarayan M B",
+        "contact_phone": "9961122256"
       },
       {
         "position": "Subhead",
-        "contact_name": "Bismi basheer",
-        "contact_phone": "9061630877"
+        "contact_name": "Nishanth Manu Koshy",
+        "contact_phone": "8547386460"
       }
     ],
-    "form": "https://docs.google.com/forms/d/1YMZ0V2-dNN9cvLe_pW3g-N27Bn40fhRKqvltEatC5Lc/viewform"
+    "form": "https://forms.gle/V9SrWJ62ZspqHMmh7",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSeONypmd4rzOwTWZbrOHspZLbvltQoI5fhq28J9NF69R1o-vQ/viewform?usp=dialog"
   },
   {
-    "id": "PT-09",
+    "id": "Best_manager",
     "name": "Maestro Mind – Best Manager",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FBest%20Manager.webp?alt=media&token=ace4a109-f6c7-42d9-b199-d2b21fb76c11",
     "description": "The Best Manager Competition is the ultimate test of leadership, strategic thinking, and crisis management. Designed to push participants to their limits, this multi-round event simulates real-world business challenges where individuals must showcase their decision making skills, problem-solving abilities, and resilience under pressure.",
     "award": {
       "first": "2000",
-      "second": "N/A"
+      "second": ""
     },
     "regulations": [
       "1.Best Manager is an individual event",
@@ -377,12 +415,13 @@
         "contact_phone": "9344076978"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSe4IwKNQ5UOrqStU4WiUkC8KAm3r4begFgSDCw_soLef14qJg/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSe4IwKNQ5UOrqStU4WiUkC8KAm3r4begFgSDCw_soLef14qJg/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSe5e0C4qhHn_l2MH5_ZJckfH14SXysFbJ7GJKdOWhSE_VXnaw/viewform"
   },
   {
-    "id": "PT-10",
-    "name": "Face Painting Competition",
-    "poster_url": "",
+    "id": "Palette_Parade_Face_Painting",
+    "name": "Palette Parade",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FFace%20painting.webp?alt=media&token=8eb53cd3-7639-450a-b29a-9d69da84edbd",
     "description": "Join us for an exciting Face Painting Competition! Ten participants will have the chance to showcase their creativity and talent. The theme for the competition will be provided on the day of the event, and all necessary materials will be supplied.",
     "award": {
       "first": "1000",
@@ -410,12 +449,13 @@
         "contact_phone": "9188751179"
       }
     ],
-    "form": "https://forms.gle/x8jjyVvfVLSccpDw7"
+    "form": "https://forms.gle/x8jjyVvfVLSccpDw7",
+    "feedback_form": "https://forms.gle/o4EYGKrk8chHWNsh8"
   },
   {
-    "id": "PT-11",
+    "id": "Tale_Weavers",
     "name": "Tale Weavers",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2Fstorywriting.webp?alt=media&token=93217096-918f-4db4-81c1-c26ca1a72e6e",
     "description": "Event Story Writing is a form of storytelling that captures the essence of an event in a structured and engaging way. It combines elements of journalism, narrative writing, and creative storytelling to describe what happened, who was involved, and the impact of the event.",
     "award": {
       "first": "1000",
@@ -443,12 +483,13 @@
         "contact_phone": "8156937896"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSe4TSVbROHgs-7n0o1MjzCrwYUD-d3cS5u9PSIPoxA9wsp0Tg/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSe4TSVbROHgs-7n0o1MjzCrwYUD-d3cS5u9PSIPoxA9wsp0Tg/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSd0E3jNZIOR-KqKFVsIh6ixtfrv82st5ZzQL3wWpLloAFI-uw/viewform?usp=dialog"
   },
   {
-    "id": "PT-11",
+    "id": "Memory_Fiesta",
     "name": "Memory Fiesta",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMemory%20Fiesta.webp?alt=media&token=e72ed6d5-3eb7-4565-b10f-a69da575eedd",
     "description": "Reliving the best moments of college life in a 1 minute video.",
     "award": {
       "first": "1000",
@@ -475,12 +516,13 @@
         "contact_phone": "9562119769"
       }
     ],
-    "form": "https://forms.gle/VujBRp8EvDK7PrX99"
+    "form": "https://forms.gle/VujBRp8EvDK7PrX99",
+    "feedback_form": "https://forms.gle/xeFHTepSWVWvrV9M6"
   },
   {
-    "id": "PT-12",
+    "id": "Mystic_Quest",
     "name": "Mystic Quest - Treasure Hunt",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMystic%20Quest.webp?alt=media&token=8d63894c-46c8-4ac4-a83d-eb8b365b1180",
     "description": "Are you ready to embark on a thrilling adventure across the campus? Solve riddles, complete challenges, and race against time to uncover hidden clues leading to the ultimate treasure! Gather your team, put on your thinking caps, and let the hunt begin!",
     "award": {
       "first": "2000",
@@ -513,12 +555,13 @@
         "contact_phone": "9567033829"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSdi3LZCs_KUANtswNMVvTgWLEq7aQoyYI6Fy8OrATKU5onsRQ/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSdFYn1igOeogv0aSUWVOIZn2JpIV661clprqPLoiWIfj4HMpw/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSfNv1yCjnFFY6N4_iP3YsaM01bsOT9nzNWWpn6lv5n9cqFpLg/viewform?usp=dialog"
   },
   {
-    "id": "PT-13",
-    "name": "Play Station",
-    "poster_url": "",
+    "id": "PlayStation",
+    "name": "Play Station Competition",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FPlaystation%20Competition.webp?alt=media&token=d96a942d-8ac6-45d1-8b0b-5d1836c40fa3",
     "description": "Fifa tournament on play station",
     "award": {
       "first": "1000",
@@ -554,9 +597,9 @@
     "form": "https://docs.google.com/forms/d/e/1FAIpQLSc3VtXWkfeDi1fcbc3kstpkatnFhprj-tmih-9QLQlzR1NEnA/viewform"
   },
   {
-    "id": "PT-14",
+    "id": "Lente_Magic",
     "name": "Lente Magiq– Click It",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FClick%20It.webp?alt=media&token=6e2c05f8-18e7-4dba-8d8e-ba0da1837568",
     "description": "Photography Competition",
     "award": {
       "first": "1000",
@@ -583,12 +626,13 @@
         "contact_phone": "8129512636"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSd8yjO8Qx-Oec2A68lvxyQCJslhJQDWUbwC4qQA-Ag8kkc5fQ/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSd8yjO8Qx-Oec2A68lvxyQCJslhJQDWUbwC4qQA-Ag8kkc5fQ/viewform",
+    "feedback_form": "https://forms.gle/vw9TyFzTqXB8cHYNA"
   },
   {
-    "id": "PT-15",
+    "id": "Malayali_Manka",
     "name": "MALAYALI MANKA AND KERALA SREEMAN",
-    "poster_url": "",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMalayali%20Manka.webp?alt=media&token=89d33a71-7921-4a9d-b070-1afe46476e97",
     "description": "The \"Malayali Manka and Kerala Sreeman\" competition celebrates the cultural beauty, wit, and charm of individuals from Kerala, with participants showcasing their traditional and modern talents.",
     "award": {
       "first": "3000",
