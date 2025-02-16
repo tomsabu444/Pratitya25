@@ -53,10 +53,12 @@ const HomeOne = () => {
 
   const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
+    const isLargeScreen = window.innerWidth >= 1024; // Check for larger screens (lg breakpoint)
+    const speedMultiplier = isLargeScreen ? 1.5 : 1; // Increase speed by 50% for larger screens
     
     const translateXLeft = Math.max(
       0,
-      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
+      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100 * speedMultiplier
     );
 
     return { translateXLeft };
@@ -135,11 +137,11 @@ const HomeOne = () => {
 
       {/* About Section */}
       <div
-        className="absolute w-full flex flex-col items-center justify-center z-[20]"
+        className="absolute w-full flex flex-col items-center justify-center z-[15]"
         style={{
-          top: "150vh",
+          top: window.innerWidth >= 1280 ? "125vh" : "135vh",
           transform: `translateX(${translateXLeft}%)`,
-          transition: "transform 0.2s ease-out",
+          transition: "transform 0.1s ease-out",
         }}
       >
         <h2 
