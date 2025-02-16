@@ -35,13 +35,15 @@ const HomeOne = () => {
       maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
     );
 
+    // Adjusted castle position for mobile-small screens
     let topPosition = Math.min(
       isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
-
+    
+    // Small adjustment for very small screens
     if (window.innerWidth < 360) {
-      topPosition += 5;
+      topPosition += 5; // Slight shift up for smallest screens
     }
 
     return { scale, topPosition };
@@ -51,10 +53,10 @@ const HomeOne = () => {
 
   const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
-
+    
     const translateXLeft = Math.max(
       0,
-      0 - ((scrollPosition - viewportHeight/2) / (viewportHeight / 2)) * 100
+      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
     );
 
     return { translateXLeft };
@@ -67,22 +69,16 @@ const HomeOne = () => {
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${
-            window.innerWidth >= 768 ? desktopBackground : background
-          })`,
+          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : background})`,
           transition: "transform 0.2s ease-out",
         }}
       />
 
       {/* Lantern Container */}
       <div
-        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden md:items-start"
+        className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-10 md:items-start"
         style={{
-          transform: `translateY(${
-            window.innerWidth >= 768
-              ? Math.min(scrollPosition * -0.7, 0)
-              : scrollPosition * -0.8
-          }px)`,
+          transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
         }}
       >
         <img
@@ -100,7 +96,7 @@ const HomeOne = () => {
         }}
       >
         <motion.h1
-          className="text-6xl font-agraham md:text-7xl xl:text-8xl mb-6 -mt-16 md:mt-8 text-center text-white drop-shadow-2xl relative max-[360px]:text-5xl max-[360px]:-mt-12"
+          className="text-6xl font-agraham md:text-7xl md:text-7xl xl:text-8xl mb-6 -mt-16 md:mt-8 text-center text-white drop-shadow-2xl relative max-[360px]:text-5xl max-[360px]:-mt-12"
           style={{
             textShadow:
               "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
@@ -122,47 +118,34 @@ const HomeOne = () => {
 
       {/* About Section */}
       <div
-        className="absolute w-full flex flex-col items-center justify-center"
+        className="absolute w-full flex flex-col items-center justify-center z-10"
         style={{
-          top: "9s0vh",
+          top: "150vh",
           transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.2s ease-out",
         }}
       >
-        <h2
-          className="text-6xl font-agraham text-white mb-6 drop-shadow-2xl"
+        <h2 
+          className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
           }}
         >
           About
         </h2>
-      </div>
-      <div
-        className="absolute w-full flex flex-col items-center justify-center z-10"
-        style={{
-          top: "130vh",
-          transform: `translateX(${translateXLeft}%)`,
-          transition: "transform 0.2s ease-out",
-        }}
-      >
-        <p
+        <p 
           className="text-white text-center max-w-lg px-4 font-poppins"
           style={{
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Celebrate the Spirit of Culture at Saintgits! Step into a vibrant
-          festival of art, music, and dance, where engineering meets creativity!
-          Experience dazzling performances, stunning exhibits, and electrifying
-          energy as our 4th-year students bring culture to life! Join the
-          festive magic and celebrate the spirit of creativity with us!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
         </p>
       </div>
 
       {/* Mobile Castle Container */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden md:hidden"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden block md:hidden"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
@@ -182,7 +165,7 @@ const HomeOne = () => {
 
       {/* Desktop Castle Container */}
       <div
-        className="absolute -left-4 w-full hidden items-end justify-start overflow-x-hidden md:block"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block"
         style={{
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
