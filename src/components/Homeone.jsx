@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import background from "../assets/home-section-one/home-bg.png";
 import lanten from "../assets/home-section-one/lantengroup.png";
 import newImage from "../assets/home-section-one/castle-only.png";
+import smallImage from "../assets/home-section-one/dragon.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -43,20 +44,34 @@ const HomeOne = () => {
 
   const { scale, topPosition } = calculateCastleEffects();
 
-  // Calculate visibility for about section
-  const calculateAboutVisibility = () => {
+  // Calculate visibility for about section and small image
+  const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
-    const triggerPoint = viewportHeight * 1; // Start animation halfway through second viewport
     
-    const translateX = Math.max(
+    // For about section (left to right)
+    const translateXLeft = Math.max(
       0,
       0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
     );
 
-    return translateX;
+    // For dragon image (right to left, faster movement)
+    const dragonPosition = Math.min(
+      100,  // Start position (off-screen right)
+      100 - ((scrollPosition - viewportHeight / 2) / (viewportHeight / 4)) * 200  // Move left faster
+    );
+
+    // Calculate downward movement for dragon
+    const scrollProgress = (scrollPosition - viewportHeight / 2) / (viewportHeight / 4);
+    const maxDownwardMove = 50; // Maximum pixels to move down
+    const dragonYPosition = Math.min(
+      maxDownwardMove,
+      scrollProgress * maxDownwardMove
+    );
+
+    return { translateXLeft, dragonPosition, dragonYPosition };
   };
 
-  const translateX = calculateAboutVisibility();
+  const { translateXLeft, dragonPosition, dragonYPosition } = calculateSideElementsVisibility();
 
   return (
     <div className="relative overflow-x-hidden">
@@ -116,24 +131,45 @@ const HomeOne = () => {
         className="absolute w-full flex flex-col items-center justify-center z-10"
         style={{
           top: "150vh",
-          transform: `translateX(${translateX}%)`,
+          transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.2s ease-out",
         }}
       >
-        <h2 className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
+        <h2 
+          className="text-5xl font-agraham text-white mb-6 drop-shadow-2xl"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
           }}
         >
           About
         </h2>
-        <p className="text-white text-center max-w-lg px-4 font-poppins"
+        <p 
+          className="text-white text-center max-w-lg px-4 font-poppins"
           style={{
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
         </p>
+      </div>
+
+      {/* Dragon image with fast right-to-left animation and downward movement */}
+      <div
+        className="absolute right-0 w-7/12 flex items-end justify-end overflow-x-hidden z-5"
+        style={{
+          top: "90vh",
+          transform: `translateX(${dragonPosition}%) translateY(${dragonYPosition}px) rotate(10deg)`,
+          transition: "transform 0.15s ease-out",
+          opacity: 0.6,
+        }}
+      >
+        <div className="w-full h-full overflow-x-hidden">
+          <img
+            src={smallImage}
+            alt="Dragon"
+            className="w-full h-auto object-contain"
+          />
+        </div>
       </div>
 
       {/* Dynamic castle image with fixed positioning to bottom */}
