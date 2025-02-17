@@ -256,7 +256,7 @@ const Homesec = () => {
               <VerticalText text="EVENTS" />
             </div>
             
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-20 w-full">
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full">
               <ThreeDStackSlider events={events} />
             </div>
           </div>
