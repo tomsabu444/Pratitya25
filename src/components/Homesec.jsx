@@ -1,74 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
 import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
-import '@splidejs/splide/dist/css/splide.min.css';
-
-const EventSlider = ({ events }) => {
-  return (
-    <Splide
-      options={{
-        type: 'loop',
-        drag: 'free',
-        focus: 'center',
-        perPage: 3,
-        gap: '1rem',
-        arrows: false,
-        pagination: false,
-        autoScroll: {
-          speed: 1,
-          pauseOnHover: true,
-          pauseOnFocus: true,
-          rewind: false,
-        },
-      }}
-      extensions={{ AutoScroll }}
-    >
-      {events.map((event) => (
-        <SplideSlide key={event.id}>
-          <img
-            src={event.poster_url}
-            alt={event.name}
-            className="w-full h-full object-cover shadow-xl"
-            loading="lazy"
-          />
-        </SplideSlide>
-      ))}
-    </Splide>
-  );
-};
-
-const RandomEvent = ({ events }) => {
-  const [randomEvent, setRandomEvent] = useState(null);
-
-  useEffect(() => {
-    const updateImage = () => {
-      const randomIndex = Math.floor(Math.random() * events.length);
-      setRandomEvent(events[randomIndex]);
-    };
-
-    updateImage();
-    const interval = setInterval(updateImage, 2000);
-    return () => clearInterval(interval);
-  }, [events]);
-
-  if (!randomEvent) return null;
-
-  return (
-    <div className="w-full max-w-lg">
-      <div className="relative w-full flex justify-end">
-        <img
-          src={randomEvent.poster_url}
-          alt={randomEvent.name}
-          className="w-3/4 h-3/4 object-cover shadow-xl"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  );
-};
 
 const VerticalText = ({ text }) => {
   return (
@@ -86,6 +20,80 @@ const VerticalText = ({ text }) => {
           {letter}
         </span>
       ))}
+    </div>
+  );
+};
+
+const StackedCards = ({ events }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % events.length);
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [events.length]);
+
+  const handleClick = () => {
+    setCurrentIndex((prev) => (prev + 1) % events.length);
+  };
+
+  return (
+    <div className="relative h-[500px] w-full">
+      {events.map((event, index) => {
+        const position = (index - currentIndex + events.length) % events.length;
+        
+        return (
+          <motion.div
+            key={event.id}
+            className="absolute w-full cursor-pointer"
+            style={{
+              top: 0,
+              zIndex: events.length - position,
+            }}
+            animate={{
+              y: position * 8,
+              scale: 1,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut"
+            }}
+            onClick={handleClick}
+          >
+            <div className={`
+              w-full bg-black rounded-lg overflow-hidden
+              ${position === 0 ? 'border-2 border-gray-700' : 'border border-gray-800'}
+              shadow-[0_4px_12px_rgba(0,0,0,0.5)]
+            `}>
+              <div className="relative">
+                <img
+                  src={event.poster_url}
+                  alt={event.name}
+                  className="w-full h-[400px] object-cover"
+                  loading="lazy"
+                />
+                {/* Title bar at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-90 p-4">
+                  <h3 className="text-white text-sm font-medium">{event.name}</h3>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        );
+      })}
+      
+      {/* Navigation dots */}
+      <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {events.map((_, index) => (
+          <div
+            key={index}
+            className={`w-2 h-2 rounded-full transition-colors duration-300 
+              ${index === currentIndex ? 'bg-white' : 'bg-gray-600'}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -121,7 +129,7 @@ const Homesec = () => {
       name: "Market Festival Event 5",
       poster_url:
         "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
-    },
+    }
   ];
 
   return (
@@ -152,14 +160,9 @@ const Homesec = () => {
             <VerticalText text="FEATURED" />
           </div>
 
-          {/* Poster section with adjusted position */}
-          <div className="absolute right-8 bottom-10">
-            <div className="md:hidden">
-              <RandomEvent events={events} />
-            </div>
-            <div className="hidden md:block w-[800px]">
-              <EventSlider events={events} />
-            </div>
+          {/* Carousel section with adjusted position */}
+          <div className="absolute right-8 bottom-10 w-full max-w-lg">
+            <StackedCards events={events} />
           </div>
         </div>
       </div>
