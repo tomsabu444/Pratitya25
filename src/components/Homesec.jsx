@@ -32,7 +32,7 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
   const animationRef = useRef(null);
   const containerRef = useRef(null);
   const [currentItem, setCurrentItem] = useState(0);
-  const displayCount = 5;
+  const displayCount = 4;
 
   // If reversed, start from the end of the array
   const orderedEvents = isReversed ? [...events].reverse() : events;
@@ -141,7 +141,7 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
     }
 
     updatePositions();
-    animationRef.current = setInterval(moveToNext, 2000);
+    animationRef.current = setInterval(moveToNext, 3500);
 
     return () => {
       if (animationRef.current) {
