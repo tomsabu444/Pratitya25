@@ -2,6 +2,43 @@ import React, { useState, useEffect } from "react";
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
 import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+import '@splidejs/splide/dist/css/splide.min.css';
+
+const EventSlider = ({ events }) => {
+  return (
+    <Splide
+      options={{
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        perPage: 3,
+        gap: '1rem',
+        arrows: false,
+        pagination: false,
+        autoScroll: {
+          speed: 1,
+          pauseOnHover: true,
+          pauseOnFocus: true,
+          rewind: false,
+        },
+      }}
+      extensions={{ AutoScroll }}
+    >
+      {events.map((event) => (
+        <SplideSlide key={event.id}>
+          <img
+            src={event.poster_url}
+            alt={event.name}
+            className="w-full h-full object-cover shadow-xl"
+            loading="lazy"
+          />
+        </SplideSlide>
+      ))}
+    </Splide>
+  );
+};
 
 const RandomEvent = ({ events }) => {
   const [randomEvent, setRandomEvent] = useState(null);
@@ -84,7 +121,7 @@ const Homesec = () => {
       name: "Market Festival Event 5",
       poster_url:
         "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
-    }
+    },
   ];
 
   return (
@@ -117,7 +154,12 @@ const Homesec = () => {
 
           {/* Poster section with adjusted position */}
           <div className="absolute right-8 bottom-10">
-            <RandomEvent events={events} />
+            <div className="md:hidden">
+              <RandomEvent events={events} />
+            </div>
+            <div className="hidden md:block w-[800px]">
+              <EventSlider events={events} />
+            </div>
           </div>
         </div>
       </div>
