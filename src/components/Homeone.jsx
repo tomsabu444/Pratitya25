@@ -139,7 +139,7 @@ const HomeOne = () => {
           </span>
         </motion.h1>
 
-        <div className="pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125 max-[360px]:scale-[0.65]">
+        <div className="hidden md:block pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125">
           <FlipCountdown />
         </div>
       </div>
