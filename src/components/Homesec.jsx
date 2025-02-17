@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
+
 import FireParticles from "./FireParticles";
 
-// VerticalText component remains the same...
 const VerticalText = ({ text, className }) => {
   return (
     <div className={`flex flex-col items-start space-y-2 ${className}`}>
@@ -30,9 +30,9 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
   const animationRef = useRef(null);
   const containerRef = useRef(null);
   const [currentItem, setCurrentItem] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const displayCount = 4;
 
-  // If reversed, start from the end of the array
   const orderedEvents = isReversed ? [...events].reverse() : events;
   const totalItems = orderedEvents.length;
 
@@ -40,7 +40,6 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
     navigate(`/event/${eventId}`);
   };
 
-  // Rest of the component logic remains the same, just use orderedEvents instead of events
   const updatePositions = useCallback(() => {
     const items = itemsRef.current;
     if (!items || !items.length) return;
@@ -74,6 +73,22 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
       });
     }
   }, [currentItem, totalItems]);
+
+  const handlePrevClick = () => {
+    setCurrentItem((prev) => (prev - 1 + totalItems) % totalItems);
+  };
+
+  const handleNextClick = () => {
+    setCurrentItem((prev) => (prev + 1) % totalItems);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const items = itemsRef.current;
@@ -139,7 +154,11 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
     }
 
     updatePositions();
-    animationRef.current = setInterval(moveToNext, 3500);
+    
+    // Only start auto-rotation for desktop
+    if (!isMobile) {
+      animationRef.current = setInterval(moveToNext, 3500);
+    }
 
     return () => {
       if (animationRef.current) {
@@ -147,10 +166,10 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
       }
       gsap.killTweensOf(items);
     };
-  }, [currentItem, updatePositions, totalItems]);
+  }, [currentItem, updatePositions, totalItems, isMobile]);
 
   return (
-    <div className="stack-container" ref={containerRef}>
+    <div className="stack-container relative" ref={containerRef}>
       <div className="stack-slider">
         {orderedEvents.map((event, index) => (
           <div
@@ -167,13 +186,56 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
           </div>
         ))}
       </div>
-      <style jsx>{`
+
+      {/* Mobile Navigation Buttons - Updated positioning */}
+      {isMobile && (
+        <div className="absolute -bottom-8 left-0 right-0 flex justify-between px-4 pb-4 z-50">
+          <button 
+            onClick={handlePrevClick}
+            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white border-2 border-white/20 hover:bg-black/70 transition-colors"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button 
+            onClick={handleNextClick}
+            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white border-2 border-white/20 hover:bg-black/70 transition-colors"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      )}
+
+<style jsx>{`
         .stack-container {
           perspective: 1000px;
           perspective-origin: 50% 0%;
           width: 240px;
           height: 360px;
-          margin: 120px auto 0;
+          margin: 120px auto 60px; /* Updated margin to accommodate buttons */
           position: relative;
         }
 
