@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import rightImage from "../assets/home-section-one/mountain.png";
-import bottomRightImage from "../assets/home-section-one/mountain-front.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -27,19 +25,21 @@ const HomeOne = () => {
     const viewportHeight = window.innerHeight;
     const startPosition = isDesktop ? 55 : 80;
 
-    const scale = Math.max(
-      minScale,
-      maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
-    );
+    // Smoothed scale calculation with easing
+    const scrollProgress = Math.min(scrollPosition / viewportHeight, 1);
+    const easeInOutCubic = t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    const easedProgress = easeInOutCubic(scrollProgress);
+    
+    const scale = maxScale - (easedProgress * (maxScale - minScale));
 
-    let topPosition = Math.min(
-      isDesktop ? 65 : 95,
-      startPosition + (scrollPosition / viewportHeight) * 35
-    );
+    // Smoothed position calculation
+    let topPosition = startPosition + (easedProgress * 35);
     
     if (window.innerWidth < 360) {
       topPosition += 5;
     }
+
+    topPosition = Math.min(isDesktop ? 65 : 95, topPosition);
 
     return { scale, topPosition };
   };
@@ -67,7 +67,6 @@ const HomeOne = () => {
   const castledUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-desktop.webp?alt=media&token=01c29b7a-c6d3-4bc5-9beb-9823d6767bb5";
   const mUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain.webp?alt=media&token=50eac2ea-356f-41cc-9f00-0ba3c024f668";
   const mfUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain-front.webp?alt=media&token=69e2490f-9c13-4002-b7a0-1ce6e69fdf09";
-
 
   const { translateXLeft } = calculateSideElementsVisibility();
 
@@ -138,9 +137,9 @@ const HomeOne = () => {
           </span>
         </motion.h1>
 
-        <div className="hidden md:block pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125">
+        {/* <div className="hidden md:block pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125">
           <FlipCountdown />
-        </div>
+        </div> */}
       </div>
 
       {/* About Section */}
@@ -177,7 +176,7 @@ const HomeOne = () => {
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
           transformOrigin: "bottom left",
-          transition: "transform 0.1s ease-out, top 0.1s ease-out",
+          transition: "none",
           bottom: 0,
         }}
       >
@@ -197,7 +196,7 @@ const HomeOne = () => {
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
           transformOrigin: "bottom left",
-          transition: "transform 0.1s ease-out, top 0.1s ease-out",
+          transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), top 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           bottom: 0,
         }}
       >
