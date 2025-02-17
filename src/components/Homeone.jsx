@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
 import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
+import castledesk from "../assets/home-section-one/castle-desktop.png";
 import { motion } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -173,7 +174,7 @@ const HomeOne = () => {
       >
         <div className="w-full h-full overflow-x-hidden relative">
           <img
-            src={castleImageUrl}
+            src={castledesk}
             alt="Castle"
             className="w-[65%] h-auto object-contain absolute bottom-0 -left-20 max-h-[150vh] md:max-h-[160vh] lg:w-[45%] lg:-left-28 lg:max-h-[130vh]"
           />
