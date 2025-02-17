@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import background from "../assets/home-section-one/home-bg.png";
 import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
-import lanten from "../assets/home-section-one/lantengroup.png";
 import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
-import newImage from "../assets/home-section-one/castle-only.png";
-import { motion, useScroll, useTransform } from "framer-motion";
+import castledesk from "../assets/home-section-one/castle-desktop.png";
+import { motion } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
 const HomeOne = () => {
@@ -30,20 +28,18 @@ const HomeOne = () => {
     const viewportHeight = window.innerHeight;
     const startPosition = isDesktop ? 55 : 80;
 
-    const scale = Math.max(
-      minScale,
-      maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
-    );
+    // Smooth out the scale calculation using easeOutCubic
+    const progress = Math.min(1, scrollPosition / viewportHeight);
+    const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+    const scale = maxScale - easeOutCubic * (maxScale - minScale);
 
-    // Adjusted castle position for mobile-small screens
     let topPosition = Math.min(
       isDesktop ? 65 : 95,
       startPosition + (scrollPosition / viewportHeight) * 35
     );
     
-    // Small adjustment for very small screens
     if (window.innerWidth < 360) {
-      topPosition += 5; // Slight shift up for smallest screens
+      topPosition += 5;
     }
 
     return { scale, topPosition };
@@ -53,24 +49,36 @@ const HomeOne = () => {
 
   const calculateSideElementsVisibility = () => {
     const viewportHeight = window.innerHeight;
-    
     const translateXLeft = Math.max(
       0,
       0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
     );
-
     return { translateXLeft };
   };
 
   const { translateXLeft } = calculateSideElementsVisibility();
 
+  const castleImageUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-only.webp?alt=media&token=d6a23bfe-6998-473f-aba0-84f4dd2b98de";
+  const lantenMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Flantengroup.webp?alt=media&token=5bdbf9c7-06c5-477d-b3c1-67d393d10532";
+  const mobBg = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fhome-bg.webp?alt=media&token=3c29cbb1-56a3-4992-b160-636871f64c97";
+
+  // Common castle container styles
+  const castleContainerStyles = {
+    top: `${topPosition}vh`,
+    transform: `scale(${scale})`,
+    transformOrigin: "bottom left",
+    transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1), top 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
+    bottom: 0,
+  };
+
   return (
     <div className="relative overflow-x-hidden">
+      {/* Background Image */}
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : background})`,
-          transition: "transform 0.2s ease-out",
+          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : mobBg})`,
+          transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
       />
 
@@ -79,10 +87,11 @@ const HomeOne = () => {
         className="absolute top-0 left-0 h-screen w-full flex items-center justify-center -mt-14 md:-mt-8 overflow-hidden z-10 md:items-start"
         style={{
           transform: `translateY(${window.innerWidth >= 768 ? Math.min(scrollPosition * -0.7, 0) : scrollPosition * -0.8}px)`,
+          transition: "transform 0.2s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
       >
         <img
-          src={window.innerWidth >= 768 ? desktopLanten : lanten}
+          src={window.innerWidth >= 768 ? desktopLanten : lantenMobUrl}
           alt="Lanten Group"
           className="w-screen h-auto object-contain md:w-full md:max-h-[90vh] mt-20"
         />
@@ -93,10 +102,11 @@ const HomeOne = () => {
         className="absolute top-0 left-0 h-screen w-full flex flex-col items-center justify-center z-10 pointer-events-none"
         style={{
           transform: `translateY(${scrollPosition * -0.8}px)`,
+          transition: "transform 0.2s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
       >
         <motion.h1
-          className="text-6xl font-agraham md:text-7xl md:text-7xl xl:text-8xl mb-6 -mt-16 md:mt-8 text-center text-white drop-shadow-2xl relative max-[360px]:text-5xl max-[360px]:-mt-12"
+          className="text-6xl font-agraham md:text-7xl xl:text-8xl mb-6 -mt-16 md:mt-8 text-center text-white drop-shadow-2xl relative max-[360px]:text-5xl max-[360px]:-mt-12"
           style={{
             textShadow:
               "2px 2px 4px rgba(255, 20, 20, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(197, 69, 19, 0.8), 0 0 20px rgba(255, 174, 0, 0.87)",
@@ -111,9 +121,9 @@ const HomeOne = () => {
           </span>
         </motion.h1>
 
-        <div className="pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125 max-[360px]:scale-[0.65]">
+        {/* <div className="pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125 max-[360px]:scale-[0.65]">
           <FlipCountdown />
-        </div>
+        </div> */}
       </div>
 
       {/* About Section */}
@@ -122,7 +132,7 @@ const HomeOne = () => {
         style={{
           top: "150vh",
           transform: `translateX(${translateXLeft}%)`,
-          transition: "transform 0.2s ease-out",
+          transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
       >
         <h2 
@@ -146,17 +156,11 @@ const HomeOne = () => {
       {/* Mobile Castle Container */}
       <div
         className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden block md:hidden"
-        style={{
-          top: `${topPosition}vh`,
-          transform: `scale(${scale})`,
-          transformOrigin: "bottom left",
-          transition: "transform 0.1s ease-out, top 0.1s ease-out",
-          bottom: 0,
-        }}
+        style={castleContainerStyles}
       >
         <div className="w-full h-full overflow-x-hidden">
           <img
-            src={newImage}
+            src={castleImageUrl}
             alt="Castle"
             className="w-full h-auto object-contain absolute bottom-0"
           />
@@ -166,17 +170,11 @@ const HomeOne = () => {
       {/* Desktop Castle Container */}
       <div
         className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block"
-        style={{
-          top: `${topPosition}vh`,
-          transform: `scale(${scale})`,
-          transformOrigin: "bottom left",
-          transition: "transform 0.1s ease-out, top 0.1s ease-out",
-          bottom: 0,
-        }}
+        style={castleContainerStyles}
       >
         <div className="w-full h-full overflow-x-hidden relative">
           <img
-            src={newImage}
+            src={castledesk}
             alt="Castle"
             className="w-[65%] h-auto object-contain absolute bottom-0 -left-20 max-h-[150vh] md:max-h-[160vh] lg:w-[45%] lg:-left-28 lg:max-h-[130vh]"
           />
