@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import background from "../assets/home-section-one/home-bg.png";
 import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
-import lanten from "../assets/home-section-one/lantengroup.png";
 import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
-import newImage from "../assets/home-section-one/castle-only.png";
 import newImagedesktop from "../assets/home-section-one/castle-desktop.png";
 import rightImage from "../assets/home-section-one/mountain.png";
 // Add your new image import here
@@ -167,7 +164,7 @@ const HomeOne = () => {
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
+          Saintgits College of Engineering presents Pratitya 2025, a vibrant celebration of culture, music, and festivities on February 27, 2025! Festa Feasta is the heart of the event, bringing people together through lively performances, exciting activities, and a spirit of celebration. Experience the joy of togetherness, creativity, and unforgettable moments. Stay tuned for updates!
         </p>
       </div>
 
