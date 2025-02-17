@@ -4,10 +4,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Link } from "react-router-dom"
 
-import saintgits_mobile from "../assets/saintgits_mobile.png"
-import saintgits_logo from "../assets/saintgits_logo.png"
-import pratitya_logo from "../assets/pratitya_logo.png"
-
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Events", href: "/events" },
@@ -32,6 +28,9 @@ export const scale = {
 }
 
 const Navbar = () => {
+  const sdUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/navbar%2Fsaintgits_logo.webp?alt=media&token=0122bb68-9fda-4cf3-914a-ece282e8535b";
+  const smUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/navbar%2Fsaintgits_mobile.webp?alt=media&token=65a7b160-7e80-458e-b78c-59b2cdc1f18f";
+  const logoUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/favicon%2Ffavicon.webp?alt=media&token=9cedf97d-baa5-4f0e-a095-91cfeca08744";
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -137,7 +136,7 @@ const Navbar = () => {
             {/* Left Logo */}
             <Link to="/" className="flex-shrink-0">
               <img
-                src={isMobile ? saintgits_mobile : saintgits_logo}
+                src={isMobile ? smUrl : sdUrl}
                 alt="Logo"
                 className={`${isMobile ? "w-15 h-12" : "h-10"} mt-2 object-contain`}
               />
@@ -146,7 +145,7 @@ const Navbar = () => {
             {/* Center Logo */}
             <div className="absolute left-1/2 transform mt-3 -translate-x-1/2">
               <img
-                src={pratitya_logo}
+                src={logoUrl}
                 alt="Pratitya Logo"
                 className="h-20 object-contain"
               />
