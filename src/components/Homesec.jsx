@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { gsap } from 'gsap';
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
 import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
@@ -30,35 +30,39 @@ const ThreeDStackSlider = ({ events }) => {
   const containerRef = useRef(null);
   const [currentItem, setCurrentItem] = useState(0);
 
+  const updatePositions = useCallback(() => {
+    const items = itemsRef.current;
+    const totalItems = items.length;
+    const stackOffset = 40;
+
+    for (let i = 0; i < totalItems; i++) {
+      let itemIndex = (currentItem + i) % totalItems;
+      let item = items[itemIndex];
+      
+      if (i === 0) {
+        item.classList.add('front-card');
+      } else {
+        item.classList.remove('front-card');
+      }
+      
+      gsap.to(item, {
+        duration: 0.6,
+        y: -stackOffset * i,
+        rotationX: -10,
+        rotationY: 2,
+        z: -50 * i,
+        zIndex: totalItems - i,
+        scale: 1 - (i * 0.05),
+        opacity: i === totalItems - 1 ? 0.5 : 1,
+        ease: "power2.out"
+      });
+    }
+  }, [currentItem]);
+
   useEffect(() => {
     const items = itemsRef.current;
     const totalItems = items.length;
     const stackOffset = 40;
-    
-    function updatePositions() {
-      for (let i = 0; i < totalItems; i++) {
-        let itemIndex = (currentItem + i) % totalItems;
-        let item = items[itemIndex];
-        
-        if (i === 0) {
-          item.classList.add('front-card');
-        } else {
-          item.classList.remove('front-card');
-        }
-        
-        gsap.to(item, {
-          duration: 0.6,
-          y: -stackOffset * i,
-          rotationX: -10,
-          rotationY: 2,
-          z: -50 * i,
-          zIndex: totalItems - i,
-          scale: 1 - (i * 0.05),
-          opacity: i === totalItems - 1 ? 0.5 : 1,
-          ease: "power2.out"
-        });
-      }
-    }
 
     function moveToNext() {
       setCurrentItem((prev) => (prev + 1) % totalItems);
@@ -111,7 +115,7 @@ const ThreeDStackSlider = ({ events }) => {
       }
       gsap.killTweensOf(items);
     };
-  }, [currentItem]);
+  }, [currentItem, updatePositions]);
 
   return (
     <div className="stack-container" ref={containerRef}>
@@ -136,7 +140,7 @@ const ThreeDStackSlider = ({ events }) => {
           perspective-origin: 50% 0%;
           width: 240px;
           height: 360px;
-          margin: 120px 0 0;
+          margin: 120px auto 0;
           position: relative;
         }
 
@@ -242,17 +246,19 @@ const Homesec = () => {
         
         <FireParticles />
         
-        <div className="absolute inset-0 p-4 md:p-8">
-          <div className="absolute left-2 top-1/2 -translate-y-1/2">
-            <VerticalText text="FEATURED" />
-          </div>
-          
-          <div className="absolute right-2 top-1/2 -translate-y-1/2">
-            <VerticalText text="EVENTS" />
-          </div>
-          
-          <div className="absolute bottom-2 w-full pl-20">
-            <ThreeDStackSlider events={events} />
+        <div className="absolute inset-0 flex flex-col">
+          <div className="flex-1 relative">
+            <div className="absolute left-2 top-1/2 -translate-y-1/2">
+              <VerticalText text="FEATURED" />
+            </div>
+            
+            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+              <VerticalText text="EVENTS" />
+            </div>
+            
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-20 w-full">
+              <ThreeDStackSlider events={events} />
+            </div>
           </div>
         </div>
       </div>
