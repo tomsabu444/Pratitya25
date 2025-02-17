@@ -2,16 +2,17 @@ import React from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import rio_bg_img from "../assets/contact-section/rio-bg-img.jpg";
 
 const HomeEnd = () => {
+  const bgImageUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/contact-section%2Frio-bg-img.webp?alt=media&token=f2549ec0-730c-4d96-a4a7-c253e4c02de3";
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
       <div
         className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat -z-10"
         style={{
-          backgroundImage: `url(${rio_bg_img})`,
+          backgroundImage: `url(${bgImageUrl})`,
         }}
       />
 
