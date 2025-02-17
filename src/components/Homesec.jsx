@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
-
 import FireParticles from "./FireParticles";
 
 const VerticalText = ({ text, className }) => {
@@ -44,7 +43,8 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
     const items = itemsRef.current;
     if (!items || !items.length) return;
 
-    const stackOffset = 40;
+    const stackOffset = isMobile ? 30 : 40; // Reduced offset for mobile
+    const mobileTransformDuration = 0.4; // Faster animations for mobile
 
     for (let i = 0; i < totalItems; i++) {
       let itemIndex = (currentItem + i) % totalItems;
@@ -59,20 +59,36 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
       }
 
       const isInStack = i < displayCount;
-
-      gsap.to(item, {
-        duration: 0.6,
-        y: isInStack ? -stackOffset * i : -stackOffset * (displayCount - 1) + 100,
-        rotationX: isInStack ? -10 : -10,
-        rotationY: isInStack ? 2 : 2,
-        z: isInStack ? -50 * i : -50 * (displayCount - 1),
-        zIndex: isInStack ? totalItems - i : 0,
-        scale: isInStack ? 1 - (i * 0.05) : 1 - ((displayCount - 1) * 0.05),
-        opacity: isInStack ? (i === displayCount - 1 ? 0.5 : 1) : 0,
-        ease: "power2.out"
-      });
+      
+      // Simplified transforms for mobile
+      if (isMobile) {
+        gsap.to(item, {
+          duration: mobileTransformDuration,
+          y: isInStack ? -stackOffset * i : -stackOffset * (displayCount - 1) + 100,
+          z: isInStack ? -30 * i : -30 * (displayCount - 1),
+          scale: isInStack ? 1 - (i * 0.03) : 1 - ((displayCount - 1) * 0.03),
+          rotationX: -5,
+          rotationY: 0,
+          zIndex: isInStack ? totalItems - i : 0,
+          opacity: isInStack ? (i === displayCount - 1 ? 0.5 : 1) : 0,
+          ease: "power1.out"
+        });
+      } else {
+        // Desktop animation
+        gsap.to(item, {
+          duration: 0.6,
+          y: isInStack ? -stackOffset * i : -stackOffset * (displayCount - 1) + 100,
+          rotationX: isInStack ? -10 : -10,
+          rotationY: isInStack ? 2 : 2,
+          z: isInStack ? -50 * i : -50 * (displayCount - 1),
+          zIndex: isInStack ? totalItems - i : 0,
+          scale: isInStack ? 1 - (i * 0.05) : 1 - ((displayCount - 1) * 0.05),
+          opacity: isInStack ? (i === displayCount - 1 ? 0.5 : 1) : 0,
+          ease: "power2.out"
+        });
+      }
     }
-  }, [currentItem, totalItems]);
+  }, [currentItem, totalItems, isMobile]);
 
   const handlePrevClick = () => {
     setCurrentItem((prev) => (prev - 1 + totalItems) % totalItems);
@@ -94,30 +110,41 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
     const items = itemsRef.current;
     if (!items || !items.length) return;
 
-    const stackOffset = 40;
-
-    function moveToNext() {
-      setCurrentItem((prev) => (prev + 1) % totalItems);
-    }
+    const stackOffset = isMobile ? 30 : 40;
 
     items.forEach((item, index) => {
       if (!item) return;
 
       const isInStack = index < displayCount;
 
-      gsap.set(item, {
-        y: isInStack ? -stackOffset * index : -stackOffset * (displayCount - 1) + 100,
-        rotationX: -10,
-        rotationY: 2,
-        z: isInStack ? -50 * index : -50 * (displayCount - 1),
-        zIndex: isInStack ? totalItems - index : 0,
-        scale: isInStack ? 1 - (index * 0.05) : 1 - ((displayCount - 1) * 0.05),
-        transformOrigin: "50% 0%",
-        opacity: isInStack ? (index === displayCount - 1 ? 0.5 : 1) : 0,
-      });
+      // Simplified initial transforms for mobile
+      if (isMobile) {
+        gsap.set(item, {
+          y: isInStack ? -stackOffset * index : -stackOffset * (displayCount - 1) + 100,
+          z: isInStack ? -30 * index : -30 * (displayCount - 1),
+          rotationX: -5,
+          rotationY: 0,
+          scale: isInStack ? 1 - (index * 0.03) : 1 - ((displayCount - 1) * 0.03),
+          zIndex: isInStack ? totalItems - index : 0,
+          opacity: isInStack ? (index === displayCount - 1 ? 0.5 : 1) : 0,
+        });
+      } else {
+        // Desktop setup
+        gsap.set(item, {
+          y: isInStack ? -stackOffset * index : -stackOffset * (displayCount - 1) + 100,
+          rotationX: -10,
+          rotationY: 2,
+          z: isInStack ? -50 * index : -50 * (displayCount - 1),
+          zIndex: isInStack ? totalItems - index : 0,
+          scale: isInStack ? 1 - (index * 0.05) : 1 - ((displayCount - 1) * 0.05),
+          transformOrigin: "50% 0%",
+          opacity: isInStack ? (index === displayCount - 1 ? 0.5 : 1) : 0,
+        });
+      }
     });
 
-    if (containerRef.current) {
+    // Mouse movement effect only for desktop
+    if (containerRef.current && !isMobile) {
       const handleMouseMove = (e) => {
         if (!items || !items.length) return;
 
@@ -151,20 +178,27 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
           });
         });
       });
-    }
 
+      return () => {
+        containerRef.current.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+  }, [currentItem, updatePositions, totalItems, isMobile]);
+
+  useEffect(() => {
     updatePositions();
     
-    // Only start auto-rotation for desktop
+    // Auto-rotation only for desktop
     if (!isMobile) {
-      animationRef.current = setInterval(moveToNext, 3500);
+      animationRef.current = setInterval(() => {
+        setCurrentItem((prev) => (prev + 1) % totalItems);
+      }, 3500);
     }
 
     return () => {
       if (animationRef.current) {
         clearInterval(animationRef.current);
       }
-      gsap.killTweensOf(items);
     };
   }, [currentItem, updatePositions, totalItems, isMobile]);
 
@@ -187,7 +221,7 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
         ))}
       </div>
 
-      {/* Mobile Navigation Buttons - Updated positioning */}
+      {/* Mobile Navigation Buttons */}
       {isMobile && (
         <div className="absolute -bottom-8 left-0 right-0 flex justify-between px-4 pb-4 z-50">
           <button 
@@ -229,13 +263,13 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
         </div>
       )}
 
-<style jsx>{`
+      <style jsx>{`
         .stack-container {
           perspective: 1000px;
           perspective-origin: 50% 0%;
           width: 240px;
           height: 360px;
-          margin: 120px auto 60px; /* Updated margin to accommodate buttons */
+          margin: 120px auto 60px;
           position: relative;
         }
 
@@ -296,7 +330,7 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
 };
 
 const Homesec = () => {
-  const theyyamMobUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4";
+  const theyyamMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4";
   const theyyamDesktopUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Ftheyyam-desktop.webp?alt=media&token=4652255a-0519-4975-8a0b-75cfed4c05dd";
 
   const events = [

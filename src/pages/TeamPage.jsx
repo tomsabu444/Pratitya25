@@ -1,19 +1,5 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import AnimatedBubbles from "../components/AnimatedBubbles";
-
-import tom from "../assets/team_img/TomS.webp";
-import jishnu from "../assets/team_img/JishnuM.webp";
-import alwin from "../assets/team_img/AlwinR.webp";
-import abel from "../assets/team_img/AbelEJ.webp";
-import alhaarith from "../assets/team_img/AlHaarithH.webp";
-import christie from "../assets/team_img/ChristieJ.webp";
-import vimal from "../assets/team_img/VimalS.webp";
-import megha from "../assets/team_img/MeghaR.webp";
-import abin from "../assets/team_img/AbinR.webp";
-import aleena from "../assets/team_img/AleenaP.webp";
-import hari from "../assets/team_img/HariN.webp";
-import rishikesh from "../assets/team_img/RishikeshB.webp";
-
 const LongTeamCard = ({ name, image }) => (
   <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] relative">
     <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] left-0 top-0 absolute bg-white rounded-[15px]" />
@@ -27,6 +13,20 @@ const LongTeamCard = ({ name, image }) => (
     </div>
   </div>
 );
+const jmUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FJishnuM.webp?alt=media&token=42c43f54-4de8-43c8-81f4-394ce6e727c9";
+const awUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FAlwinR.webp?alt=media&token=554e9914-9a5d-4c51-981e-154bd333d154";
+const abUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FAbelEJ.webp?alt=media&token=ea9ab58d-49ad-43f3-861a-b3c551bcfdf5";
+const abnUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FAbinR.webp?alt=media&token=13f61581-6b56-42da-ad4c-e5d6101594f6";
+const ahUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FAlHaarithH.webp?alt=media&token=e05e61c1-bc5b-4099-b6e6-92b8e35ea8ec";
+const vmUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FVimalS.webp?alt=media&token=26c69788-23eb-4101-b3d6-a1762477f1e1";
+const chrUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FChristieJ.webp?alt=media&token=24a7ec0a-c236-4ea4-996d-1eb859eeb65b";
+const rhUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FRishikeshB.webp?alt=media&token=ae8df796-16f0-4ab2-b6af-672feea3c03c";
+const hrUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FHariN.webp?alt=media&token=6935f418-f26f-433b-9fbd-3be96da9a5c5";
+const alUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FAleenaP.webp?alt=media&token=20d02c99-64a9-4334-bf18-fda01211d6a7";
+const tmUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FTomS.webp?alt=media&token=d998f848-6409-4849-b5ef-ef3a7f479f18";
+const jUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2Fbdeeba99-4bec-4a35-97da-fe21d4685db3.webp?alt=media&token=268a3129-71a6-4c36-b9f6-68714be30c6e";
+const mghUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/team_img%2FMeghaR.webp?alt=media&token=370682b8-1c87-48a0-99b0-a666d4b2a193";
+
 
 const ShortTeamCard = ({ name, image }) => (
   <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] relative">
@@ -120,7 +120,7 @@ const TeamPage = () => {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <ShortTeamCard name="Jishnu Mohan" image={jishnu} />
+            <ShortTeamCard name="Jishnu Mohan" image={jmUrl} />
           </div>
         </div>
 
@@ -129,8 +129,8 @@ const TeamPage = () => {
           {/* Sub heads section */}
           <div className="fade-section w-[270px] sm:w-[289px] h-[366px] relative mb-32 mt-24 lg:my-0">
             <div className="w-[123px] h-[366px] left-[184px] top-0 absolute flex-col justify-start items-start gap-[40px] lg:gap-[130px] inline-flex">
-              <StackShortTeamCard name="Alwin Roy" image={alwin} />
-              <StackLongTeamCard name="Abel Eapen Jacob" image={abel} />
+              <StackShortTeamCard name="Alwin Roy" image={awUrl} />
+              <StackLongTeamCard name="Abel Eapen Jacob" image={abUrl} />
             </div>
             <div className="w-[104px] flex-col justify-center items-center inline-flex my-32 lg:mt-45 translate-y-[10px] lg:translate-y-[55px] pl-5 lg:pl-0">
               <div
@@ -148,8 +148,8 @@ const TeamPage = () => {
           {/* Website Design Team */}
           <div className="fade-section w-[270px] sm:w-[289px] h-[366px] relative my-12 lg:my-0">
             <div className="w-[123px] h-[366px] left-[184px] top-0 absolute flex-col justify-start items-start gap-[40px] lg:gap-[130px] inline-flex">
-              <StackLongTeamCard name="Al Haarith Hakkim" image={alhaarith} />
-              <StackShortTeamCard name="Christie Jiju" image={christie} />
+              <StackLongTeamCard name="Al Haarith Hakkim" image={ahUrl} />
+              <StackShortTeamCard name="Christie Jiju" image={chrUrl} />
             </div>
             <div className="w-[104px] flex-col justify-center items-center inline-flex my-32 lg:mt-65 translate-y-[10px] lg:translate-y-[55px] pl-5 lg:pl-0">
               <div
@@ -184,17 +184,17 @@ const TeamPage = () => {
 
             {/* First row of cards */}
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-6 lg:gap-x-16 lg:ml-20 lg:translate-x-[290px]">
-              <LongTeamCard name="Vimal S Thomas" image={vimal} />
-              <ShortTeamCard name="Megha Rajeev" image={megha} />
+              <LongTeamCard name="Vimal S Thomas" image={vmUrl} />
+              <ShortTeamCard name="Megha Rajeev" image={mghUrl} />
             </div>
           </div>
 
           {/* Second row of cards */}
           <div className="grid grid-cols-2 lg:grid-cols-none lg:flex lg:flex-row lg:justify-center lg:gap-16 gap-x-12 gap-y-12 lg:mt-8 w-full">
-            <ShortTeamCard name="Abin Roy" image={abin} />
-            <LongTeamCard name="Aleena P Mathews" image={aleena} />
-            <LongTeamCard name="Hari Narayanan" image={hari} />
-            <ShortTeamCard name="Rishikesh Babu" image={rishikesh} />
+            <ShortTeamCard name="Abin Roy" image={abnUrl} />
+            <LongTeamCard name="Aleena P Mathews" image={alUrl} />
+            <LongTeamCard name="Hari Narayanan" image={hrUrl} />
+            <ShortTeamCard name="Rishikesh Babu" image={rhUrl} />
           </div>
         </div>
 
@@ -204,12 +204,12 @@ const TeamPage = () => {
             <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] relative -left-[20px] lg:left-0 lg:translate-y-[120px] lg:translate-x-[70px] translate-y-[200px]">
               <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] left-0 top-0 absolute bg-white rounded-[15px]" />
               <img
-                src={tom}
+                src={jUrl}
                 alt="Justin"
                 className="absolute top-0 w-[123px] lg:w-[150px] h-[123px] lg:h-[150px] object-cover rounded-tl-[15px] rounded-tr-[15px]"
               />
               <div className="w-full absolute bottom-[2px] lg:bottom-[3px] lg:translate-y-[0.1px] text-center text-black text-[24px] lg:text-[30px] font-['Rancho'] px-1">
-                Justin Thomas
+              Justin Thomas
               </div>
             </div>
           </div>
@@ -218,7 +218,7 @@ const TeamPage = () => {
             <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] relative -left-[20px] lg:left-0 lg:translate-y-[120px] lg:translate-x-[-130px]">
               <div className="w-[123px] lg:w-[150px] h-[170px] lg:h-[210px] left-0 top-0 absolute bg-white rounded-[15px]" />
               <img
-                src={tom}
+                src={tmUrl}
                 alt="Tom Sabu"
                 className="absolute top-0 w-[123px] lg:w-[150px] h-[123px] lg:h-[150px] object-cover rounded-tl-[15px] rounded-tr-[15px]"
               />
