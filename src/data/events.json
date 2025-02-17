@@ -1,310 +1,667 @@
 [
   {
-    "id": "PT-01",
-    "name": "Best Actor",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBA-min.jpg?alt=media&token=5bb0701f-84c7-47f6-b377-ec9ad93b70ac",
-    "description": "This event has two rounds. First is the preliminary round which is about 4-8 minutes act based on their own choice from which only the best 5 qualify to the final. In the final round, only 3-5 minutes duration is allowed based on the situation given by us.",
+    "id": "festive_stalls",
+    "name": "Festive Stalls",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FFestive%20Stalls.webp?alt=media&token=61498f9f-79a9-4e51-8c21-23e8104a2ec3",
+    "description": "Step into a world of fun and flair at our vibrant stall! Get your hands adorned with intricate Mehandi designs, let your personality shine with stunning face paint, and enjoy exciting games that will keep the energy high. Whether you're here for artistry, adventure, or just some good times, we’ve got something for everyone! Join us and add a splash of color to your day!",
     "award": {
-      "first": "2000",
-      "second": "N/A"
-    },
-    "regulations": ["No costumes allowed"],
-    "people": [
-      {
-        "position": "Head",
-        "contact_name": "Abein Reni Varghese",
-        "contact_phone": "9656066561"
-      },
-      {
-        "position": "Subhead",
-        "contact_name": "Navaneeth Krishnan",
-        "contact_phone": "9188652293"
-      },
-      {
-        "position": "Subhead",
-        "contact_name": "Rohith H R",
-        "contact_phone": "9383480394"
-      }
-    ],
-    "form": "https://forms.gle/2amFLnLXvbEfCE6y7"
-  },
-  {
-    "id": "PT-02",
-    "name": "Best Choreo",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBest%20Choreo.jpg?alt=media&token=f6afc8d5-7b88-4f47-912d-ebb202211acc",
-    "description": "Pratitya '24 proudly presents BEST CHOREO, an electrifying platform to showcase your dance prowess. Gather your crew and join us to set the dance floor on fire.",
-    "award": {
-      "first": "3000",
-      "second": "2000"
+      "first": "",
+      "second": ""
     },
     "regulations": [
-      "Finals Maximum time limit: 7 Minutes",
-      "Minimum number of participants: 8",
-      "8 teams will be selected for finals after screening"
+      ""
     ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Vyshnavi Pal K V",
-        "contact_phone": "7994332551"
+        "contact_name": "Manna Alma Sam",
+        "contact_phone": "9188566602"
       },
       {
         "position": "Subhead",
-        "contact_name": "Sarayu Raj",
-        "contact_phone": "8078261284"
+        "contact_name": "Mervin Mathew Shibu",
+        "contact_phone": "8590832820"
       },
       {
         "position": "Subhead",
-        "contact_name": "Adwetha Rajesh",
-        "contact_phone": "7994091096"
+        "contact_name": "Naveen Raj",
+        "contact_phone": "9562771575"
       }
     ],
-    "form": "https://forms.gle/vAu9LezRuJMAXBS87"
+    "form": "https://pratitya.in/events/festive_stalls"
   },
   {
-    "id": "PT-03",
-    "name": "Best Singer",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBest%20Singer.jpg?alt=media&token=75cb3286-7811-4cd0-9593-2d9d1f3df59e",
-    "description": "Join us for an unforgettable evening celebrating vocal talent at its finest. From soul-stirring ballads to electrifying performances, our event showcases the cream of the crop in the world of music.",
+    "id": "dramatique",
+    "name": "Dramatique - Best Actor",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FBest%20Actor.webp?alt=media&token=0b6bee36-52e2-4af7-b2dc-11ab2e4cc49e",
+    "description": "BEST ACTOR, the platform where you can be the spotlight by showcasing your passion.",
     "award": {
-      "first": "N/A",
-      "second": "N/A"
+      "first": "1500",
+      "second": "500"
     },
-    "regulations": [],
+    "regulations": [
+      "Preliminary Round :  Movie Scene Reenactment",
+      "Each participant must prepare a 5-minute-long movie scene in advance.",
+
+      "The audio clip of the selected scene will be played, and the participant must act it out accordingly.",
+
+      "Lip-syncing, expressions, body language, and overall performance will be judged.",
+
+      "Intermediate Round:  Property Round",
+      "Each participant will be provided with a random prop.",
+
+      "The participant must incorporate the given prop into their performance creatively.",
+
+      "The duration of the act is 2 minutes.",
+
+      "Judging will be based on creativity, expression, and effective use of the property.",
+
+      "Final Round : Improvisation Round",
+      "Each participant will be given a situation on the spot.",
+
+      "They must enact the given scenario creatively and convincingly.",
+
+      "The time limit for this round will be 2 minutes."
+    ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Risvana S",
-        "contact_phone": "9037306540"
+        "contact_name": "Neena Mathew",
+        "contact_phone": "8848873468"
       },
       {
         "position": "Subhead",
-        "contact_name": "Visakh V",
-        "contact_phone": "8590320345"
+        "contact_name": "Jibin Bino",
+        "contact_phone": "8281354119"
       },
       {
         "position": "Subhead",
-        "contact_name": "Rosini Benson",
-        "contact_phone": "7560990745"
+        "contact_name": "Aswin S Kumar",
+        "contact_phone": "8921546245"
       }
     ],
-    "form": "https://forms.gle/M6uZjkM2AaabanAn9"
+    "form": "https://forms.gle/X36iymNVJpmTAZvv5",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLScDhAwdxoXLz910k-QAI1rvB7goyAKO9OJnpvUBozMxsyVt8Q/viewform?usp=sharing"
   },
   {
-    "id": "PT-04",
-    "name": "Picture Perfect",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FPicture%20Perfect-min.jpg?alt=media&token=f9e3874b-9077-4054-bc55-64ea9edd7ad0",
-    "description": "A theme will be published on a particular topic and students have to submit pictures that resembles the given topic accurately. The pictures will be analysed by judges and the picture that resembles the topic in the best way will be selected for first and second prize.",
+    "id": "Retro_Revival",
+    "name": "Retro Revival",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FRecreation.webp?alt=media&token=bd425ac1-30bf-4cd1-8365-ef4616018303",
+    "description": "Retro Revival is an exciting competition that challenges participants to recreate iconic movie scenes through acting and cinematography. Contestants must capture the essence of the original scene and this event tests participants' attention to detail and cinematic creativity.",
     "award": {
-      "first": "N/A",
-      "second": "N/A"
+      "first": "1000",
+      "second": "500"
     },
-    "regulations": [],
+    "regulations": [
+      "1.There will be screening before the final round",
+      "2. The shortlisted participants will enter the final round which will be conducted in the main stage.",
+      "3. Performances must adhere to specified time limits",
+      "(Max.: 5minutes, Min:2 minutes)",
+      "4.Maximum no of teammates is 8",
+      "5.Violation of any rules may result in disqualification"
+    ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Alen Biju Thomas",
-        "contact_phone": "9526468452"
+        "contact_name": "Aaron Moni Roy",
+        "contact_phone": "9947841486"
       },
       {
         "position": "Subhead",
-        "contact_name": "Aron Alex",
-        "contact_phone": "9567234600"
+        "contact_name": "Gouri Parvathy M",
+        "contact_phone": "8590509964"
       },
       {
         "position": "Subhead",
-        "contact_name": "Amal Babu",
-        "contact_phone": "8590910336"
+        "contact_name": "Aaron Prakash",
+        "contact_phone": "8921201498"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSdWEP4rYDtzucy-yPbcrztU7wQXbsihGcwpx6LeD2yeBeEN3w/viewform"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSfIMt3xzEiadz3sNZvdYcLknWQCYpf4mfG0Dcfb6zJaXFKSCQ/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLScB_GnJQ3_g4G4Et9e6EpX3tJx0DtxhmbOtzzPgvvGrNRIFeA/viewform?usp=header"
   },
   {
-    "id": "PT-05",
-    "name": "Marketing & Selling",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
-    "description": "Two round competition featuring marketing and product selling challenges. Round 1 involves marketing strategy presentation, Round 2 involves actual product selling simulation.",
+    "id": "Tango_Double",
+    "name": "Tango Dobule",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FDuo%20Dance.webp?alt=media&token=a7ba41f1-84ab-45fb-85a8-b28f1a977a25",
+    "description": "The Duo Dance Competition is an exciting three-level event where pairs compete to showcase their synchronization, creativity, and technique.",
     "award": {
-      "first": "N/A",
+      "first": "1000",
+      "second": "500"
+    },
+    "regulations": [
+      "1-The competition consists of three rounds:",
+
+      "1st Round: Online selection.",
+      "2nd Round: On-stage performance with prepared choreography.",
+      "3rd Round: Spot choreography round.",
+      "2-Contestants must submit a 2-minute video of their planned stage performance for the online selection round.",
+
+      "3-Performance time limit: Maximum 5 minutes. Participants must complete their performance within this time.",
+
+      "4-Participants must arrange their own costumes and audio.",
+
+      "5-Each team can have a maximum of 2 members.",
+
+      "6-Duo can consist of any gender combination:",
+      "   A boy and a girl",
+      "   Two girls",
+      "   Two boys",
+      "7-No substitutes will be allowed once the competition starts.",
+      "8- Props and lifts must be used safely. Props should not damage the stage or cause inconvenience to other contestants.",
+
+      "9-Contestants are free to choose any dance style, including hip-hop, freestyle, classical, etc.",
+
+      "10-Selected contestants cannot back out at the last minute.",
+
+      "⚠️ The judges' decision will be final",
+ 
+      "Rules for Round 3 (Spot Choreography Round)",
+      "The top 3 teams from Round 2 will advance to Round 3.",
+
+      "1-Each team will be given a random song and 3 minutes to create a choreography.",
+
+      "2-No extra time will be provided for preparation.",
+
+      "3-The song assigned cannot be changed."
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Adithya Krishna KS",
+        "contact_phone": "8281716942"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Devatha D",
+        "contact_phone": "6238788309"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Gadha Sabu",
+        "contact_phone": "8129254768"
+      }
+    ],
+    "form": "https://forms.gle/eFFnbkYng4eLpATt8",
+    "feedback_form": "https://forms.gle/f2KgCcR1Urr1yqUV9"
+  },
+  {
+    "id": "Canvas_Carnival",
+    "name": "Canvas Carnival",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FDrawing%20Competition.webp?alt=media&token=4e6b2121-94cd-4821-990b-8547ab52d321",
+    "description": "Join us for an exciting Drawing Competition, where your artistic skills will take center stage! Whether you're a seasoned artist or just love to sketch, this is your chance to showcase your talent.",
+    "award": {
+      "first": "1000",
       "second": "N/A"
     },
     "regulations": [
-      "Time limit: 1 minute preparation, 2 minutes presentation per round",
-      "Presentation can be in Malayalam or English",
-      "Participants must use time effectively"
+      "1.All participants must undergo a screening process (if  the number of participants will be more than 15) and  followed by preliminary rounds before advancing to the finals.", 
+      "2.Shortlisted participants will compete in the final round, which will take place on the main stage. ",
+      "3.Contestants will be assessed based on their skill, intelligence, personality, and creativity through various rounds.",
+      "4.The ultimate evaluation of the judges will be final."
     ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Aswin kumar M",
-        "contact_phone": "9074300849"
+        "contact_name": "Prahlad Prakash",
+        "contact_phone": "7736861624"
       },
       {
         "position": "Subhead",
-        "contact_name": "Shawn A Chirappuram",
-        "contact_phone": "9656996744"
+        "contact_name": "Harikeerthana S",
+        "contact_phone": "9744078798"
       },
       {
         "position": "Subhead",
-        "contact_name": "Dilsha Youseph",
-        "contact_phone": "9496126559"
+        "contact_name": "Pournami",
+        "contact_phone": "6282432802"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSeSNWQWYk8GlPhIlgTOhsOTdabFVENcNAmJoQWqUjOXt6TTVg/viewform"
+    "form": "https://forms.gle/sb9sthi2rEJ31hLs8",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSdw85rfTlM9eDS8Tb-8wHqANuZ26ZiqSeOW8ZAsnS8lTlcnpg/viewform?usp=sharing"
   },
   {
-    "id": "PT-06",
-    "name": "Mirage Maestro",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMirage%20Maestro-min.jpg?alt=media&token=592e78a5-23bf-42ae-9cba-47f4d174d94b",
-    "description": "Get ready for an unforgettable day filled with entertainment and excitement. Chase your dreams and reach for the stars!",
+    "id": "Celista_Star",
+    "name": "Celista Star",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FCelista%20Star.webp?alt=media&token=a0713f07-8862-4548-8a1e-a0c9dee3c51c",
+    "description": "Get ready for an electrifying day packed with non-stop entertainment, thrilling moments, and endless excitement! Dare to dream big, reach for the stars, and make unforgettable memories along the way!",
     "award": {
       "first": "2000",
       "second": "500"
     },
     "regulations": [
-      "Screening and prelims before final round",
-      "Shortlisted participants enter final round on main stage",
-      "Skills, personality, behavior and intelligence will be tested",
-      "Judges' decision is final"
+      "1.All participants must undergo a screening process (if  the number of participants will be more than 15) and  followed by preliminary rounds before advancing to the finals.",  
+      "2.Shortlisted participants will compete in the final round, which will take place on the main stage. ",
+      "3.Contestants will be assessed based on their skill, intelligence, personality, and creativity through various rounds.  ",
+      "4.The ultimate evaluation of the judges will be final."
     ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Lea Sony Jacob",
-        "contact_phone": "7510127911"
+        "contact_name": "Abhinand S",
+        "contact_phone": "9072292012"
       },
       {
         "position": "Subhead",
-        "contact_name": "Reuben Punnoose Abraham",
-        "contact_phone": "9400396507"
+        "contact_name": "Hridya Syju",
+        "contact_phone": "8304907709"
       },
       {
         "position": "Subhead",
-        "contact_name": "Naveen Prince Thomas",
-        "contact_phone": "9188327753"
+        "contact_name": "Megha Mary",
+        "contact_phone": "9744530574"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLScMUx9o-sQG_RKAIaO1vyjAEcdJqr33z7rTPUHIsGZH-NWyIg/viewform"
+    "form": "https://forms.gle/mrBSvWcaw687q1w96",
+    "feedback_form": "https://forms.gle/3L7y9QxSa9M7VRfT9"
   },
   {
-    "id": "PT-07",
-    "name": "Fast Fingers Fiesta",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FFast%20Fingers%20Fiesta-min.jpg?alt=media&token=ab95c2b6-0731-49df-8b6c-2c80846a170e",
-    "description": "A typing competition to test speed and accuracy.",
+    "id": "Arte_Henna",
+    "name": "Arte Henna",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2Fart%20henna.webp?alt=media&token=14d4141f-0ae3-4a8f-9f8d-94a48383b8c6",
+    "description": "Mehandi competition is an event where participants showcase their skills in creating intricate henna designs on hands or feet. The competition focuses on factors like design complexity, creativity, symmetry, and the richness of the henna stain.",
     "award": {
-      "first": "N/A",
-      "second": "N/A"
+      "first": "1000",
+      "second": "500"
     },
-    "regulations": [],
+    "regulations": [
+      "Maximum 20 participants",
+      "Theme: Bridal Mehandi Designs",
+      "Mehandi cones will be provided",
+      "Participants must bring a person for design application"
+    ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Sreyas Raj P",
-        "contact_phone": "9400214281"
+        "contact_name": "Noorajahan",
+        "contact_phone": "8714826143"
       },
       {
         "position": "Subhead",
-        "contact_name": "Alinae Ann Shibu",
-        "contact_phone": "9747244704"
+        "contact_name": "Muhammed Easa K.A",
+        "contact_phone": "8921046812"
       },
       {
         "position": "Subhead",
-        "contact_name": "Siffin Saji",
-        "contact_phone": "8086839854"
+        "contact_name": "Nesrin N Khaleel",
+        "contact_phone": "9495166786"
       }
     ],
-    "form": "https://forms.gle/hDJa2Y6AyxGL4qx28"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSfpnIZw2_5cEgqiivyOmmndCagsUcNV1K5oMrwfJum6w-4tOg/viewform",
+    "feedback_form": "https://surveyheart.com/form/67af1bcccb33bf392552ead6"
   },
   {
-    "id": "PT-08",
-    "name": "Arabian Quest",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FArabian%20Quest-min.jpg?alt=media&token=05332a6c-ecd7-4f8e-b8c8-a51eddf8c5b2",
-    "description": "A magical treasure hunt inspired by Arabian Nights! Follow clues, solve riddles, and explore the campus through the enchanting theme of the East.",
+    "id": "Voz_de_singing",
+    "name": "Voz de Fiesta",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FVoz%20de%20Fiesta.webp?alt=media&token=007f8c25-f760-4179-9f4c-8429a79d8cf8",
+    "description": "Music is an emotion which reveals the identity of a soul💫. The mesmerizing power of it, takes one to the galaxy of feelings✨🎶. The hunt for the best singer of Pratitya 2025 starts up🎧.",
     "award": {
-      "first": "N/A",
+      "first": "1000",
+      "second": "500"
+    },
+    "regulations": [
+      "There won’t be any spot registrations. ",
+      "Malayalam, Tamil and Hindi songs are only allowed.",
+      "Unplugged/ cover versions may not be used. ",
+      "There will be three rounds.",
+      "Participants must send their karaokes to the coordinator prior to the competition. ",
+      "Submit your karaoke to the respective coordinators through whatsapp or through mail – neethuem2003@gmail.com ",
+      "Preliminary round – Semiclassical",
+      "The participants can sing a Semiclassical song of their own choice with karoke.",
+      "Time limit: 5 minutes ",
+      "Final round ",
+      "Round 1-melody  ",
+      "   The participants can sing a melody song of their own choice with karoke.",
+      "   Time limit: 5 min",
+      "Round 2- fast",
+      "   Any fast beat song.",
+      "   Time limit: 5 minutes"
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Neethu E M",
+        "contact_phone": "9061721424"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Gayathri V",
+        "contact_phone": "7907960327"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Bismi basheer",
+        "contact_phone": "9061630877"
+      }
+    ],
+    "form": "https://docs.google.com/forms/d/1YMZ0V2-dNN9cvLe_pW3g-N27Bn40fhRKqvltEatC5Lc/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/1DFdKG_Q9_1XkGG_4RmERwdO2g2V75EGustKo_YaSIbE/viewform"
+  },
+  {
+    "id": "Rythmic_Rhapsody",
+    "name": "Rythmic Rhapsody",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FPratitya%20Poster%20Choreo.webp?alt=media&token=36db3f56-af89-44b3-b1b2-7ded3bae2663",
+    "description": "Pratitya '25 proudly presents BEST CHOREO💥, an electrifying platform to showcase your dance prowess. We eagerly anticipate your participation*. Teams interested in joining can register using this google form.  Prelims/Screening will be conducted following the registration deadline**.",
+    "award": {
+      "first": "3000",
+      "second": "2000"
+    },
+    "regulations": [
+      "❗❗Rules and Regulations - Prelims❗❗",
+
+      "📌Participants are requested to send 3 minute video of their choreo.",
+      "📌Minimum no of participants- 8",
+      "📌All the members should perform in the video.",
+      "📌No editing in any form should be done in the video.",
+      "📌Beginning to end it should showcase a single video without any clips in between.",
+      "📌Members for the final performance should only be present in the video.",
+      "📌Costumes are not mandatory.",
+      "📌Video should be send by 19/02/2025.",
+      "📌Any of the teams who are not following the above mentioned rules will be disqualified.",
+      "❗❗Rules and Regulations - Finals❗❗",
+
+      "📌Maximum time limit- 7 Minutes",
+      "📌Vulgar costumes should be avoided"
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Megha Rajeev",
+        "contact_phone": "7025432373"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Sivanarayan M B",
+        "contact_phone": "9961122256"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Nishanth Manu Koshy",
+        "contact_phone": "8547386460"
+      }
+    ],
+    "form": "https://forms.gle/V9SrWJ62ZspqHMmh7",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSeONypmd4rzOwTWZbrOHspZLbvltQoI5fhq28J9NF69R1o-vQ/viewform?usp=dialog"
+  },
+  {
+    "id": "Best_manager",
+    "name": "Maestro Mind – Best Manager",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FBest%20Manager.webp?alt=media&token=ace4a109-f6c7-42d9-b199-d2b21fb76c11",
+    "description": "The Best Manager Competition is the ultimate test of leadership, strategic thinking, and crisis management. Designed to push participants to their limits, this multi-round event simulates real-world business challenges where individuals must showcase their decision making skills, problem-solving abilities, and resilience under pressure.",
+    "award": {
+      "first": "2000",
+      "second": ""
+    },
+    "regulations": [
+      "1.Best Manager is an individual event",
+      "2. Each round has a specific time limit",
+      "3. Rules and details of specific rounds shall be disclosed on spot",
+      "4. Decision of the judges and event coordinators will be final",
+      "5. All participants must abide by college and event regulations"
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Deepak M John",
+        "contact_phone": "9074978584"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Christo Joseph Sajan",
+        "contact_phone": "7025558523"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Taha Ahamed Ahamed",
+        "contact_phone": "9344076978"
+      }
+    ],
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSe4IwKNQ5UOrqStU4WiUkC8KAm3r4begFgSDCw_soLef14qJg/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSe5e0C4qhHn_l2MH5_ZJckfH14SXysFbJ7GJKdOWhSE_VXnaw/viewform"
+  },
+  {
+    "id": "Palette_Parade_Face_Painting",
+    "name": "Palette Parade",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FFace%20painting.webp?alt=media&token=8eb53cd3-7639-450a-b29a-9d69da84edbd",
+    "description": "Join us for an exciting Face Painting Competition! Ten participants will have the chance to showcase their creativity and talent. The theme for the competition will be provided on the day of the event, and all necessary materials will be supplied.",
+    "award": {
+      "first": "1000",
+      "second": "500"
+    },
+    "regulations": [
+      "The theme will be provided on the spot.",
+      "Participants will have five minutes for preparation before the competition begins",
+      "Mobile phones will be confiscated after the five-minute preparation period and will be returned after the competition."
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "RUGMINI BINU",
+        "contact_phone": "7907460419"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "ADHIL JAWAD",
+        "contact_phone": "8547876877"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "KEZIA ANN JOJI",
+        "contact_phone": "9188751179"
+      }
+    ],
+    "form": "https://forms.gle/x8jjyVvfVLSccpDw7",
+    "feedback_form": "https://forms.gle/o4EYGKrk8chHWNsh8"
+  },
+  {
+    "id": "Tale_Weavers",
+    "name": "Tale Weavers",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2Fstorywriting.webp?alt=media&token=93217096-918f-4db4-81c1-c26ca1a72e6e",
+    "description": "Event Story Writing is a form of storytelling that captures the essence of an event in a structured and engaging way. It combines elements of journalism, narrative writing, and creative storytelling to describe what happened, who was involved, and the impact of the event.",
+    "award": {
+      "first": "1000",
+      "second": "500"
+    },
+    "regulations": [
+      "1.The competition consists of one round the topic of the story writing will be given at that time.",
+      "2. Duration : 1 and half hour",
+      "3. Medium of language:English."
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Liya K Rajan",
+        "contact_phone": "6282495229"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Jyothika PA",
+        "contact_phone": "7592941763"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Beno Raju",
+        "contact_phone": "8156937896"
+      }
+    ],
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSe4TSVbROHgs-7n0o1MjzCrwYUD-d3cS5u9PSIPoxA9wsp0Tg/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSd0E3jNZIOR-KqKFVsIh6ixtfrv82st5ZzQL3wWpLloAFI-uw/viewform?usp=dialog"
+  },
+  {
+    "id": "Memory_Fiesta",
+    "name": "Memory Fiesta",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMemory%20Fiesta.webp?alt=media&token=e72ed6d5-3eb7-4565-b10f-a69da575eedd",
+    "description": "Reliving the best moments of college life in a 1 minute video.",
+    "award": {
+      "first": "1000",
       "second": "N/A"
     },
     "regulations": [
-      "Teams must consist of 4 participants",
-      "Each round has specified time limit",
-      "Teams must complete challenges within allocated time",
-      "Organizers' decisions are final"
+      "Video duration: 1 minute",
+      "Submit before 24/2/25"
     ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Sneha Susan Rajesh",
-        "contact_phone": "8547914287"
+        "contact_name": "Merin Mary Alex",
+        "contact_phone": "8113842955"
       },
       {
         "position": "Subhead",
-        "contact_name": "Aparna Anil",
-        "contact_phone": "8590830145"
+        "contact_name": "Prannoy Roy",
+        "contact_phone": "8289970872"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Jefin Sajan",
+        "contact_phone": "9562119769"
       }
     ],
-    "form": "https://docs.google.com/forms/d/e/1FAIpQLSetxBnh6OLJIWGuexNs_4Fz0OTH9qYCbR9QGu468_VwXRH4tA/viewform"
+    "form": "https://forms.gle/VujBRp8EvDK7PrX99",
+    "feedback_form": "https://forms.gle/xeFHTepSWVWvrV9M6"
   },
   {
-    "id": "PT-09",
-    "name": "Jewels of Jinn",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FJewels%20of%20Jinn-min.jpg?alt=media&token=2fdf278d-4602-4da3-abc6-685fb2111391",
-    "description": "A storytelling competition where words come to life and tales unfold before your eyes. From enchanting fairy tales to gripping mysteries, this event showcases the art of storytelling in all its glory.",
+    "id": "Mystic_Quest",
+    "name": "Mystic Quest - Treasure Hunt",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMystic%20Quest.webp?alt=media&token=8d63894c-46c8-4ac4-a83d-eb8b365b1180",
+    "description": "Are you ready to embark on a thrilling adventure across the campus? Solve riddles, complete challenges, and race against time to uncover hidden clues leading to the ultimate treasure! Gather your team, put on your thinking caps, and let the hunt begin!",
     "award": {
-      "first": "N/A",
-      "second": "N/A"
-    },
-    "regulations": [],
-    "people": [
-      {
-        "position": "Head",
-        "contact_name": "Hithesh Roy",
-        "contact_phone": "9778256321"
-      },
-      {
-        "position": "Subhead",
-        "contact_name": "Aleena viju",
-        "contact_phone": "8590882397"
-      },
-      {
-        "position": "Subhead",
-        "contact_name": "Karthik Mahadev",
-        "contact_phone": "7736730941"
-      }
-    ],
-    "form": "https://forms.gle/R4YyCmE4jeJo5qMF7"
-  },
-  {
-    "id": "PT-10",
-    "name": "Art of Words",
-    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FCaligraphy%20Competition.jpg?alt=media&token=de923681-a292-4372-9602-c976d5492ad8",
-    "description": "A calligraphy competition that invites enthusiasts of all skill levels to showcase their artistic talent, precision, and flair.",
-    "award": {
-      "first": "N/A",
+      "first": "2000",
       "second": "N/A"
     },
     "regulations": [
-      "English language scripts only",
-      "Time limit: 2 hours and 30 minutes",
-      "Participants must bring their own calligraphy tools",
-      "Judging criteria: Creativity, technique, and theme adherence"
+      "Team Size: Maximum 7 teams (first come, first serve basis), each team consisting of 4 members.",
+      "2️⃣Clue-Based Challenge: Each clue will lead to a new location, but you must complete a task at every clue point before moving to the next.",
+      "3️⃣ Time Limit: Teams must finish the hunt within the allotted time to be eligible for winning.",
+      "4️⃣ No External Help: Use of mobile phones or outside assistance is strictly prohibited.",
+      "5️⃣ Fair Play: Teams found interfering with others’ clues or sabotaging will be disqualified.",
+      "6️⃣ Winning Criteria: The team that successfully finds the final treasure in the shortest time wins."
     ],
     "people": [
       {
         "position": "Head",
-        "contact_name": "Lakshmi Smitha Rajlal",
-        "contact_phone": "9544450018"
+        "contact_name": "Dilsha Youseph",
+        "contact_phone": "9496126559"
       },
       {
         "position": "Subhead",
-        "contact_name": "Laxy Poly",
-        "contact_phone": "9778241407"
+        "contact_name": "Elvin P Thomas",
+        "contact_phone": "8281246406"
       },
       {
         "position": "Subhead",
-        "contact_name": "Lekshmi S",
-        "contact_phone": "7994746962"
+        "contact_name": "Lekshmi Remesh",
+        "contact_phone": "9567033829"
       }
     ],
-    "form": "https://forms.gle/dG3"
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSdFYn1igOeogv0aSUWVOIZn2JpIV661clprqPLoiWIfj4HMpw/viewform",
+    "feedback_form": "https://docs.google.com/forms/d/e/1FAIpQLSfNv1yCjnFFY6N4_iP3YsaM01bsOT9nzNWWpn6lv5n9cqFpLg/viewform?usp=dialog"
+  },
+  {
+    "id": "PlayStation",
+    "name": "Play Station Competition",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FPlaystation%20Competition.webp?alt=media&token=d96a942d-8ac6-45d1-8b0b-5d1836c40fa3",
+    "description": "Fifa tournament on play station",
+    "award": {
+      "first": "1000",
+      "second": "500"
+    },
+    "regulations": [
+      "This fifa tournament consits of 5 rounds and contains 32 teams. Every match has tie breakers",
+
+      "The rounds and time frams fo each rounds are: ",
+      "Round of 32 - 5 mins",
+      "Round of 16 - 5 mins",
+      "quarter-finals - 10 mins",
+      "Semi-finals - 10 mins",
+      "Finals - 20 mins"
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Ashish jose",
+        "contact_phone": "9778475163"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Angelo",
+        "contact_phone": "7356727859"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Kevin Mathew",
+        "contact_phone": "9496865405"
+      }
+    ],
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSc3VtXWkfeDi1fcbc3kstpkatnFhprj-tmih-9QLQlzR1NEnA/viewform"
+  },
+  {
+    "id": "Lente_Magic",
+    "name": "Lente Magiq– Click It",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FClick%20It.webp?alt=media&token=6e2c05f8-18e7-4dba-8d8e-ba0da1837568",
+    "description": "Photography Competition",
+    "award": {
+      "first": "1000",
+      "second": "500"
+    },
+    "regulations": [
+      "Photography competition is conducted inside the campus",
+      "Students are only allowed to take photos within the campus itself"
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Alon John",
+        "contact_phone": "9567204614"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Abel Uthappan Mathew",
+        "contact_phone": "9446346453"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "Hilal N",
+        "contact_phone": "8129512636"
+      }
+    ],
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSd8yjO8Qx-Oec2A68lvxyQCJslhJQDWUbwC4qQA-Ag8kkc5fQ/viewform",
+    "feedback_form": "https://forms.gle/vw9TyFzTqXB8cHYNA"
+  },
+  {
+    "id": "Malayali_Manka",
+    "name": "MALAYALI MANKA AND KERALA SREEMAN",
+    "poster_url": "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMalayali%20Manka.webp?alt=media&token=89d33a71-7921-4a9d-b070-1afe46476e97",
+    "description": "The \"Malayali Manka and Kerala Sreeman\" competition celebrates the cultural beauty, wit, and charm of individuals from Kerala, with participants showcasing their traditional and modern talents.",
+    "award": {
+      "first": "3000",
+      "second": "N/A"
+    },
+    "regulations": [
+      "Competition will be held in two rounds: PRELIMS and FINALS",
+      "Female contestants must wear traditional Kerala Settu Saree/Settu Mundu/Pattu Pavada",
+      "Male contestants must wear Mundu (off white colour) and Shirt/Kurta",
+      "Time duration for each round will be informed at venue",
+      "Winners will be awarded cash prizes and certificates",
+      "Judges' decisions are final"
+    ],
+    "people": [
+      {
+        "position": "Head",
+        "contact_name": "Richard santosh",
+        "contact_phone": "8921444295"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "A S NIMISHA",
+        "contact_phone": "9400653152"
+      },
+      {
+        "position": "Subhead",
+        "contact_name": "ABHISHEK S PILLAI",
+        "contact_phone": "9778023275"
+      }
+    ],
+    "form": "https://docs.google.com/forms/d/e/1FAIpQLSeu_KsJoV7f8-kY2VeqZWSct2xpfW1GM-_E0OWrUgC6kiplFg/viewform"
   }
 ]
