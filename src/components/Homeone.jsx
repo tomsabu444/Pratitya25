@@ -25,21 +25,19 @@ const HomeOne = () => {
     const viewportHeight = window.innerHeight;
     const startPosition = isDesktop ? 55 : 80;
 
-    // Smoothed scale calculation with easing
-    const scrollProgress = Math.min(scrollPosition / viewportHeight, 1);
-    const easeInOutCubic = t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-    const easedProgress = easeInOutCubic(scrollProgress);
-    
-    const scale = maxScale - (easedProgress * (maxScale - minScale));
+    const scale = Math.max(
+      minScale,
+      maxScale - (scrollPosition / viewportHeight) * (maxScale - minScale)
+    );
 
-    // Smoothed position calculation
-    let topPosition = startPosition + (easedProgress * 35);
+    let topPosition = Math.min(
+      isDesktop ? 65 : 95,
+      startPosition + (scrollPosition / viewportHeight) * 35
+    );
     
     if (window.innerWidth < 360) {
       topPosition += 5;
     }
-
-    topPosition = Math.min(isDesktop ? 65 : 95, topPosition);
 
     return { scale, topPosition };
   };
@@ -59,6 +57,7 @@ const HomeOne = () => {
     return { translateXLeft };
   };
 
+  
   const castleImageUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-only.webp?alt=media&token=d6a23bfe-6998-473f-aba0-84f4dd2b98de";
   const lantenMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Flantengroup.webp?alt=media&token=5bdbf9c7-06c5-477d-b3c1-67d393d10532";
   const mobBg = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fhome-bg.webp?alt=media&token=3c29cbb1-56a3-4992-b160-636871f64c97";
@@ -66,7 +65,7 @@ const HomeOne = () => {
   const lantendUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Flanten-desktop.webp?alt=media&token=7761e184-9396-4e32-a0b2-e3e8924ff846";
   const castledUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-desktop.webp?alt=media&token=01c29b7a-c6d3-4bc5-9beb-9823d6767bb5";
   const mUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain.webp?alt=media&token=50eac2ea-356f-41cc-9f00-0ba3c024f668";
-  const mfUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain-front.webp?alt=media&token=69e2490f-9c13-4002-b7a0-1ce6e69fdf09";
+  const mfUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain-front.webp?alt=media&token=69e2490f-9c13-4002-b7a0-1ce6e69fdf09"
 
   const { translateXLeft } = calculateSideElementsVisibility();
 
@@ -137,9 +136,9 @@ const HomeOne = () => {
           </span>
         </motion.h1>
 
-        {/* <div className="hidden md:block pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125">
+        <div className="pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125 max-[360px]:scale-[0.65]">
           <FlipCountdown />
-        </div> */}
+        </div>
       </div>
 
       {/* About Section */}
@@ -165,7 +164,7 @@ const HomeOne = () => {
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Saintgits College of Engineering presents Pratitya 2025, a vibrant celebration of culture, music, and festivities on February 27, 2025! Festa Feasta is the heart of the event, bringing people together through lively performances, exciting activities, and a spirit of celebration. Experience the joy of togetherness, creativity, and unforgettable moments. Stay tuned for updates!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
         </p>
       </div>
 
@@ -176,7 +175,7 @@ const HomeOne = () => {
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
           transformOrigin: "bottom left",
-          transition: "none",
+          transition: "transform 0.1s ease-out, top 0.1s ease-out",
           bottom: 0,
         }}
       >
@@ -196,7 +195,7 @@ const HomeOne = () => {
           top: `${topPosition}vh`,
           transform: `scale(${scale})`,
           transformOrigin: "bottom left",
-          transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), top 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          transition: "transform 0.1s ease-out, top 0.1s ease-out",
           bottom: 0,
         }}
       >

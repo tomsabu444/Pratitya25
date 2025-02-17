@@ -1,7 +1,7 @@
 import React from 'react';
-import pratityaLogo from "../assets/intro-logo.gif";
 
 const Footer = () => {
+  const pratityaLogoUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/intro-logo.gif?alt=media&token=8e7646e8-3144-4ced-939b-cf1c217bee1c";
   return (
     <footer className="relative w-full backdrop-blur-md bg-black text-white border-t border-white/10">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 pointer-events-none" />
@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Logo and Description Section */}
           <div className="sm:col-span-2 lg:col-span-4 flex flex-col items-center sm:items-start space-y-4 lg:pl-10"> {/* Added lg:pl-10 */}
             <img
-              src={pratityaLogo}
+              src={pratityaLogoUrl}
               alt="Pratitya Logo"
               className="w-28 h-auto object-contain drop-shadow-lg"
             />
