@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
-import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
-import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
 
 // VerticalText component remains the same...
@@ -236,6 +234,9 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
 };
 
 const Homesec = () => {
+  const theyyamMobUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4";
+  const theyyamDesktopUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Ftheyyam-desktop.webp?alt=media&token=4652255a-0519-4975-8a0b-75cfed4c05dd";
+
   const events = [
     {
       id: "dramatique",
@@ -318,14 +319,14 @@ const Homesec = () => {
     <div className="overflow-x-hidden">
       <div className="relative">
         <img
-          src={mobileTheyyam}
+          src={theyyamMobUrl}
           alt="Mobile Background"
           className="object-contain w-full h-full md:hidden"
           loading="lazy"
         />
 
         <img
-          src={desktopTheyyam}
+          src={theyyamDesktopUrl}
           alt="Desktop Background"
           className="hidden md:block object-cover w-full h-[110vh]"
         />
