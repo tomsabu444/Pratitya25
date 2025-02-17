@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
 import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
 
-const VerticalText = ({ text }) => {
+const VerticalText = ({ text, className }) => {
   return (
-    <div className="flex flex-col items-start space-y-2">
+    <div className={`flex flex-col items-start space-y-2 ${className}`}>
       {text.split("").map((letter, index) => (
         <span
           key={index}
-          className="text-5xl mt-16 md:text-6xl font-poppins font-extrabold tracking-wider"
+          className="text-4xl mt-8 md:text-6xl md:mt-16 font-poppins font-extrabold tracking-wider"
           style={{
             color: "transparent",
             WebkitTextStroke: "1.5px white",
@@ -24,76 +24,173 @@ const VerticalText = ({ text }) => {
   );
 };
 
-const StackedCards = ({ events }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const ThreeDStackSlider = ({ events }) => {
+  const itemsRef = useRef([]);
+  const animationRef = useRef(null);
+  const containerRef = useRef(null);
+  const [currentItem, setCurrentItem] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % events.length);
-    }, 3000);
+    const items = itemsRef.current;
+    const totalItems = items.length;
+    const stackOffset = 40;
+    
+    function updatePositions() {
+      for (let i = 0; i < totalItems; i++) {
+        let itemIndex = (currentItem + i) % totalItems;
+        let item = items[itemIndex];
+        
+        // Add or remove glow class based on position
+        if (i === 0) {
+          item.classList.add('front-card');
+        } else {
+          item.classList.remove('front-card');
+        }
+        
+        gsap.to(item, {
+          duration: 0.6,
+          y: -stackOffset * i,
+          rotationX: -10,
+          rotationY: 2,
+          z: -50 * i,
+          zIndex: totalItems - i,
+          scale: 1 - (i * 0.05),
+          opacity: i === totalItems - 1 ? 0.5 : 1,
+          ease: "power2.out"
+        });
+      }
+    }
 
-    return () => clearInterval(timer);
-  }, [events.length]);
+    function moveToNext() {
+      setCurrentItem((prev) => (prev + 1) % totalItems);
+    }
 
-  const handleClick = () => {
-    setCurrentIndex((prev) => (prev + 1) % events.length);
-  };
+    gsap.set(items, (index) => ({
+      y: -stackOffset * index,
+      rotationX: -10,
+      rotationY: 2,
+      z: -50 * index,
+      zIndex: totalItems - index,
+      scale: 1 - (index * 0.05),
+      transformOrigin: "50% 0%",
+    }));
+
+    if (containerRef.current) {
+      containerRef.current.addEventListener('mousemove', (e) => {
+        const rect = containerRef.current.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+        const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+
+        items.forEach((item) => {
+          gsap.to(item, {
+            duration: 0.3,
+            rotationY: 2 + mouseX * 10,
+            rotationX: -10 + mouseY * 5,
+            ease: "power2.out"
+          });
+        });
+      });
+
+      containerRef.current.addEventListener('mouseleave', () => {
+        items.forEach((item) => {
+          gsap.to(item, {
+            duration: 0.3,
+            rotationY: 2,
+            rotationX: -10,
+            ease: "power2.out"
+          });
+        });
+      });
+    }
+
+    updatePositions();
+    animationRef.current = setInterval(moveToNext, 2000);
+
+    return () => {
+      if (animationRef.current) {
+        clearInterval(animationRef.current);
+      }
+      gsap.killTweensOf(items);
+    };
+  }, [currentItem]);
 
   return (
-    <div className="relative h-[500px] w-full">
-      {events.map((event, index) => {
-        const position = (index - currentIndex + events.length) % events.length;
-        
-        return (
-          <motion.div
-            key={event.id}
-            className="absolute w-full cursor-pointer"
-            style={{
-              top: 0,
-              zIndex: events.length - position,
-            }}
-            animate={{
-              y: position * 8,
-              scale: 1,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: "easeInOut"
-            }}
-            onClick={handleClick}
-          >
-            <div className={`
-              w-full bg-black rounded-lg overflow-hidden
-              ${position === 0 ? 'border-2 border-gray-700' : 'border border-gray-800'}
-              shadow-[0_4px_12px_rgba(0,0,0,0.5)]
-            `}>
-              <div className="relative">
-                <img
-                  src={event.poster_url}
-                  alt={event.name}
-                  className="w-full h-[400px] object-cover"
-                  loading="lazy"
-                />
-                {/* Title bar at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-90 p-4">
-                  <h3 className="text-white text-sm font-medium">{event.name}</h3>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        );
-      })}
-      
-      {/* Navigation dots */}
-      <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {events.map((_, index) => (
+    <div className="stack-container" ref={containerRef}>
+      <div className="stack-slider">
+        {events.map((event, index) => (
           <div
-            key={index}
-            className={`w-2 h-2 rounded-full transition-colors duration-300 
-              ${index === currentIndex ? 'bg-white' : 'bg-gray-600'}`}
-          />
+            key={event.id}
+            ref={el => itemsRef.current[index] = el}
+            className="slider-item"
+          >
+            <img 
+              src={event.poster_url}
+              alt={event.name}
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
         ))}
       </div>
+      <style jsx>{`
+        .stack-container {
+          perspective: 1000px;
+          perspective-origin: 50% 0%;
+          width: 240px;
+          height: 360px;
+          margin-top: 120px;
+        }
+
+        .stack-slider {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+        }
+
+        @media (min-width: 768px) {
+          .stack-container {
+            width: 300px;
+            height: 440px;
+          }
+        }
+
+        .slider-item {
+          position: absolute;
+          width: 100%;
+          height: 320px;
+          will-change: transform;
+          transform-style: preserve-3d;
+          cursor: pointer;
+          overflow: hidden;
+          border: 2px solid #FFFDD0;
+          border-radius: 12px;
+          transition: all 0.6s ease;
+        }
+
+        .front-card {
+          box-shadow: 0 0 10px #FFFDD0,
+                     0 0 20px rgba(255, 253, 208, 0.3),
+                     inset 0 0 10px rgba(255, 253, 208, 0.1);
+        }
+
+        .front-card:hover {
+          box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.3),
+                     0 0 15px #FFFDD0,
+                     0 0 30px rgba(255, 253, 208, 0.4),
+                     inset 0 0 15px rgba(255, 253, 208, 0.2);
+        }
+
+        @media (min-width: 768px) {
+          .slider-item {
+            height: 400px;
+          }
+        }
+
+        .slider-item img {
+          pointer-events: none;
+          backface-visibility: hidden;
+        }
+      `}</style>
     </div>
   );
 };
@@ -103,66 +200,61 @@ const Homesec = () => {
     {
       id: "PT-01",
       name: "Market Festival Event 1",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMirage%20Maestro-min.jpg?alt=media&token=592e78a5-23bf-42ae-9cba-47f4d174d94b",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMirage%20Maestro-min.jpg?alt=media&token=592e78a5-23bf-42ae-9cba-47f4d174d94b"
     },
     {
       id: "PT-02",
       name: "Market Festival Event 2",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9"
     },
     {
       id: "PT-03",
       name: "Market Festival Event 3",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBest%20Singer.jpg?alt=media&token=75cb3286-7811-4cd0-9593-2d9d1f3df59e",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBest%20Singer.jpg?alt=media&token=75cb3286-7811-4cd0-9593-2d9d1f3df59e"
     },
     {
       id: "PT-04",
       name: "Market Festival Event 4",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FFast%20Fingers%20Fiesta-min.jpg?alt=media&token=ab95c2b6-0731-49df-8b6c-2c80846a170e",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FFast%20Fingers%20Fiesta-min.jpg?alt=media&token=ab95c2b6-0731-49df-8b6c-2c80846a170e"
     },
     {
       id: "PT-05",
       name: "Market Festival Event 5",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9"
     }
   ];
 
   return (
     <div>
       <div className="relative">
-        {/* Mobile Image */}
         <img
           src={mobileTheyyam}
           alt="Mobile Background"
           className="object-contain w-full h-full md:hidden"
           loading="lazy"
         />
-
-        {/* Desktop Image */}
+        
         <img
           src={desktopTheyyam}
           alt="Desktop Background"
           className="hidden md:block object-cover w-full h-[110vh]"
         />
-
-        {/* Fire Particles */}
+        
         <FireParticles />
-
-        {/* Content Overlay with new positioning */}
-        <div className="absolute inset-0 p-8">
-          {/* Top section with text */}
-          <div className="pt-8">
+        
+        <div className="absolute inset-0 p-4 md:p-8">
+          {/* Left side FEATURED text */}
+          <div className="absolute left-2 top-1/2 -translate-y-1/2">
             <VerticalText text="FEATURED" />
           </div>
-
-          {/* Carousel section with adjusted position */}
-          <div className="absolute right-8 bottom-10 w-full max-w-lg">
-            <StackedCards events={events} />
+          
+          {/* Right side EVENTS text */}
+          <div className="absolute right-2 top-1/2 -translate-y-1/2">
+            <VerticalText text="EVENTS" />
+          </div>
+          
+          <div className="absolute bottom-2 w-full flex justify-center md:justify-end md:right-8">
+            <ThreeDStackSlider events={events} />
           </div>
         </div>
       </div>
