@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import background from "../assets/home-section-one/home-bg.png";
 import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
-import lanten from "../assets/home-section-one/lantengroup.png";
 import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
-import newImage from "../assets/home-section-one/castle-only.png";
 import newImagedesktop from "../assets/home-section-one/castle-desktop.png";
 import rightImage from "../assets/home-section-one/mountain.png";
 // Add your new image import here
@@ -66,6 +63,10 @@ const HomeOne = () => {
     return { translateXLeft };
   };
 
+  const castleImageUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-only.webp?alt=media&token=d6a23bfe-6998-473f-aba0-84f4dd2b98de";
+  const lantenMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Flantengroup.webp?alt=media&token=5bdbf9c7-06c5-477d-b3c1-67d393d10532";
+  const mobBg = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fhome-bg.webp?alt=media&token=3c29cbb1-56a3-4992-b160-636871f64c97";
+
   const { translateXLeft } = calculateSideElementsVisibility();
 
   return (
@@ -74,7 +75,7 @@ const HomeOne = () => {
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : background})`,
+          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : mobBg})`,
           transition: "transform 0.2s ease-out",
         }}
       />
@@ -106,7 +107,7 @@ const HomeOne = () => {
         }}
       >
         <img
-          src={window.innerWidth >= 768 ? desktopLanten : lanten}
+          src={window.innerWidth >= 768 ? desktopLanten : lantenMobUrl}
           alt="Lanten Group"
           className="w-screen h-auto object-contain md:w-[120%] md:max-h-[90vh] mt-20"
         />
@@ -135,7 +136,7 @@ const HomeOne = () => {
           </span>
         </motion.h1>
 
-        <div className="pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125 max-[360px]:scale-[0.65]">
+        <div className="hidden md:block pointer-events-auto scale-75 md:scale-110 md:pt-4 xl:scale-125">
           <FlipCountdown />
         </div>
       </div>
@@ -163,7 +164,7 @@ const HomeOne = () => {
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
+          Saintgits College of Engineering presents Pratitya 2025, a vibrant celebration of culture, music, and festivities on February 27, 2025! Festa Feasta is the heart of the event, bringing people together through lively performances, exciting activities, and a spirit of celebration. Experience the joy of togetherness, creativity, and unforgettable moments. Stay tuned for updates!
         </p>
       </div>
 
@@ -180,7 +181,7 @@ const HomeOne = () => {
       >
         <div className="w-full h-full overflow-x-hidden">
           <img
-            src={newImage}
+            src={castleImageUrl}
             alt="Castle"
             className="w-full h-auto object-contain absolute bottom-0"
           />
