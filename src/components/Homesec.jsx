@@ -40,7 +40,6 @@ const ThreeDStackSlider = ({ events }) => {
         let itemIndex = (currentItem + i) % totalItems;
         let item = items[itemIndex];
         
-        // Add or remove glow class based on position
         if (i === 0) {
           item.classList.add('front-card');
         } else {
@@ -137,7 +136,8 @@ const ThreeDStackSlider = ({ events }) => {
           perspective-origin: 50% 0%;
           width: 240px;
           height: 360px;
-          margin-top: 120px;
+          margin: 120px 0 0;
+          position: relative;
         }
 
         .stack-slider {
@@ -208,13 +208,13 @@ const Homesec = () => {
       poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9"
     },
     {
-      id: "PT-03",
+      id: "PT-03", 
       name: "Market Festival Event 3",
       poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBest%20Singer.jpg?alt=media&token=75cb3286-7811-4cd0-9593-2d9d1f3df59e"
     },
     {
       id: "PT-04",
-      name: "Market Festival Event 4",
+      name: "Market Festival Event 4", 
       poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FFast%20Fingers%20Fiesta-min.jpg?alt=media&token=ab95c2b6-0731-49df-8b6c-2c80846a170e"
     },
     {
@@ -225,7 +225,7 @@ const Homesec = () => {
   ];
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="relative">
         <img
           src={mobileTheyyam}
@@ -243,17 +243,15 @@ const Homesec = () => {
         <FireParticles />
         
         <div className="absolute inset-0 p-4 md:p-8">
-          {/* Left side FEATURED text */}
           <div className="absolute left-2 top-1/2 -translate-y-1/2">
             <VerticalText text="FEATURED" />
           </div>
           
-          {/* Right side EVENTS text */}
           <div className="absolute right-2 top-1/2 -translate-y-1/2">
             <VerticalText text="EVENTS" />
           </div>
           
-          <div className="absolute bottom-2 w-full flex justify-center md:justify-end md:right-8">
+          <div className="absolute bottom-2 w-full pl-20">
             <ThreeDStackSlider events={events} />
           </div>
         </div>
