@@ -1,330 +1,52 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { gsap } from 'gsap';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import FireParticles from "./FireParticles";
 
-const VerticalText = ({ text, className }) => {
+const RandomEvent = ({ events }) => {
+  const [randomEvent, setRandomEvent] = useState(null);
+
+  useEffect(() => {
+    const updateImage = () => {
+      const randomIndex = Math.floor(Math.random() * events.length);
+      setRandomEvent(events[randomIndex]);
+    };
+
+    updateImage();
+    const interval = setInterval(updateImage, 2000);
+    return () => clearInterval(interval);
+  }, [events]);
+
+  if (!randomEvent) return null;
+
   return (
-    <div className={`flex flex-col items-start space-y-2 ${className}`}>
+    <div className="w-full max-w-lg">
+      <div className="relative w-full flex justify-end">
+        <img
+          src={randomEvent.poster_url}
+          alt={randomEvent.name}
+          className="w-3/4 h-3/4 object-cover shadow-xl"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+};
+
+const VerticalText = ({ text }) => {
+  return (
+    <div className="flex flex-col items-start space-y-2">
       {text.split("").map((letter, index) => (
         <span
           key={index}
-          className="text-4xl mt-8 md:text-6xl md:mt-16 font-poppins font-extrabold tracking-wider"
+          className="text-5xl mt-16 md:text-6xl font-poppins font-extrabold tracking-wider"
           style={{
             color: "transparent",
-            WebkitTextStroke: window.innerWidth >= 768 ? "2.5px white" : "1.5px white",
-            textStroke: window.innerWidth >= 768 ? "3px white" : "2px white",
+            WebkitTextStroke: "1.5px white",
+            textStroke: "2px white",
           }}
         >
           {letter}
         </span>
       ))}
-    </div>
-  );
-};
-
-const ThreeDStackSlider = ({ events, isReversed = false }) => {
-  const navigate = useNavigate();
-  const itemsRef = useRef([]);
-  const animationRef = useRef(null);
-  const containerRef = useRef(null);
-  const [currentItem, setCurrentItem] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const displayCount = 4;
-
-  const orderedEvents = isReversed ? [...events].reverse() : events;
-  const totalItems = orderedEvents.length;
-
-  const handleCardClick = (eventId) => {
-    navigate(`/event/${eventId}`);
-  };
-
-  const updatePositions = useCallback(() => {
-    const items = itemsRef.current;
-    if (!items || !items.length) return;
-
-    const stackOffset = isMobile ? 30 : 40; // Reduced offset for mobile
-    const mobileTransformDuration = 0.4; // Faster animations for mobile
-
-    for (let i = 0; i < totalItems; i++) {
-      let itemIndex = (currentItem + i) % totalItems;
-      let item = items[itemIndex];
-
-      if (!item) continue;
-
-      if (i === 0) {
-        item.classList?.add('front-card');
-      } else {
-        item.classList?.remove('front-card');
-      }
-
-      const isInStack = i < displayCount;
-      
-      // Simplified transforms for mobile
-      if (isMobile) {
-        gsap.to(item, {
-          duration: mobileTransformDuration,
-          y: isInStack ? -stackOffset * i : -stackOffset * (displayCount - 1) + 100,
-          z: isInStack ? -30 * i : -30 * (displayCount - 1),
-          scale: isInStack ? 1 - (i * 0.03) : 1 - ((displayCount - 1) * 0.03),
-          rotationX: -5,
-          rotationY: 0,
-          zIndex: isInStack ? totalItems - i : 0,
-          opacity: isInStack ? (i === displayCount - 1 ? 0.5 : 1) : 0,
-          ease: "power1.out"
-        });
-      } else {
-        // Desktop animation
-        gsap.to(item, {
-          duration: 0.6,
-          y: isInStack ? -stackOffset * i : -stackOffset * (displayCount - 1) + 100,
-          rotationX: isInStack ? -10 : -10,
-          rotationY: isInStack ? 2 : 2,
-          z: isInStack ? -50 * i : -50 * (displayCount - 1),
-          zIndex: isInStack ? totalItems - i : 0,
-          scale: isInStack ? 1 - (i * 0.05) : 1 - ((displayCount - 1) * 0.05),
-          opacity: isInStack ? (i === displayCount - 1 ? 0.5 : 1) : 0,
-          ease: "power2.out"
-        });
-      }
-    }
-  }, [currentItem, totalItems, isMobile]);
-
-  const handlePrevClick = () => {
-    setCurrentItem((prev) => (prev - 1 + totalItems) % totalItems);
-  };
-
-  const handleNextClick = () => {
-    setCurrentItem((prev) => (prev + 1) % totalItems);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const items = itemsRef.current;
-    if (!items || !items.length) return;
-
-    const stackOffset = isMobile ? 30 : 40;
-
-    items.forEach((item, index) => {
-      if (!item) return;
-
-      const isInStack = index < displayCount;
-
-      // Simplified initial transforms for mobile
-      if (isMobile) {
-        gsap.set(item, {
-          y: isInStack ? -stackOffset * index : -stackOffset * (displayCount - 1) + 100,
-          z: isInStack ? -30 * index : -30 * (displayCount - 1),
-          rotationX: -5,
-          rotationY: 0,
-          scale: isInStack ? 1 - (index * 0.03) : 1 - ((displayCount - 1) * 0.03),
-          zIndex: isInStack ? totalItems - index : 0,
-          opacity: isInStack ? (index === displayCount - 1 ? 0.5 : 1) : 0,
-        });
-      } else {
-        // Desktop setup
-        gsap.set(item, {
-          y: isInStack ? -stackOffset * index : -stackOffset * (displayCount - 1) + 100,
-          rotationX: -10,
-          rotationY: 2,
-          z: isInStack ? -50 * index : -50 * (displayCount - 1),
-          zIndex: isInStack ? totalItems - index : 0,
-          scale: isInStack ? 1 - (index * 0.05) : 1 - ((displayCount - 1) * 0.05),
-          transformOrigin: "50% 0%",
-          opacity: isInStack ? (index === displayCount - 1 ? 0.5 : 1) : 0,
-        });
-      }
-    });
-
-    // Mouse movement effect only for desktop
-    if (containerRef.current && !isMobile) {
-      const handleMouseMove = (e) => {
-        if (!items || !items.length) return;
-
-        const rect = containerRef.current.getBoundingClientRect();
-        const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-        const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-
-        items.forEach((item, index) => {
-          if (!item || index >= displayCount) return;
-
-          gsap.to(item, {
-            duration: 0.3,
-            rotationY: 2 + mouseX * 10,
-            rotationX: -10 + mouseY * 5,
-            ease: "power2.out"
-          });
-        });
-      };
-
-      containerRef.current.addEventListener('mousemove', handleMouseMove);
-
-      containerRef.current.addEventListener('mouseleave', () => {
-        items.forEach((item, index) => {
-          if (!item || index >= displayCount) return;
-
-          gsap.to(item, {
-            duration: 0.3,
-            rotationY: 2,
-            rotationX: -10,
-            ease: "power2.out"
-          });
-        });
-      });
-
-      return () => {
-        containerRef.current.removeEventListener('mousemove', handleMouseMove);
-      };
-    }
-  }, [currentItem, updatePositions, totalItems, isMobile]);
-
-  useEffect(() => {
-    updatePositions();
-    
-    // Auto-rotation only for desktop
-    if (!isMobile) {
-      animationRef.current = setInterval(() => {
-        setCurrentItem((prev) => (prev + 1) % totalItems);
-      }, 3500);
-    }
-
-    return () => {
-      if (animationRef.current) {
-        clearInterval(animationRef.current);
-      }
-    };
-  }, [currentItem, updatePositions, totalItems, isMobile]);
-
-  return (
-    <div className="stack-container relative" ref={containerRef}>
-      <div className="stack-slider">
-        {orderedEvents.map((event, index) => (
-          <div
-            key={event.id}
-            ref={el => itemsRef.current[index] = el}
-            className="slider-item"
-            onClick={() => handleCardClick(event.id)}
-          >
-            <img
-              src={event.poster_url}
-              alt={event.name}
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile Navigation Buttons */}
-      {isMobile && (
-        <div className="absolute -bottom-8 left-0 right-0 flex justify-between px-4 pb-4 z-50">
-          <button 
-            onClick={handlePrevClick}
-            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white border-2 border-white/20 hover:bg-black/70 transition-colors"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button 
-            onClick={handleNextClick}
-            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white border-2 border-white/20 hover:bg-black/70 transition-colors"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-      )}
-
-      <style jsx>{`
-        .stack-container {
-          perspective: 1000px;
-          perspective-origin: 50% 0%;
-          width: 240px;
-          height: 360px;
-          margin: 120px auto 60px;
-          position: relative;
-        }
-
-        .stack-slider {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          transform-style: preserve-3d;
-        }
-
-        @media (min-width: 768px) {
-          .stack-container {
-            width: 300px;
-            height: 440px;
-            margin: 120px 0 0;
-          }
-        }
-
-        .slider-item {
-          position: absolute;
-          width: 100%;
-          height: 320px;
-          will-change: transform;
-          transform-style: preserve-3d;
-          cursor: pointer;
-          overflow: hidden;
-          border: 2px solid #FFFDD0;
-          border-radius: 12px;
-          transition: all 0.6s ease;
-        }
-
-        .front-card {
-          box-shadow: 0 0 10px #FFFDD0,
-                     0 0 20px rgba(255, 253, 208, 0.3),
-                     inset 0 0 10px rgba(255, 253, 208, 0.1);
-        }
-
-        .front-card:hover {
-          box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.3),
-                     0 0 15px #FFFDD0,
-                     0 0 30px rgba(255, 253, 208, 0.4),
-                     inset 0 0 15px rgba(255, 253, 208, 0.2);
-        }
-
-        @media (min-width: 768px) {
-          .slider-item {
-            height: 400px;
-          }
-        }
-
-        .slider-item img {
-          pointer-events: none;
-          backface-visibility: hidden;
-        }
-      `}</style>
     </div>
   );
 };
@@ -412,8 +134,9 @@ const Homesec = () => {
   ];
 
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <div className="relative">
+        {/* Mobile Image */}
         <img
           src={theyyamMobUrl}
           alt="Mobile Background"
@@ -421,34 +144,26 @@ const Homesec = () => {
           loading="lazy"
         />
 
+        {/* Desktop Image */}
         <img
           src={theyyamDesktopUrl}
           alt="Desktop Background"
           className="hidden md:block object-cover w-full h-[110vh]"
         />
 
+        {/* Fire Particles */}
         <FireParticles />
 
-        <div className="absolute inset-0 flex flex-col">
-          <div className="flex-1 relative">
-            <div className="absolute left-2 top-1/2 -translate-y-1/2">
-              <VerticalText text="FEATURED" />
-            </div>
+        {/* Content Overlay with new positioning */}
+        <div className="absolute inset-0 p-8">
+          {/* Top section with text */}
+          <div className="pt-8">
+            <VerticalText text="FEATURED" />
+          </div>
 
-            <div className="absolute right-2 top-1/2 -translate-y-1/2">
-              <VerticalText text="EVENTS" />
-            </div>
-
-            {/* Desktop stacks */}
-            <div className="hidden md:flex justify-between md:max-w-6xl md:mx-auto absolute bottom-0 left-1/2 -translate-x-1/2 w-full px-4">
-              <ThreeDStackSlider events={events} isReversed={false} />
-              <ThreeDStackSlider events={events} isReversed={true} />
-            </div>
-
-            {/* Mobile Stack */}
-            <div className="md:hidden absolute left-1/2 -translate-x-1/2 bottom-0 w-full">
-              <ThreeDStackSlider events={events} isReversed={false} />
-            </div>
+          {/* Poster section with adjusted position */}
+          <div className="absolute right-8 bottom-10">
+            <RandomEvent events={events} />
           </div>
         </div>
       </div>
