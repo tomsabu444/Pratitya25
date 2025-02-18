@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
-import FireParticles from "./FireParticles";
+// import FireParticles from "./FireParticles";
 
 const VerticalText = ({ text, className }) => {
   return (
@@ -403,7 +403,7 @@ const Homesec = () => {
           className="hidden md:block object-cover w-full h-[110vh]"
         />
 
-        <FireParticles />
+        {/* <FireParticles /> */}
 
         <div className="absolute inset-0 flex flex-col">
           <div className="flex-1 relative">
