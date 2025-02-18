@@ -14,39 +14,34 @@ const IntroLogo = lazy(() => import("./components/IntroLogo"));
 const App = () => {
   const [showIntro, setShowIntro] = useState(true);
 
-  // Hide intro logo after 3 seconds or on any event
+  // Hide intro logo after 5.5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
     }, 5500);
 
-    // Clean up timer on unmount
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <Router>
-      {showIntro ? (
-        <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
+        {showIntro ? (
           <IntroLogo />
-        </Suspense>
-      ) : (
-        <>
-          <Suspense fallback={<Loading />}>
+        ) : (
+          <>
             <Navbar />
-          </Suspense>
-          <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/events" element={<EventList />} />
               <Route path="/event/:id" element={<EventDetails />} />
               <Route path="/teams" element={<TeamPage />} />
             </Routes>
-          </Suspense>
-          <Footer />
-          <ScrollToTop />
-        </>
-      )}
+            <Footer />
+          </>
+        )}
+      </Suspense>
+      <ScrollToTop />
     </Router>
   );
 };

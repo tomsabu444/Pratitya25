@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
         fontFamily: {
-          camodirt: ["CAMODIRT-Regular", "sans-serif"], 
           poppins: ["Poppins", "sans-serif"],
           rancho: ["Rancho", "cursive"],
           agraham: ['Agraham', 'sans-serif'],

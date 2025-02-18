@@ -48,7 +48,7 @@ const HomeOne = () => {
     const viewportHeight = window.innerHeight;
     const translateXLeft = Math.max(
       0,
-      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
+      0 - ((scrollPosition + 200 - viewportHeight) / (viewportHeight / 2)) * 100
     );
     return { translateXLeft };
   };
@@ -132,7 +132,7 @@ const HomeOne = () => {
       <div
         className="absolute w-full flex flex-col items-center justify-center z-10"
         style={{
-          top: "150vh",
+          top: "135vh",
           transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
@@ -157,7 +157,7 @@ const HomeOne = () => {
 
       {/* Mobile Castle Container */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden block md:hidden"
+        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden md:hidden"
         style={castleContainerStyles}
       >
         <div className="w-full h-full overflow-x-hidden">
@@ -171,7 +171,7 @@ const HomeOne = () => {
 
       {/* Desktop Castle Container */}
       <div
-        className="absolute left-0 w-full flex items-end justify-start overflow-x-hidden hidden md:block"
+        className="absolute -left-7 w-full items-end justify-start overflow-x-hidden hidden md:block"
         style={castleContainerStyles}
       >
         <div className="w-full h-full overflow-x-hidden relative">
