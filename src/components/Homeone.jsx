@@ -48,7 +48,7 @@ const HomeOne = () => {
     const viewportHeight = window.innerHeight;
     const translateXLeft = Math.max(
       0,
-      0 - ((scrollPosition - viewportHeight) / (viewportHeight / 2)) * 100
+      0 - ((scrollPosition + 200 - viewportHeight) / (viewportHeight / 2)) * 100
     );
     return { translateXLeft };
   };
@@ -132,7 +132,7 @@ const HomeOne = () => {
       <div
         className="absolute w-full flex flex-col items-center justify-center z-10"
         style={{
-          top: "150vh",
+          top: "135vh",
           transform: `translateX(${translateXLeft}%)`,
           transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
