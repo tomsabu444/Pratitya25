@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
-
+import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
+import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
 
 const VerticalText = ({ text, className }) => {
@@ -31,14 +32,46 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
   const containerRef = useRef(null);
   const [currentItem, setCurrentItem] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const displayCount = 4;
+  const displayCount = 5;
 
   const orderedEvents = isReversed ? [...events].reverse() : events;
   const totalItems = orderedEvents.length;
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleCardClick = (eventId) => {
     navigate(`/event/${eventId}`);
   };
+
+  const handlePrevClick = useCallback((e) => {
+    e.stopPropagation();
+    if (!isMobile && animationRef.current) {
+      clearInterval(animationRef.current);
+      // Restart auto-rotation for desktop only
+      animationRef.current = setInterval(() => {
+        setCurrentItem((prev) => (prev + 1) % totalItems);
+      }, 2000);
+    }
+    setCurrentItem((prev) => (prev - 1 + totalItems) % totalItems);
+  }, [totalItems, isMobile]);
+
+  const handleNextClick = useCallback((e) => {
+    e.stopPropagation();
+    if (!isMobile && animationRef.current) {
+      clearInterval(animationRef.current);
+      // Restart auto-rotation for desktop only
+      animationRef.current = setInterval(() => {
+        setCurrentItem((prev) => (prev + 1) % totalItems);
+      }, 2000);
+    }
+    setCurrentItem((prev) => (prev + 1) % totalItems);
+  }, [totalItems, isMobile]);
 
   const updatePositions = useCallback(() => {
     const items = itemsRef.current;
@@ -73,22 +106,6 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
       });
     }
   }, [currentItem, totalItems]);
-
-  const handlePrevClick = () => {
-    setCurrentItem((prev) => (prev - 1 + totalItems) % totalItems);
-  };
-
-  const handleNextClick = () => {
-    setCurrentItem((prev) => (prev + 1) % totalItems);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const items = itemsRef.current;
@@ -157,7 +174,7 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
     
     // Only start auto-rotation for desktop
     if (!isMobile) {
-      animationRef.current = setInterval(moveToNext, 3500);
+      animationRef.current = setInterval(moveToNext, 2000);
     }
 
     return () => {
@@ -169,7 +186,7 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
   }, [currentItem, updatePositions, totalItems, isMobile]);
 
   return (
-    <div className="stack-container relative" ref={containerRef}>
+    <div className="stack-container" ref={containerRef}>
       <div className="stack-slider">
         {orderedEvents.map((event, index) => (
           <div
@@ -185,57 +202,55 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
             />
           </div>
         ))}
+        
+        {/* Navigation Buttons - Mobile Only */}
+        <button 
+          className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 z-50"
+          onClick={handlePrevClick}
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6 text-white" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M15 19l-7-7 7-7" 
+            />
+          </svg>
+        </button>
+        
+        <button 
+          className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 z-50"
+          onClick={handleNextClick}
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6 text-white" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M9 5l7 7-7 7" 
+            />
+          </svg>
+        </button>
       </div>
-
-      {/* Mobile Navigation Buttons - Updated positioning */}
-      {isMobile && (
-        <div className="absolute -bottom-8 left-0 right-0 flex justify-between px-4 pb-4 z-50">
-          <button 
-            onClick={handlePrevClick}
-            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white border-2 border-white/20 hover:bg-black/70 transition-colors"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button 
-            onClick={handleNextClick}
-            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white border-2 border-white/20 hover:bg-black/70 transition-colors"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-      )}
-
-<style jsx>{`
+      <style jsx>{`
         .stack-container {
           perspective: 1000px;
           perspective-origin: 50% 0%;
           width: 240px;
           height: 360px;
-          margin: 120px auto 60px; /* Updated margin to accommodate buttons */
+          margin: 120px auto 0;
           position: relative;
         }
 
@@ -296,9 +311,6 @@ const ThreeDStackSlider = ({ events, isReversed = false }) => {
 };
 
 const Homesec = () => {
-  const theyyamMobUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4";
-  const theyyamDesktopUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Ftheyyam-desktop.webp?alt=media&token=4652255a-0519-4975-8a0b-75cfed4c05dd";
-
   const events = [
     {
       id: "dramatique",
@@ -381,14 +393,14 @@ const Homesec = () => {
     <div className="overflow-x-hidden">
       <div className="relative">
         <img
-          src={theyyamMobUrl}
+          src={mobileTheyyam}
           alt="Mobile Background"
           className="object-contain w-full h-full md:hidden"
           loading="lazy"
         />
 
         <img
-          src={theyyamDesktopUrl}
+          src={desktopTheyyam}
           alt="Desktop Background"
           className="hidden md:block object-cover w-full h-[110vh]"
         />
