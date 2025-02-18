@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "CAMODIRT-Regular";
-    src: url("/fonts/FontsFree-Net-camo-dirt.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'Agraham';
     src: url('/fonts/Agraham.ttf') format('truetype');
     font-weight: normal;
