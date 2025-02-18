@@ -7,7 +7,7 @@ const HomeEnd = () => {
   const bgImageUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/contact-section%2Frio-bg-img.webp?alt=media&token=f2549ec0-730c-4d96-a4a7-c253e4c02de3";
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full min-h-[70vh] overflow-hidden">
       {/* Background Image */}
       <div
         className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat -z-10"
@@ -20,7 +20,7 @@ const HomeEnd = () => {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
-      <div className="relative h-full flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-between max-w-8xl mx-auto pt-16 sm:pt-20 lg:pt-0 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-16 xl:px-20 gap-8 sm:gap-10 lg:gap-16">
+      <div className="relative h-full flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-between max-w-8xl mx-auto pt-16 sm:pt-20 lg:pt-0 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-16 xl:px-28 gap-8 sm:gap-10 ">
         {/* Contact Details */}
         <div className="text-white text-center lg:text-left space-y-6 sm:space-y-8 w-full lg:w-5/12 xl:w-[45%]">
           <h2 className="text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-agraham font-bold mb-8 sm:mb-12">

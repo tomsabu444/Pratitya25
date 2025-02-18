@@ -110,8 +110,8 @@ const Navbar = () => {
             ) : (
               <Link
                 to={item.href}
-                className={`text-white hover:text-gray-300 transition-colors ${
-                  mobile ? "text-3xl font-light block" : "text-xl"
+                className={`text-white font-poppins hover:text-gray-300 transition-colors ${
+                  mobile ? "text-3xl font-light block" : "text-xl drop-shadow-xl"
                   }`}
                 onClick={onClick}
               >
@@ -128,7 +128,7 @@ const Navbar = () => {
     <header className="fixed top-0 mt-2 w-full z-20">
       <nav className="relative">
         {/* Background */}
-        <div className={`fixed top-0 w-full h-24 ${scrolled ? "bg-black/50 backdrop-blur-lg" : ""}`} />
+        <div className={`fixed top-0 w-full h-24 transition-all duration-500 ease-linear ${scrolled ? "bg-black/50 backdrop-blur-lg opacity-100" : "bg-transparent opacity-0"}`} />
 
         {/* Main Navbar Content */}
         <div className="max-w-7xl mx-auto px-4">
