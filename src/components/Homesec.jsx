@@ -1,47 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { gsap } from 'gsap';
+import { useNavigate } from 'react-router-dom';
 import FireParticles from "./FireParticles";
 
-const RandomEvent = ({ events }) => {
-  const [randomEvent, setRandomEvent] = useState(null);
-
-  useEffect(() => {
-    const updateImage = () => {
-      const randomIndex = Math.floor(Math.random() * events.length);
-      setRandomEvent(events[randomIndex]);
-    };
-
-    updateImage();
-    const interval = setInterval(updateImage, 2000);
-    return () => clearInterval(interval);
-  }, [events]);
-
-  if (!randomEvent) return null;
-
+const VerticalText = ({ text, className }) => {
   return (
-    <div className="w-full max-w-lg">
-      <div className="relative w-full flex justify-end">
-        <img
-          src={randomEvent.poster_url}
-          alt={randomEvent.name}
-          className="w-3/4 h-3/4 object-cover shadow-xl"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  );
-};
-
-const VerticalText = ({ text }) => {
-  return (
-    <div className="flex flex-col items-start space-y-2">
+    <div className={`flex flex-col items-start space-y-2 ${className}`}>
       {text.split("").map((letter, index) => (
         <span
           key={index}
-          className="text-5xl mt-16 md:text-6xl font-poppins font-extrabold tracking-wider"
+          className="text-4xl mt-8 md:text-6xl md:mt-16 font-poppins font-extrabold tracking-wider"
           style={{
             color: "transparent",
-            WebkitTextStroke: "1.5px white",
-            textStroke: "2px white",
+            WebkitTextStroke: window.innerWidth >= 768 ? "2.5px white" : "1.5px white",
+            textStroke: window.innerWidth >= 768 ? "3px white" : "2px white",
           }}
         >
           {letter}
@@ -51,10 +23,292 @@ const VerticalText = ({ text }) => {
   );
 };
 
-const Homesec = () => {
-  const theyyamMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4";
-  const theyyamDesktopUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Ftheyyam-desktop.webp?alt=media&token=4652255a-0519-4975-8a0b-75cfed4c05dd";
+const ThreeDStackSlider = ({ events, isReversed = false }) => {
+  const navigate = useNavigate();
+  const itemsRef = useRef([]);
+  const animationRef = useRef(null);
+  const containerRef = useRef(null);
+  const [currentItem, setCurrentItem] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const displayCount = 5;
 
+  const orderedEvents = isReversed ? [...events].reverse() : events;
+  const totalItems = orderedEvents.length;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleCardClick = (eventId) => {
+    navigate(`/event/${eventId}`);
+  };
+
+  const handlePrevClick = useCallback((e) => {
+    e.stopPropagation();
+    if (!isMobile && animationRef.current) {
+      clearInterval(animationRef.current);
+      // Restart auto-rotation for desktop only
+      animationRef.current = setInterval(() => {
+        setCurrentItem((prev) => (prev + 1) % totalItems);
+      }, 2000);
+    }
+    setCurrentItem((prev) => (prev - 1 + totalItems) % totalItems);
+  }, [totalItems, isMobile]);
+
+  const handleNextClick = useCallback((e) => {
+    e.stopPropagation();
+    if (!isMobile && animationRef.current) {
+      clearInterval(animationRef.current);
+      // Restart auto-rotation for desktop only
+      animationRef.current = setInterval(() => {
+        setCurrentItem((prev) => (prev + 1) % totalItems);
+      }, 2000);
+    }
+    setCurrentItem((prev) => (prev + 1) % totalItems);
+  }, [totalItems, isMobile]);
+
+  const updatePositions = useCallback(() => {
+    const items = itemsRef.current;
+    if (!items || !items.length) return;
+
+    const stackOffset = 40;
+
+    for (let i = 0; i < totalItems; i++) {
+      let itemIndex = (currentItem + i) % totalItems;
+      let item = items[itemIndex];
+
+      if (!item) continue;
+
+      if (i === 0) {
+        item.classList?.add('front-card');
+      } else {
+        item.classList?.remove('front-card');
+      }
+
+      const isInStack = i < displayCount;
+
+      gsap.to(item, {
+        duration: 0.6,
+        y: isInStack ? -stackOffset * i : -stackOffset * (displayCount - 1) + 100,
+        rotationX: isInStack ? -10 : -10,
+        rotationY: isInStack ? 2 : 2,
+        z: isInStack ? -50 * i : -50 * (displayCount - 1),
+        zIndex: isInStack ? totalItems - i : 0,
+        scale: isInStack ? 1 - (i * 0.05) : 1 - ((displayCount - 1) * 0.05),
+        opacity: isInStack ? (i === displayCount - 1 ? 0.5 : 1) : 0,
+        ease: "power2.out"
+      });
+    }
+  }, [currentItem, totalItems]);
+
+  useEffect(() => {
+    const items = itemsRef.current;
+    if (!items || !items.length) return;
+
+    const stackOffset = 40;
+
+    function moveToNext() {
+      setCurrentItem((prev) => (prev + 1) % totalItems);
+    }
+
+    items.forEach((item, index) => {
+      if (!item) return;
+
+      const isInStack = index < displayCount;
+
+      gsap.set(item, {
+        y: isInStack ? -stackOffset * index : -stackOffset * (displayCount - 1) + 100,
+        rotationX: -10,
+        rotationY: 2,
+        z: isInStack ? -50 * index : -50 * (displayCount - 1),
+        zIndex: isInStack ? totalItems - index : 0,
+        scale: isInStack ? 1 - (index * 0.05) : 1 - ((displayCount - 1) * 0.05),
+        transformOrigin: "50% 0%",
+        opacity: isInStack ? (index === displayCount - 1 ? 0.5 : 1) : 0,
+      });
+    });
+
+    if (containerRef.current) {
+      const handleMouseMove = (e) => {
+        if (!items || !items.length) return;
+
+        const rect = containerRef.current.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+        const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+
+        items.forEach((item, index) => {
+          if (!item || index >= displayCount) return;
+
+          gsap.to(item, {
+            duration: 0.3,
+            rotationY: 2 + mouseX * 10,
+            rotationX: -10 + mouseY * 5,
+            ease: "power2.out"
+          });
+        });
+      };
+
+      containerRef.current.addEventListener('mousemove', handleMouseMove);
+
+      containerRef.current.addEventListener('mouseleave', () => {
+        items.forEach((item, index) => {
+          if (!item || index >= displayCount) return;
+
+          gsap.to(item, {
+            duration: 0.3,
+            rotationY: 2,
+            rotationX: -10,
+            ease: "power2.out"
+          });
+        });
+      });
+    }
+
+    updatePositions();
+    
+    // Only start auto-rotation for desktop
+    if (!isMobile) {
+      animationRef.current = setInterval(moveToNext, 2000);
+    }
+
+    return () => {
+      if (animationRef.current) {
+        clearInterval(animationRef.current);
+      }
+      gsap.killTweensOf(items);
+    };
+  }, [currentItem, updatePositions, totalItems, isMobile]);
+
+  return (
+    <div className="stack-container" ref={containerRef}>
+      <div className="stack-slider">
+        {orderedEvents.map((event, index) => (
+          <div
+            key={event.id}
+            ref={el => itemsRef.current[index] = el}
+            className="slider-item"
+            onClick={() => handleCardClick(event.id)}
+          >
+            <img
+              src={event.poster_url}
+              alt={event.name}
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+        ))}
+        
+        {/* Navigation Buttons - Mobile Only */}
+        <button 
+          className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 z-50"
+          onClick={handlePrevClick}
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6 text-white" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M15 19l-7-7 7-7" 
+            />
+          </svg>
+        </button>
+        
+        <button 
+          className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 z-50"
+          onClick={handleNextClick}
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6 text-white" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M9 5l7 7-7 7" 
+            />
+          </svg>
+        </button>
+      </div>
+      <style jsx>{`
+        .stack-container {
+          perspective: 1000px;
+          perspective-origin: 50% 0%;
+          width: 240px;
+          height: 360px;
+          margin: 120px auto 0;
+          position: relative;
+        }
+
+        .stack-slider {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+        }
+
+        @media (min-width: 768px) {
+          .stack-container {
+            width: 300px;
+            height: 440px;
+            margin: 120px 0 0;
+          }
+        }
+
+        .slider-item {
+          position: absolute;
+          width: 100%;
+          height: 320px;
+          will-change: transform;
+          transform-style: preserve-3d;
+          cursor: pointer;
+          overflow: hidden;
+          border: 2px solid #FFFDD0;
+          border-radius: 12px;
+          transition: all 0.6s ease;
+        }
+
+        .front-card {
+          box-shadow: 0 0 10px #FFFDD0,
+                     0 0 20px rgba(255, 253, 208, 0.3),
+                     inset 0 0 10px rgba(255, 253, 208, 0.1);
+        }
+
+        .front-card:hover {
+          box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.3),
+                     0 0 15px #FFFDD0,
+                     0 0 30px rgba(255, 253, 208, 0.4),
+                     inset 0 0 15px rgba(255, 253, 208, 0.2);
+        }
+
+        @media (min-width: 768px) {
+          .slider-item {
+            height: 400px;
+          }
+        }
+
+        .slider-item img {
+          pointer-events: none;
+          backface-visibility: hidden;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+const Homesec = () => {
   const events = [
     {
       id: "dramatique",
@@ -134,36 +388,43 @@ const Homesec = () => {
   ];
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="relative">
-        {/* Mobile Image */}
         <img
-          src={theyyamMobUrl}
+          src="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4"
           alt="Mobile Background"
           className="object-contain w-full h-full md:hidden"
           loading="lazy"
         />
 
-        {/* Desktop Image */}
         <img
-          src={theyyamDesktopUrl}
+          src="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Ftheyyam-desktop.webp?alt=media&token=4652255a-0519-4975-8a0b-75cfed4c05dd"
           alt="Desktop Background"
           className="hidden md:block object-cover w-full h-[110vh]"
         />
 
-        {/* Fire Particles */}
         <FireParticles />
 
-        {/* Content Overlay with new positioning */}
-        <div className="absolute inset-0 p-8">
-          {/* Top section with text */}
-          <div className="pt-8">
-            <VerticalText text="FEATURED" />
-          </div>
+        <div className="absolute inset-0 flex flex-col">
+          <div className="flex-1 relative">
+            <div className="absolute left-2 top-1/2 -translate-y-1/2">
+              <VerticalText text="FEATURED" />
+            </div>
 
-          {/* Poster section with adjusted position */}
-          <div className="absolute right-8 bottom-10">
-            <RandomEvent events={events} />
+            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+              <VerticalText text="EVENTS" />
+            </div>
+
+            {/* Desktop stacks */}
+            <div className="hidden md:flex justify-between md:max-w-6xl md:mx-auto absolute bottom-0 left-1/2 -translate-x-1/2 w-full px-4">
+              <ThreeDStackSlider events={events} isReversed={false} />
+              <ThreeDStackSlider events={events} isReversed={true} />
+            </div>
+
+            {/* Mobile Stack */}
+            <div className="md:hidden absolute left-1/2 -translate-x-1/2 bottom-0 w-full">
+              <ThreeDStackSlider events={events} isReversed={false} />
+            </div>
           </div>
         </div>
       </div>
