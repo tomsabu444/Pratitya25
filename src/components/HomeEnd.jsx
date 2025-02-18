@@ -20,7 +20,7 @@ const HomeEnd = () => {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
-      <div className="relative h-full flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-between max-w-8xl mx-auto pt-16 sm:pt-20 lg:pt-0 pb-8 sm:pb-10 px-4 sm:px-8  xl:px-20 gap-8 sm:gap-10 ">
+      <div className="relative h-full flex flex-col lg:flex-row items-start lg:items-center justify-center lg:justify-between max-w-8xl mx-auto pt-16 sm:pt-20 lg:pt-0 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-16 xl:px-28 gap-8 sm:gap-10 ">
         {/* Contact Details */}
         <div className="text-white text-center lg:text-left space-y-6 sm:space-y-8 w-full lg:w-5/12 xl:w-[45%]">
           <h2 className="text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-agraham font-bold mb-8 sm:mb-12">
