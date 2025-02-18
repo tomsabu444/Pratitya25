@@ -24,11 +24,11 @@ const HomePage = () => {
       </Suspense>
 
       {/* H2 is loaded only when scrolled into view */}
-      <LazyWrapper fallback={<div style={{ height: "500px" }}><Loading /></div>}>
+      {/* <LazyWrapper fallback={<div style={{ height: "500px" }}><Loading /></div>}>
         <Suspense fallback={<Loading />}>
           <H2 />
         </Suspense>
-      </LazyWrapper>
+      </LazyWrapper> */}
 
       {/* H3 is loaded only when scrolled into view */}
       <LazyWrapper fallback={<div style={{ height: "500px" }}><Loading /></div>}>
