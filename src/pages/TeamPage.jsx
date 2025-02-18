@@ -108,7 +108,7 @@ const TeamPage = () => {
       <AnimatedBubbles />
       <div className="relative z-10 flex flex-col items-center w-full">
         {/*<Navbar />*/}
-        <div className="fade-section pt-10 text-center text-white text-[36px] lg:text-[70px] font-bold font-agraham leading-[53.70px] tracking-wider my-32 mx-2">
+        <div className="fade-section pt-10 text-center text-white text-2xl lg:text-5xl font-bold font-agraham leading-[53.70px] tracking-wider my-32 mx-2">
           Meet the Team
         </div>
 
