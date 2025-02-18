@@ -16,7 +16,7 @@ const Footer = () => {
               className="w-28 h-auto object-contain drop-shadow-lg"
             />
             <p className="text-gray-200 text-sm lg:text-base text-center sm:text-left max-w-xs">
-              Festa Feasta - Bringing the joy of food, festivities, and unforgettable celebrations to your doorstep.
+              Festa Fantasia! - Bringing the joy of food, festivities, and unforgettable celebrations to your doorstep.
             </p>
           </div>
 
