@@ -1,44 +1,5 @@
 import React, { useState, useEffect } from "react";
-import mobileTheyyam from "../assets/featured-home/mobile-bg.jpg";
-import desktopTheyyam from "../assets/home-section-one/theyyam-desktop.png";
 import FireParticles from "./FireParticles";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
-import '@splidejs/splide/dist/css/splide.min.css';
-
-const EventSlider = ({ events }) => {
-  return (
-    <Splide
-      options={{
-        type: 'loop',
-        drag: 'free',
-        focus: 'center',
-        perPage: 3,
-        gap: '1rem',
-        arrows: false,
-        pagination: false,
-        autoScroll: {
-          speed: 1,
-          pauseOnHover: true,
-          pauseOnFocus: true,
-          rewind: false,
-        },
-      }}
-      extensions={{ AutoScroll }}
-    >
-      {events.map((event) => (
-        <SplideSlide key={event.id}>
-          <img
-            src={event.poster_url}
-            alt={event.name}
-            className="w-full h-full object-cover shadow-xl"
-            loading="lazy"
-          />
-        </SplideSlide>
-      ))}
-    </Splide>
-  );
-};
 
 const RandomEvent = ({ events }) => {
   const [randomEvent, setRandomEvent] = useState(null);
@@ -91,37 +52,85 @@ const VerticalText = ({ text }) => {
 };
 
 const Homesec = () => {
+  const theyyamMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Fmobile-bg.webp?alt=media&token=4afdd9ff-43fe-4a40-8c80-d8493c3e90a4";
+  const theyyamDesktopUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/featured-home%2Ftheyyam-desktop.webp?alt=media&token=4652255a-0519-4975-8a0b-75cfed4c05dd";
+
   const events = [
     {
-      id: "PT-01",
-      name: "Market Festival Event 1",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMirage%20Maestro-min.jpg?alt=media&token=592e78a5-23bf-42ae-9cba-47f4d174d94b",
+      id: "dramatique",
+      name: "Dramatique - Best Actor",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FBest%20Actor.webp?alt=media&token=0b6bee36-52e2-4af7-b2dc-11ab2e4cc49e"
     },
     {
-      id: "PT-02",
-      name: "Market Festival Event 2",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
+      id: "Retro_Revival",
+      name: "Retro Revival",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FRecreation.webp?alt=media&token=bd425ac1-30bf-4cd1-8365-ef4616018303"
     },
     {
-      id: "PT-03",
-      name: "Market Festival Event 3",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FBest%20Singer.jpg?alt=media&token=75cb3286-7811-4cd0-9593-2d9d1f3df59e",
+      id: "Tango_Double",
+      name: "Tango Double",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FDuo%20Dance.webp?alt=media&token=a7ba41f1-84ab-45fb-85a8-b28f1a977a25"
     },
     {
-      id: "PT-04",
-      name: "Market Festival Event 4",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FFast%20Fingers%20Fiesta-min.jpg?alt=media&token=ab95c2b6-0731-49df-8b6c-2c80846a170e",
+      id: "Canvas_Carnival",
+      name: "Canvas Carnival",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FDrawing%20Competition.webp?alt=media&token=4e6b2121-94cd-4821-990b-8547ab52d321"
     },
     {
-      id: "PT-05",
-      name: "Market Festival Event 5",
-      poster_url:
-        "https://firebasestorage.googleapis.com/v0/b/pratitya-6b78c.appspot.com/o/Event-posters%2FMarketSelling-min.jpg?alt=media&token=551c30c3-6852-48b0-ab36-789246e821d9",
+      id: "Celista_Star",
+      name: "Celista Star",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FCelista%20Star.webp?alt=media&token=a0713f07-8862-4548-8a1e-a0c9dee3c51c"
     },
+    {
+      id: "Arte_Henna",
+      name: "Arte Henna",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2Fart%20henna.webp?alt=media&token=14d4141f-0ae3-4a8f-9f8d-94a48383b8c6"
+    },
+    {
+      id: "Voz_de_singing",
+      name: "Voz de Fiesta",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FVoz%20de%20Fiesta.webp?alt=media&token=007f8c25-f760-4179-9f4c-8429a79d8cf8"
+    },
+    {
+      id: "Best_manager",
+      name: "Maestro Mind – Best Manager",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FBest%20Manager.webp?alt=media&token=ace4a109-f6c7-42d9-b199-d2b21fb76c11"
+    },
+    {
+      id: "Palette_Parade_Face_Painting",
+      name: "Palette Parade",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FFace%20painting.webp?alt=media&token=8eb53cd3-7639-450a-b29a-9d69da84edbd"
+    },
+    {
+      id: "Tale_Weavers",
+      name: "Tale Weavers",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2Fstorywriting.webp?alt=media&token=93217096-918f-4db4-81c1-c26ca1a72e6e"
+    },
+    {
+      id: "Memory_Fiesta",
+      name: "Memory Fiesta",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMemory%20Fiesta.webp?alt=media&token=e72ed6d5-3eb7-4565-b10f-a69da575eedd"
+    },
+    {
+      id: "Mystic_Quest",
+      name: "Mystic Quest - Treasure Hunt",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMystic%20Quest.webp?alt=media&token=8d63894c-46c8-4ac4-a83d-eb8b365b1180"
+    },
+    {
+      id: "PlayStation",
+      name: "Play Station Competition",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FPlaystation%20Competition.webp?alt=media&token=d96a942d-8ac6-45d1-8b0b-5d1836c40fa3"
+    },
+    {
+      id: "Lente_Magic",
+      name: "Lente Magiq– Click It",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FClick%20It.webp?alt=media&token=6e2c05f8-18e7-4dba-8d8e-ba0da1837568"
+    },
+    {
+      id: "Malayali_Manka",
+      name: "MALAYALI MANKA AND KERALA SREEMAN",
+      poster_url: "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/event-posters%2FMalayali%20Manka.webp?alt=media&token=89d33a71-7921-4a9d-b070-1afe46476e97"
+    }
   ];
 
   return (
@@ -129,7 +138,7 @@ const Homesec = () => {
       <div className="relative">
         {/* Mobile Image */}
         <img
-          src={mobileTheyyam}
+          src={theyyamMobUrl}
           alt="Mobile Background"
           className="object-contain w-full h-full md:hidden"
           loading="lazy"
@@ -137,7 +146,7 @@ const Homesec = () => {
 
         {/* Desktop Image */}
         <img
-          src={desktopTheyyam}
+          src={theyyamDesktopUrl}
           alt="Desktop Background"
           className="hidden md:block object-cover w-full h-[110vh]"
         />
@@ -154,12 +163,7 @@ const Homesec = () => {
 
           {/* Poster section with adjusted position */}
           <div className="absolute right-8 bottom-10">
-            <div className="md:hidden">
-              <RandomEvent events={events} />
-            </div>
-            <div className="hidden md:block w-[800px]">
-              <EventSlider events={events} />
-            </div>
+            <RandomEvent events={events} />
           </div>
         </div>
       </div>

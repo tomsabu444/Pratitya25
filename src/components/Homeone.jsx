@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import desktopBackground from "../assets/home-section-one/bg-desktop-h.png";
-import desktopLanten from "../assets/home-section-one/lanten-desktop.png";
-import castledesk from "../assets/home-section-one/castle-desktop.png";
 import { motion } from "framer-motion";
 import FlipCountdown from "./FlipCountdown";
 
@@ -61,6 +58,11 @@ const HomeOne = () => {
   const castleImageUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-only.webp?alt=media&token=d6a23bfe-6998-473f-aba0-84f4dd2b98de";
   const lantenMobUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Flantengroup.webp?alt=media&token=5bdbf9c7-06c5-477d-b3c1-67d393d10532";
   const mobBg = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fhome-bg.webp?alt=media&token=3c29cbb1-56a3-4992-b160-636871f64c97";
+  const dbgUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fbg-desktop-h.webp?alt=media&token=a319ab68-8971-4650-8a6e-4ca3a303f3e3";
+  const lantendUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Flanten-desktop.webp?alt=media&token=7761e184-9396-4e32-a0b2-e3e8924ff846";
+  const castledUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fcastle-desktop.webp?alt=media&token=01c29b7a-c6d3-4bc5-9beb-9823d6767bb5";
+  const mUrl ="https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain.webp?alt=media&token=50eac2ea-356f-41cc-9f00-0ba3c024f668";
+  const mfUrl = "https://firebasestorage.googleapis.com/v0/b/pratitya-25.firebasestorage.app/o/home-section-one%2Fmountain-front.webp?alt=media&token=69e2490f-9c13-4002-b7a0-1ce6e69fdf09"
 
   // Common castle container styles
   const castleContainerStyles = {
@@ -77,7 +79,7 @@ const HomeOne = () => {
       <div
         className="min-h-[200vh] bg-cover bg-center bg-no-repeat w-full"
         style={{
-          backgroundImage: `url(${window.innerWidth >= 768 ? desktopBackground : mobBg})`,
+          backgroundImage: `url(${window.innerWidth >= 768 ? dbgUrl : mobBg})`,
           transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
         }}
       />
@@ -91,7 +93,7 @@ const HomeOne = () => {
         }}
       >
         <img
-          src={window.innerWidth >= 768 ? desktopLanten : lantenMobUrl}
+          src={window.innerWidth >= 768 ? lantendUrl : lantenMobUrl}
           alt="Lanten Group"
           className="w-screen h-auto object-contain md:w-full md:max-h-[90vh] mt-20"
         />
@@ -149,7 +151,7 @@ const HomeOne = () => {
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia perferendis excepturi ea quo ipsa quas commodi minima aperiam. Sed aliquam quam sequi distinctio dolores quas commodi omnis ipsam soluta.
+          Saintgits College of Engineering presents Pratitya 25, a vibrant celebration of culture, music, and festivities on February 27, 2025! Festa Feasta is the heart of the event, bringing people together through lively performances, exciting activities, and a spirit of celebration. Experience the joy of togetherness, creativity, and unforgettable moments. Stay tuned for updates!
         </p>
       </div>
 
@@ -174,7 +176,7 @@ const HomeOne = () => {
       >
         <div className="w-full h-full overflow-x-hidden relative">
           <img
-            src={castledesk}
+            src={castledUrl}
             alt="Castle"
             className="w-[65%] h-auto object-contain absolute bottom-0 -left-20 max-h-[150vh] md:max-h-[160vh] lg:w-[45%] lg:-left-28 lg:max-h-[130vh]"
           />
